@@ -1,111 +1,156 @@
+using PlayerController.InputEvents;
 using System.Collections.Generic;
-using CustomKeyboard;
+using UnityEngine.InputSystem;
+using UnityEngine.Events;
 using UnityEngine;
 
-[AddComponentMenu("Player/Extra Modules/Camera State Manager")]
+/// <summary>
+/// Manages the camera state based on input and/or activation of specific GameObjects.
+/// It can toggle the camera manually or automatically based on the selected update type.
+/// </summary>
+[AddComponentMenu("Player Controller/Extra Modules/Camera State Manager")]
 public class CameraStateManager : MonoBehaviour
 {
+    [Header("Input Settings")]
+    [SerializeField, HighlightEmptyReference] private InputActionAsset inputAsset; // Input Action Asset containing defined actions.
+    [SerializeField] private string toggleInput = "UI/Menu"; // Action name used to toggle camera manually.
+
     [Header("Enable and Disable Camera")]
-    [SerializeField][KeyboardTagDropdown] private string cameraToggleInputTag = "MenuActivation"; // Input tag used for toggling the camera.
-    [Space(10)]
-    [Tooltip("The objects whose activation will be checked to toggle the camera state.")]
-    [HighlightEmptyReference] public List<GameObject> activationObjects = new(); // List of objects checked for camera activation.
+    [SerializeField] private UpdateType updateType = UpdateType.InputEvent; // Defines when camera state should be checked.
+    [Tooltip("Executed in Update and FixedUpdate")]
+    [SerializeField, HighlightEmptyReference] private List<GameObject> activationObjects = new(); // Objects that determine camera activation.
 
-    private bool isCameraActive = true; // Tracks whether the camera is enabled.
-    private bool lastActivationState; // Stores the previous activation state of the camera activation objects.
+    [Header("Events")]
+    [SerializeField] private bool debug = false; // Enables debug logging for camera state changes.
+    [SerializeField] private UnityEvent onEnable; // Event invoked when camera is enabled.
+    [SerializeField] private UnityEvent onDisable; // Event invoked when camera is disabled.
 
-    private float lastUpdateTime = 0f; // Timestamp of the last update.
-    private float activeDuration = 0f; // Accumulates the time the camera activation objects have been active.
-    private float inactiveDuration = 0f; // Accumulates the time the camera activation objects have been inactive.
+    private bool isCameraActive; // Indicates whether the camera is currently active.
+    private bool lastActivationState; // Stores the last known activation state of the monitored objects.
+    private float lastUpdateTime; // Time of the last activation state check.
+    private float activeDuration; // Duration the activation objects have remained active.
+    private float inactiveDuration; // Duration the activation objects have remained inactive.
 
-    private InputData cameraToggleInput; // Stores input data for toggling the camera.
+    private OnInputSystemEventConfig<float> toggleEvent; // Cached input event listener for toggle action.
+
+    /// <summary>
+    /// Defines how the camera state is updated.
+    /// </summary>
+    public enum UpdateType
+    {
+        ManualToggle, // Camera is only toggled via external method calls.
+        InputEvent,   // Camera is toggled on input event (e.g., button press).
+        Update,       // Camera state is checked every frame in Update().
+        FixedUpdate,  // Camera state is checked in FixedUpdate().
+    }
+
+    private void Awake()
+    {
+        // Disable component if no input asset is assigned.
+        if (!inputAsset)
+        {
+            Debug.LogWarning("Input Asset not assigned.", this);
+            enabled = false;
+            return;
+        }
+
+        if (debug) Debug.Log($"[{nameof(CameraStateManager)}] Initialized with updateType: {updateType}", this);
+    }
 
     private void Start()
     {
-        // Initialize camera toggle input based on the assigned tag.
-        cameraToggleInput = KeyboardTagHelper.GetInputFromTag(cameraToggleInputTag);
-        // Set the initial camera state and lock the cursor if the camera is enabled at the start.
-        SetCameraState(isCameraActive);
+        SetCameraState(true); // Set camera initially active.
+
+        // Register input event to toggle camera if updateType allows it.
+        toggleEvent = OnInputSystemEvent<float>.WithAction(inputAsset, toggleInput).OnPressed(_ =>
+        {
+            if (updateType == UpdateType.InputEvent) SetCameraState(!isCameraActive);
+        });
     }
 
-    public void ToggleCameraState(out bool currentCameraState)
+    // Clean up input event bindings when object is destroyed.
+    private void OnDestroy() => toggleEvent?.UnbindAll();
+
+    private void Update()
     {
-        // Toggle the camera state based on the activation state of objects.
-        UpdateCameraStateBasedOnActivation();
-        currentCameraState = isCameraActive; // Return the current camera state.
+        // If Update mode is selected, check camera state every frame.
+        if (updateType == UpdateType.Update) UpdateCameraStateFromObjects();
     }
 
+    private void FixedUpdate()
+    {
+        // If FixedUpdate mode is selected, check camera state in fixed intervals.
+        if (updateType == UpdateType.FixedUpdate) UpdateCameraStateFromObjects();
+    }
+
+    /// <summary>
+    /// Sets the current camera state and updates cursor lock and visibility.
+    /// Also triggers UnityEvents and optionally logs debug info.
+    /// </summary>
+    /// <param name="active">If true, camera is activated; otherwise, deactivated.</param>
     public void SetCameraState(bool active)
     {
-        // Set the camera state and update the cursor lock state accordingly.
+        if (isCameraActive == active) return;
+
         isCameraActive = active;
-        Cursor.lockState = isCameraActive ? CursorLockMode.Locked : CursorLockMode.None;
-        Cursor.visible = !isCameraActive; // Hide cursor when the camera is active.
-    }
 
-    private void UpdateCameraStateBasedOnActivation()
-    {
-        if (activationObjects.Count > 0)
+        Cursor.lockState = active ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !active;
+
+        if (active)
         {
-            bool currentActivationState = false; // Tracks the current activation state.
-
-            // Check if any of the activation objects are active.
-            foreach (var obj in activationObjects)
-            {
-                if (obj != null && obj.activeSelf)
-                {
-                    currentActivationState = true;
-                    break;
-                }
-            }
-
-            float currentTime = Time.realtimeSinceStartup;
-            float elapsedTime = currentTime - lastUpdateTime; // Calculate the time since the last update.
-            lastUpdateTime = currentTime;
-
-            // If the activation state has changed, reset the duration counters.
-            if (currentActivationState != lastActivationState)
-            {
-                lastActivationState = currentActivationState;
-                activeDuration = 0f;
-                inactiveDuration = 0f;
-            }
-            else
-            {
-                // Update the duration counters based on the current activation state.
-                UpdateDurationCounters(currentActivationState, elapsedTime);
-            }
+            onEnable?.Invoke();
         }
         else
         {
-            // If there are no activation objects, toggle the camera based on user input.
-            if (Input.GetKeyDown(cameraToggleInput.keyboard)) SetCameraState(!isCameraActive);
+            onDisable?.Invoke();
+        }
+
+        if (debug) Debug.Log($"[{nameof(CameraStateManager)}] Camera State set to: {active}", this);
+    }
+
+    /// <summary>
+    /// Checks if monitored objects are active or not and updates camera state accordingly.
+    /// Uses a time threshold (0.1s) to prevent immediate toggling on flickering.
+    /// </summary>
+    private void UpdateCameraStateFromObjects()
+    {
+        if (activationObjects.Count == 0) return;
+
+        bool anyActive = IsAnyActivationObjectActive();
+
+        float now = Time.realtimeSinceStartup;
+        float deltaTime = now - lastUpdateTime;
+        lastUpdateTime = now;
+
+        // If activation state changed, reset timers.
+        if (anyActive != lastActivationState)
+        {
+            lastActivationState = anyActive;
+            activeDuration = 0f;
+            inactiveDuration = 0f;
+            return;
+        }
+
+        // If objects remain active for threshold time, disable camera.
+        if (anyActive)
+        {
+            activeDuration += deltaTime;
+            if (activeDuration >= 0.1f) SetCameraState(false);
+        }
+        else // If objects remain inactive for threshold time, enable camera.
+        {
+            inactiveDuration += deltaTime;
+            if (inactiveDuration >= 0.1f) SetCameraState(true);
         }
     }
 
-    private void UpdateDurationCounters(bool isActive, float elapsedTime)
+    /// <summary>
+    /// Checks whether any of the monitored objects are currently active in the scene.
+    /// </summary>
+    /// <returns>True if at least one object is active; false otherwise.</returns>
+    private bool IsAnyActivationObjectActive()
     {
-        if (isActive)
-        {
-            activeDuration += elapsedTime; // Increment the active duration counter.
-
-            // Disable the camera if the activation objects have been active for more than 0.1 seconds.
-            if (activeDuration >= 0.1f)
-            {
-                isCameraActive = false;
-                Cursor.lockState = CursorLockMode.None;
-            }
-        }
-        else
-        {
-            inactiveDuration += elapsedTime; // Increment the inactive duration counter.
-
-            // Enable the camera if the activation objects have been inactive for more than 0.1 seconds.
-            if (inactiveDuration >= 0.1f)
-            {
-                isCameraActive = true;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
+        return activationObjects.Exists(obj => obj != null && obj.activeSelf);
     }
 }

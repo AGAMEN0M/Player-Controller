@@ -6,8 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Player Controller/Controllers/Side View 3D/Test Scene (Side View).unity
+    guid: 4d34d6eeed12c98428b23ea5cca1e566
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.input.settings: {fileID: 11400000, guid: 114a9cfde6ca565409a88f61a8ac5d76, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
   m_UseUCBPForAssetBundles: 0

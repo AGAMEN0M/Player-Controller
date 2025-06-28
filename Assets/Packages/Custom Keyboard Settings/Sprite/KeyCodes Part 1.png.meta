@@ -1,0 +1,7731 @@
+fileFormatVersion: 2
+guid: 16650fb5cbe6b9d44bfe85434ce1b87d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 227
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: None
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b571d014c170bd4493d2b2e6a131201
+      internalID: -1842620088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Backspace
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ebe1a70d91e26c4badbf61ad83e9db3
+      internalID: -520962229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tab
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d73763e43a34a7a43a075c56a4ca4076
+      internalID: 135540887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clear
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0818b3eeba799df4f90f422fc8e2e1c4
+      internalID: -1935280388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Return
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83608520c520b45478fead4bf97417a7
+      internalID: 958523272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7474a01265d034a4ba42269cbad60ddd
+      internalID: 532021873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Escape
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc42ecedf96d773438192fa9cfc32553
+      internalID: 182148575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Space
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9834a086211caec448f563a976cb48aa
+      internalID: 1945054164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exclaim
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40429fb4e0ca4f9458b61940974a01d3
+      internalID: -836542222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Double Quote
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 832dcd8dd2550cb4ca863412526c22d5
+      internalID: -38362596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hash
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3099083b706aa6c42908285dac48ea38
+      internalID: 2652096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dollar
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fd78c2594c84964ca382576be03a85c
+      internalID: 454361238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Percent
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb18fecf9e8f9dd48bded477269cbbaf
+      internalID: 1826308876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ampersand
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8770148c0a37db4bb7a2dccb0c65ad4
+      internalID: -995897794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quote
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e94bbe9d09f468419d37eba0185dc89
+      internalID: 2123692866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Paren
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d1a32c8c9a3f445859558324ef1e55
+      internalID: 1400831481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Paren
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af48c79a91be92c46bd44d9758860b2b
+      internalID: -1945080384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Asterisk
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 3869
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408c6adeaa2bebc4a9e6a4167194d3cc
+      internalID: 1000996347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Plus
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f59016c619cecf342be36f63285c9abc
+      internalID: -1309097270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Comma
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67384e4aa3841344baf46087b9eb4b47
+      internalID: 396060872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minus
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4542f26244d6c6145a46d066aadb902a
+      internalID: 1586520907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Period
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff9313562fae814da459cb2576cf415
+      internalID: -1331986186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c1d7a94573036d44bca03d145ba3521
+      internalID: 1975689392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha0
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981391b4b1fec094797e44cf19d687fa
+      internalID: 909517084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha1
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81a52c35b3a489b48ad8f1a25d719c0f
+      internalID: 1776398486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha2
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb317b124352e1f43b6c170c7da22e8d
+      internalID: 860961183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha3
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dfac988de7619240bbd168a22d07dde
+      internalID: -1725048615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha4
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e80546e05faff8e419e31e1c7579d408
+      internalID: 1750126633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha5
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 3645
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b06cb6a72769af241ab9df97f3ce951e
+      internalID: 1462038311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha6
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19389d6f7257cda449dd1919e9cf1dd8
+      internalID: 1861252720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha7
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff283eed06877144686847730319c32b
+      internalID: 1322882189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha8
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f572fca5ec9a50e428f8983c6003069c
+      internalID: 2146873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alpha9
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02047b0bf65733443b8bd27ba1453dea
+      internalID: -271274518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colon
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 3645
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c5631c2f13b1d248a12f12f065dd1e7
+      internalID: -1117904458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Semicolon
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f7fddfe7374c7c46bdd11f614855d33
+      internalID: -232009712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Less
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 3642
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c83172f7e5bda3b49a07454772a1b8f4
+      internalID: -1801804816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Equals
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7393b47a021757429dc41c2662bbc2d
+      internalID: -1621635551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Greater
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4991164d9aea58479681cf82883347c
+      internalID: -1620670497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Question
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d81319761414b9c4a8be3f80a2a47611
+      internalID: -651479440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: At
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 989782ff00783b1499a44b4d9af0e713
+      internalID: 294423393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Bracket
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a83d3009633fa4c886498774f91233
+      internalID: -42983203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Backslash
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08e9ddc2d20f1274fa072411d87a6009
+      internalID: -1590752477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Bracket
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10797d7ef08be1a47b3a2888d5f9a4ec
+      internalID: -1351170924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caret
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b9ae8b7baf0ac44288003bdfabaf918
+      internalID: -852774571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Underscore
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20916ce76487976429311856c558c180
+      internalID: -738923398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back Quote
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08789428f92b0144f92e08441d3b2ac4
+      internalID: 1289218509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b745046ad4b1fef41981f485ccd89498
+      internalID: -1516131757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: B
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa6f7a742c3d8754aaa713aa6f1297eb
+      internalID: -480019660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: C
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fbd4f14e0bd5f14299f53049b78be26
+      internalID: -419032041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: D
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abbc7df5fd41ffb4cace986858c51f7a
+      internalID: -722533724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: E
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea77d84708d37c443a25165a4aee6eb6
+      internalID: -214646019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1519203240a37a944bbebdb984374945
+      internalID: 1822036213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: G
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53e74c50cb058ba4e8fa473d76a70ba4
+      internalID: 123150108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: H
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 3415
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3014f7106304d3144af4c44bdefa38b5
+      internalID: -80172472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: I
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585b00518921bb840b223e27285ca025
+      internalID: -1399794509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: J
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94853913e6ef498459d4812bd6537b88
+      internalID: 1743942255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: K
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e74f3a8245f6e749974d13403d87389
+      internalID: 974001282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: L
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5d98c9e09b6f24098e0f351b5abd59
+      internalID: 1091551670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48a51e9353d9d346b294afa7c9f807a
+      internalID: -659154648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: N
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48d1a852fbe60c149ab74a209ae4756f
+      internalID: -1785475385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: O
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de6196e1e7ac2a94d84d756b32654ef0
+      internalID: 120820717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecfed7162aef73e428789ca62aa7dfee
+      internalID: -973801172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Q
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4ed267cec23f945882610d70853351
+      internalID: -348489005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: R
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f7a2b6a1a3bf544d9525584c17f9bd7
+      internalID: 276207236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad94966c6f6ca54fa678fa76e0c82b5
+      internalID: -283653803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: T
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a654823d14945e044a90e67a799bb48e
+      internalID: -870488432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03310e2ae233f5248ba1a4e9fc7ced61
+      internalID: 1681250217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: V
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89adb01bde88e11458fc6ac39eaa1633
+      internalID: -1032606803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: W
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b50e1c69787bb24cb822f46e9bbb25a
+      internalID: -492814881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: X
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4082a4b49993e4f8a527326232facd
+      internalID: 1933536290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Y
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dab408829e44c154c8d0721be40d48a1
+      internalID: 875792626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Z
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 3188
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d77b40c31f4de544833d83091f4d0bc
+      internalID: -1223196427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Curly Bracket
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 999a5e7abb6f62846ae95b1ca0bf6a03
+      internalID: 1153450314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pipe
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42edc6e57854bb34e90b618dca240e72
+      internalID: -704363207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Curly Bracket
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb26953ef5c101043bbabed5dd38ab92
+      internalID: 815254083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilde
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37c48ba17a6f5984ea08cea460c404a8
+      internalID: 663870720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Delete
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4ddd8372d1908419a093ec3315c3fc
+      internalID: -800399679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad0
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e219eebf7328ab4595fcde39be8d6c0
+      internalID: 902028811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad1
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e9864b344d22e74082e52e44f1a4f65
+      internalID: 530380761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad2
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb8f369064ba55438835a564aa2d7c0
+      internalID: -194153299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad3
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a223e9ddb6e24b04189640c6a8578347
+      internalID: 962601902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad4
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281e239d5e4a11b429b8702a312d753b
+      internalID: -1377491586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad5
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88ea62f1a4d3a0e4a83ee04945640ae0
+      internalID: -1977879132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad6
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21f61b9ad023c9e4da2b0825caf3495b
+      internalID: -981014734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad7
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6f49ccc6777e714bbd96582d9e374a6
+      internalID: -659682130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad8
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc167f31a6e1f524aa6da1663739d338
+      internalID: -461738692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad9
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0026fb342a1bcab40af41fc8eb7148db
+      internalID: 951498860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad Period
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb431d53af8f80489705c7722400894
+      internalID: 691022180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad Divide
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c322b92f8fbbafb4f81e5f8833bfe3c8
+      internalID: -469291940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad Multiply
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 2961
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 777bf90244667c44bb80742b56cdf2a8
+      internalID: -700734659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad Minus
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bf289184291af345bded1541011753e
+      internalID: 629922596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad Plus
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9adab61329a4eb48a42dc281bf9c1c8
+      internalID: -1311550775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad Enter
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da6562e1646a44a43b1dea332097115e
+      internalID: -1140336846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keypad Equals
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4b0026ba184ab4fa9a98d6789f8f7a
+      internalID: 1902190706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Up Arrow
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdee4807cf54d19498b624a6f6c6318f
+      internalID: -585050151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Down Arrow
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f31a9ec3f049524191c97462e779377
+      internalID: 594231393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Arrow
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616d93cd1fb2e174e890d66dca1c9b76
+      internalID: -1959162779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Arrow
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c62bffd0b3668143b70308c5b9c3689
+      internalID: 1984514647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Insert
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cf5ae3367fd16e41a52a0cbafd9f0b0
+      internalID: 316862979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Home
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c49d63a132a247b4fb521b22901f8ef8
+      internalID: 1662292821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: End
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5fd5a65af52a64fb0e648afe21e84d
+      internalID: 1673730628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Page Up
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d914a2cba55d9e4aa46a40ebb6e5d32
+      internalID: 275773759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Page Down
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a77e836547884794fa9c1a2c5cad6605
+      internalID: 1224826600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 2736
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f36161d6d469642bfb763ea3da33a3
+      internalID: 1367829827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F2
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62b2043365c83f342b68e9705ff4553f
+      internalID: 328797463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F3
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de1e58e64abaca34486f130dfa01ba1a
+      internalID: -1202195002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F4
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d2eb558b01b8974ca161bdbaff06b33
+      internalID: -1318779579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F5
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 2734
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 673803889ebd5e04e956750fd62c182f
+      internalID: -1965648804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a0505c771c24c4fa1b86265ead2116
+      internalID: 2010607807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F7
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273dd90e032f40848b1c04b847ad470b
+      internalID: -2116240650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F8
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 785acfa432b91e14daf4e63cca810f03
+      internalID: -1739849699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F9
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f564e7322436c84b89ea0f70edd8f96
+      internalID: -428667001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F10
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e9dca5c6164924c879b6b48cb56aee
+      internalID: -951732839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F11
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63c1aa2091459e46af85e770b7563f9
+      internalID: 508655287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F12
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecd364c034ab8934fad3aeb5f82ea1bc
+      internalID: -307375991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F13
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b43650091ce564eb8200d04abeeb93
+      internalID: 1099936199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F14
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fa3060daaabab4783855c8445e4fa9
+      internalID: -871924404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F15
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d8d117b4f46ec4bab80d6dd5a1be07
+      internalID: -2095719949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Numlock
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fcf4dc3d04b7b948b3a2b4e6d6a53f6
+      internalID: -134062987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Caps Lock
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ccf2df60b3944347ab191b216e0568c
+      internalID: -2011772919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll Lock
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 820b76af192dceb4b8af14b2f3b27987
+      internalID: -1392505527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Shift
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29bc274e17784d544a1f631a1b9b669a
+      internalID: -2015992562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Shift
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e7211f4b6ff470458211c46d41e68af
+      internalID: 805257653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Control
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05a17fcfefd3bc4aa76f51db3a8e1db
+      internalID: -1269598366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Control
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c089a2074cec1845b98abba68e738fa
+      internalID: -1006476595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Alt
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 2507
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c8bea0a990c3b54ba698b59b99b4b37
+      internalID: -174118728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Alt
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ea0a3b79e11bda4388fe2ed5ae5f58b
+      internalID: 512751408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Meta
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 019704fc0fb177943b358d1cea1c3f1e
+      internalID: -1622230823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Meta
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eea4c11fb41def4c8c11bffccffb2a4
+      internalID: 1935447130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Windows
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d66dbd8e0079df47a67e00ab2117cec
+      internalID: -1428475638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Windows
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dd37ae8ed22fe34e83d6ad4a25b72d1
+      internalID: -1640573624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Alt Gr
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c5e808b269510847ae2391e2c165c61
+      internalID: -1052225881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Help
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2d9fb85f2a77ae43849527a84c43997
+      internalID: -1732422746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Print
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69cd197d35eec2942a0f344612a9cbb0
+      internalID: -565699218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys Req
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dde652ee80b1af647b5923d35991d880
+      internalID: -490915625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Break
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7974e1a574dcf904bab5af3e2134f45b
+      internalID: 330273401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Menu
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc7111dcd229975408f69a23b32e7108
+      internalID: 2141276706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheel Up
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 2281
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4b29334870d17242a3ebedb34f27e16
+      internalID: 1777493296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wheel Down
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55690d36cd1a4b46b3935519e1e256f
+      internalID: -1691335662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouse0
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dada88e4cffcd34459ac9d819231b7f6
+      internalID: -1193491203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouse1
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 2279
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55901cc5935f31c4081eccead85897b7
+      internalID: -1519933147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouse2
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3032f9e3d9738e644b868e8ed6ef2339
+      internalID: 1120775139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouse3
+      rect:
+        serializedVersion: 2
+        x: 3634
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b963211f50c7b4eb5777e5d6fdd172
+      internalID: 2110126346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouse4
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 2280
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cffa18002e97fe43bbc3d657c9b601b
+      internalID: 1344381877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouse5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d82ec8934d70364a964f4de724b7dcd
+      internalID: 1086784139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mouse6
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef210d93b67945e488da4acd9e377b50
+      internalID: 1858267588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 0
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 285ef5b706a94644babaadc8927f699e
+      internalID: 1283729900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 1
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b680d40825d590a4eadb603fcad8dccd
+      internalID: 1545571943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 2
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff5b42cafb4d9dc4280db155bf70421c
+      internalID: -1903617091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 3
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640b0c56c65c3f340af30fc78f5565e8
+      internalID: 2017291242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 4
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9faaf49491accd44381aedb62241c216
+      internalID: -139095071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 5
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2480d1cc1bf0c8f46bebd6b8f7f273a4
+      internalID: -832633606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 6
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 985c87e081962d441aaa0e01ca1448e9
+      internalID: 1000756772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 7
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cb800020f6e78f479e56369f42ed07c
+      internalID: -1598243212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 8
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0bc49a5954c8404692966b57d94ada9
+      internalID: -1761352391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 9
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e7d32b0ce5a49498f6c2df9a5152c2
+      internalID: -1290879621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 10
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f835d10a2af7144aeb93070567bc29
+      internalID: 266766217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 11
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b63662e81c11a148b0cf6b5d12a2039
+      internalID: -1075095980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 12
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b2c103c64793248ba10f515a06f53a
+      internalID: 347913676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 13
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a0edab4d65d76142b70952c5cffcf99
+      internalID: 1032230905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 14
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feaa2975bbe626340ae680c0cd13f296
+      internalID: 762077540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 15
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 2053
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229b96e954ad57b4a8b7dba680d10cfb
+      internalID: -501028307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 282b180bee1f59a4eb39f96d9f5a5243
+      internalID: 951964779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 17
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d5f00cfcbb31b349939bbe578620f03
+      internalID: -1832598953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 18
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9147cb3089d95324c888a1b539fcb778
+      internalID: -1838751710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick Button 19
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b229b0ef169664b891631475b30b7a
+      internalID: 969978512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 0
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e43db8e1d777e948a85edc4a869d93b
+      internalID: 816517851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 1
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 455072267ea01534ba03b13bd269c8f8
+      internalID: -1320050095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 2
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d842fd3ef5c8054795042764b44501f
+      internalID: -1223799836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 3
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d8a832aa2e16944a56321b1a60c063
+      internalID: -2071497621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 4
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e30c23fe77429ba47828667d975ed633
+      internalID: 1458166315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 5
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c11825d1a47e59748b3657016bf09db9
+      internalID: -1840114456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 6
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 972edb2aa4e83d548b42ebdeadaf2785
+      internalID: 1678573573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 7
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b87e88dc3d272d4492931b8a00cfe76
+      internalID: 405360700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 8
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db2fbea42f4fb34b984e70ff985241a
+      internalID: 1736012455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 9
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bbd7961a6a425146a327194a2d19afd
+      internalID: 51522106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 10
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4deb9c4e16ced4484ddfea713a2861
+      internalID: -1515743157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 11
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f56ca5bd3622dcd45b94fa958bc95743
+      internalID: -667839175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 12
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1221f7d98c96c4448bb2a5238a9f574e
+      internalID: 1606652141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 13
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 1826
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9434297a2e63e64ba4b6c1b8f7fe94b
+      internalID: -1995276566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30398bbded11e984a960519d8cdc3e69
+      internalID: -1357509253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 15
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deae515fb322d7243aae620ec61799d8
+      internalID: -507288967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 16
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e99e3f412c8a8ba4db181bb48e0633d4
+      internalID: -2091116067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 17
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6866f7faed815f24998a1f6fddb984b9
+      internalID: -1545087512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 18
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 990937049075f0045a3f70d0024640a5
+      internalID: -1611404411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 1 Button 19
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af0fd0353b429534391a71f56e3127b8
+      internalID: 1429652576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 0
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c71910d524b3864d9326be84c5dd957
+      internalID: 1163689294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 1
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b52709bef89201248ac1c89ce178b563
+      internalID: -2087779706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 2
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67faf2328b4345045b531a8a871cbbe9
+      internalID: 1155242503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 3
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933de373cca63644fa0466d752800c55
+      internalID: -1356016809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 4
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ecb1c04688cce34ea2ae75cb2b884a2
+      internalID: -1348030907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 5
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56879079abd736f42b4cb07f5a10b3b7
+      internalID: 1021049516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 6
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6feed1559f81ba34b919e068fe164d21
+      internalID: 1220577071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 7
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd7107635539bcf4680e0eb0a8c2b7c0
+      internalID: 855264461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 8
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce557a98c07477489cbbf61569cb9d6
+      internalID: -55990394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 9
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff7cab08b38bcdc48842375b4538a174
+      internalID: -1224389132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 10
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de58fb01fafed6e458bd156ee9c40bb2
+      internalID: 1752256369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 11
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 1599
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f64a54932c303974c9c3dc0fef4fe050
+      internalID: -2099472701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a7a9f86b2721d4083bff318706941f
+      internalID: -812240052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 13
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc45395689563b34f8f55a90faed768b
+      internalID: -1252304065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 14
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb82d2a050a3f3247b6bc3677559fa36
+      internalID: -756451690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 15
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19b0cb38b0febc143848bf53e59abc48
+      internalID: 677263975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 16
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4094914bbce9c064eb7826a96fe0657e
+      internalID: 1075618335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 17
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8207092b22c124d81513d9c258a578
+      internalID: -1771349859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 18
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69817d8f420e6142bf7eedcb120c6f0
+      internalID: 417375226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 2 Button 19
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb0da9535b5f134984c44c4e9ba862a
+      internalID: 44867274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 0
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89004fdd408d1764f942a2e5eae1feae
+      internalID: -686637607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 1
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc8d37faa0226cf46b9617d9995f887a
+      internalID: 310467966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 2
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0511a415b45c30f41860f6be93c82bbf
+      internalID: 1474028607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 3
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef7b4663acb87b64ba96b1c56296044b
+      internalID: 144390413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 4
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed8af80aa0d02943a51b30ec6d07e19
+      internalID: 2146468909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 5
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 658fedeb93d78c345b03212426b40458
+      internalID: -1543711788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 6
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe132a24f06f9c648b9578660bcfb089
+      internalID: -1348282236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 7
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aab5b84208838642ac2bbacd881ca26
+      internalID: -1300063423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 8
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d2454f2b85cca41b2115a2c094e488
+      internalID: -1531043367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 9
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 1372
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4953653dcee4ee444ad96f98e81e4d15
+      internalID: 707051634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45b1f1b30c30558408bbee644f0abf9c
+      internalID: 562268496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 11
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d73b6c46c3922a49be1cb2e5db0b630
+      internalID: 451856710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 12
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f3151624b122945aa5feac72b87430
+      internalID: -525122216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 13
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22dfba56abbc37a4ba124b5a6c887793
+      internalID: -1734089495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 14
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e01a52158c55fa40b8d7b1ac0e5743b
+      internalID: -1509759954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 15
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 295ab5c7fdd2076429792aae92801e00
+      internalID: -1383394450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 16
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ad87f8012307ae41abe826704e3f2be
+      internalID: -1012526291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 17
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e1a976cf9732746b63c8b1d19ab713
+      internalID: 334749381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 18
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce3920e6d12878408db205d7f6f7215
+      internalID: -1257459729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 3 Button 19
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6306bd0f86ae8d4f9e17bf871c5abba
+      internalID: 264277001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 0
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f26a8383a2feed448b68f2aa3879c628
+      internalID: 3740074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 1
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd273d155e5ed1d4eb915e63d79f1351
+      internalID: 893960343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 2
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc6d8db96abf50418ffa121e0a30c24
+      internalID: -398601041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 3
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 530ae89e3f79ec649a735eb06def97f1
+      internalID: -1651303807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 4
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b153f7edbec7f049a444ca6f55ac373
+      internalID: -1177565586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 5
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269a3c2d5191f554596f5cbbafc7d21b
+      internalID: 362469444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 6
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b04521d3072344f8edb1bf087353eb
+      internalID: -2076556905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 7
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 1145
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c055974951e30614c8f35ba1238f1be6
+      internalID: -1067027433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7606c38ba09c5014e8100b44a3258a66
+      internalID: -1275443219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 9
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942254cf5e5178f4b90b73292394182b
+      internalID: 1881489469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 10
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f03fb2e6694c4b4fac72cd197cb7ca9
+      internalID: -2057614313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 11
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa26eec078d3044ab31064c8d20c249
+      internalID: 1172554196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 12
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37a752a9e48ee5f41847b3cbfd628ecf
+      internalID: -586710613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 13
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c84cb9e980631c489914fa607f7044c
+      internalID: -38379711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 14
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 011e49c7bc53b2140a4bc570b8090505
+      internalID: 1032199544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 15
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaf1a189e36822a408282ec59e03a7fc
+      internalID: -125146559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 16
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a7c8c547fc9ef244963885e68d59fe6
+      internalID: 1073472400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 17
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543f030e19382a5468b72ef056475073
+      internalID: -1765260613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 18
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd3ea119f42b5b468014acb66cea82e
+      internalID: -781034695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 4 Button 19
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68b5cb7bb8e7c54199b9c5621398796
+      internalID: 735280963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 0
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8267f1fd383f2ff439f5436eba2196e9
+      internalID: 1862172359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 1
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae2f80c42804513439305817b9ccfbb0
+      internalID: 52706764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 2
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa1d447055243894e95f2f9c29875816
+      internalID: 1011148082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 3
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffe7b9e8011889e4982edafee08b10ff
+      internalID: -972489544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 4
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e9ba468f38d0f4f8bb1d2448ecf105
+      internalID: -325642674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 5
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 918
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe9873a3ff04174ab8dc08989618e1b
+      internalID: 1663667219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e7d759d7e848af4cadea7128633ac3b
+      internalID: -562579733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 7
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56f250c2ab5f6e940aa573564757fc03
+      internalID: -1658948473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 8
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f9bfff1b203f634b9ed9660f1cfcc21
+      internalID: -251093910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 9
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca773b322468d6c428177e3976b8488d
+      internalID: 1149653875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 10
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd21be4e9b5ed64689f1ab4713729a6
+      internalID: -361557148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 11
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076b13d1ac8021942afbea2b428e4cb3
+      internalID: -12159372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 12
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2542e574603e03f4092b7eca905194e4
+      internalID: 1257885109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 13
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec2daa23057747e4f975876f815e962d
+      internalID: 1728102181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 14
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae85feaa4498a5840ad8390a29fb2d56
+      internalID: 64792548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 15
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c677c7dce53c0d409709a4509b1edc1
+      internalID: 810781569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 16
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 347f70b0acd70434aa71fdba44ef7c6f
+      internalID: -588066109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 17
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6541b4ad07f80a4295ed1059a2c4d08
+      internalID: 1229074273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 18
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f39e76199fd41749a59e9f762d8ef3f
+      internalID: -188456587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 5 Button 19
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00f739ac7fd4d2d46957eca88f6728fa
+      internalID: -1721272959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 0
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1473a9ecda1e8794192adcebd2dbd4c0
+      internalID: 847645200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 1
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b729c7cc9055374f92df49a44016cce
+      internalID: -1772972524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 2
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ace9b7d5b63d594882bf54c6e9fbb03
+      internalID: -1707011140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 3
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 691
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a506c2d68e9cbe34187e8316cc30c058
+      internalID: 40298075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f1f3abf15473e498c69481ee0a8238
+      internalID: -385474598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 5
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f02c8c71acb9af14688edc701cb3e6b3
+      internalID: -17201898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 6
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d8a3c3e1a01524f90df47e08780f5a
+      internalID: 297311018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 7
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4cdd3544d1cd0a49bf3e5f84600f7e3
+      internalID: 1831231178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 8
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9386c414fdd024ba31552f7131c2b9
+      internalID: -240489474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 9
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9633a410329fd594f8eec0c9a6668aed
+      internalID: 536234711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 10
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162be5da536c3cd4c8f4687b59bc5d28
+      internalID: -1401858831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 11
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cfc6766bfdbdd742b45edd237578d83
+      internalID: -744366368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 12
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc1d408ccccd489449f06672151a2c4a
+      internalID: 1850884768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 13
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b708177826dfe644a8bf6fd7b2c2c77b
+      internalID: -967052996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 14
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2226bec3c8222c44e8c5bb821b2e3e4e
+      internalID: 1576928193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 15
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: addcc5c169d3cad4fbe53501f45ee7a8
+      internalID: -921083840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 16
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6719d4c6e675f2a4983fbcd202c05bd1
+      internalID: -1557005147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 17
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b512bfb48096804c8246a2ba8c4a5d0
+      internalID: -290516566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 18
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa5424f142d55c44846d6b7e1616d83
+      internalID: -16463284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 6 Button 19
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb31c09551f4a646b64f7456ba9e61a
+      internalID: -1179651336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 0
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dad9470886535a846860b0a3fc2fc467
+      internalID: 2003540192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 1
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 464
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ed06e2eb2bddea418c8cc571a9d8e1a
+      internalID: 2137167714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e79c113ac3cb24d8d93554c75385fa
+      internalID: 467731246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 3
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c64258a01e8bb3d449dce37c0edc96c2
+      internalID: 1004492649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 4
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da595debfada1e34c93461854d72ecbe
+      internalID: -1371414690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 5
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c9968c9f406cc245984a11f4f8da126
+      internalID: 1163896425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 6
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff8d5258cc2449b4c987a6215f353e4d
+      internalID: 1790143382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 7
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a9e6e389cd1e9418e1b92aa73b7b98
+      internalID: 1360654420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 8
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ad90ca9a3798cf439ea349d77930547
+      internalID: -316401892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 9
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3894d2544d6a43843bf1291501333d2f
+      internalID: 574550788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 10
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd865f63fdf35c645a0ba20ff0126a51
+      internalID: 2046179200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 11
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a381ed5f1f2d35e44bf016519133b9ff
+      internalID: -239304082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 12
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c41ebf39f6ca54c458a6ffa072db8907
+      internalID: -1076382259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 13
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff2454997262e3e4a95b90f01bb01806
+      internalID: 894439415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 14
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdfae2a90517af542ad292098d42d640
+      internalID: -273444235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 15
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8106cb2004a7cda4e9337cbc3d7ff1b6
+      internalID: -731569635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 16
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb4be26a24e6ab4a9a0f33fa607da08
+      internalID: -1793923513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 17
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d76f904db84feaf4290eefdd6a88de47
+      internalID: 1652390910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 18
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe8dc32cf2650ef4d968305c3603bc22
+      internalID: 2025291630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 7 Button 19
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 237
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b2238680aff0174fb033d8901381d61
+      internalID: 35914752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d270baf79dafbb143940ed335060f58a
+      internalID: 1292614626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 1
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc952e773fe85146ad144db2355579e
+      internalID: -309842641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 2
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab10e2bb9dda770458e4b45279cf838b
+      internalID: 518708789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 3
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 603c913405da5fb49a86932a6b76b923
+      internalID: 1003252821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 4
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c75b1b69a837d43963765788409710
+      internalID: -1558377145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 5
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d31e339d8bb3c084699205ba90981776
+      internalID: -952440074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 6
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe3cfd3a9cc115642a006b8c66b18204
+      internalID: -1935306330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 7
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74cfd901394ff6e4d8ec5a7e0edc0aa9
+      internalID: 1216259905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 8
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff6cd35b930bec84a8d2bddc8ea92bb6
+      internalID: -1308685504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 9
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c396e87747112824983bf77d3d6851a8
+      internalID: 800877582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 10
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cae70184eb1a3cb4586697cea68f4671
+      internalID: -1532003079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 11
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 802c092ea3fe0db41acb33c9087cd799
+      internalID: 1529231375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 12
+      rect:
+        serializedVersion: 2
+        x: 2724
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb0ab3b9a556f2348897b50b8ca9fe46
+      internalID: 1195401110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 13
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 721e4f6c3aa03cc43833410add87779c
+      internalID: -1988864926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 14
+      rect:
+        serializedVersion: 2
+        x: 3178
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b9c6287122c8d41946b5d8b25a47d8
+      internalID: -189977890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 15
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de337489bec4b384c8971aa7ca6db18f
+      internalID: -975503278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 16
+      rect:
+        serializedVersion: 2
+        x: 3632
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae710c5a91577842ba722ce2be1cb33
+      internalID: -649604392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Joystick 8 Button 17
+      rect:
+        serializedVersion: 2
+        x: 3859
+        y: 10
+        width: 227
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c9ae055378b83041854d5e736235a8c
+      internalID: 1148886555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      A: -1516131757
+      Alpha0: 909517084
+      Alpha1: 1776398486
+      Alpha2: 860961183
+      Alpha3: -1725048615
+      Alpha4: 1750126633
+      Alpha5: 1462038311
+      Alpha6: 1861252720
+      Alpha7: 1322882189
+      Alpha8: 2146873
+      Alpha9: -271274518
+      Alt Gr: -1052225881
+      Ampersand: -995897794
+      Asterisk: 1000996347
+      At: 294423393
+      B: -480019660
+      Back Quote: 1289218509
+      Backslash: -1590752477
+      Backspace: -520962229
+      Base Part 1_162: 951964779
+      Base Part 1_163: -1832598953
+      Base Part 1_164: -1838751710
+      Base Part 1_165: 969978512
+      Base Part 1_166: 816517851
+      Base Part 1_167: -1320050095
+      Base Part 1_168: -1223799836
+      Base Part 1_169: -2071497621
+      Base Part 1_170: 1458166315
+      Base Part 1_171: -1840114456
+      Base Part 1_172: 1678573573
+      Base Part 1_173: 405360700
+      Base Part 1_174: 1736012455
+      Base Part 1_175: 51522106
+      Base Part 1_176: -1515743157
+      Base Part 1_177: -667839175
+      Base Part 1_178: 1606652141
+      Base Part 1_179: -1995276566
+      Base Part 1_180: -1357509253
+      Base Part 1_181: -507288967
+      Base Part 1_182: -2091116067
+      Base Part 1_183: -1545087512
+      Base Part 1_184: -1611404411
+      Base Part 1_185: 1429652576
+      Base Part 1_186: 1163689294
+      Base Part 1_187: -2087779706
+      Base Part 1_188: 1155242503
+      Base Part 1_189: -1356016809
+      Base Part 1_190: -1348030907
+      Base Part 1_191: 1021049516
+      Base Part 1_192: 1220577071
+      Base Part 1_193: 855264461
+      Base Part 1_194: -55990394
+      Base Part 1_195: -1224389132
+      Base Part 1_196: 1752256369
+      Base Part 1_197: -2099472701
+      Base Part 1_198: -812240052
+      Base Part 1_199: -1252304065
+      Base Part 1_200: -756451690
+      Base Part 1_201: 677263975
+      Base Part 1_202: 1075618335
+      Base Part 1_203: -1771349859
+      Base Part 1_204: 417375226
+      Base Part 1_205: 44867274
+      Base Part 1_206: -686637607
+      Base Part 1_207: 310467966
+      Base Part 1_208: 1474028607
+      Base Part 1_209: 144390413
+      Base Part 1_210: 2146468909
+      Base Part 1_211: -1543711788
+      Base Part 1_212: -1348282236
+      Base Part 1_213: -1300063423
+      Base Part 1_214: -1531043367
+      Base Part 1_215: 707051634
+      Base Part 1_216: 562268496
+      Base Part 1_217: 451856710
+      Base Part 1_218: -525122216
+      Base Part 1_219: -1734089495
+      Base Part 1_220: -1509759954
+      Base Part 1_221: -1383394450
+      Base Part 1_222: -1012526291
+      Base Part 1_223: 334749381
+      Base Part 1_224: -1257459729
+      Base Part 1_225: 264277001
+      Base Part 1_226: 3740074
+      Base Part 1_227: 893960343
+      Base Part 1_228: -398601041
+      Base Part 1_229: -1651303807
+      Base Part 1_230: -1177565586
+      Base Part 1_231: 362469444
+      Base Part 1_232: -2076556905
+      Base Part 1_233: -1067027433
+      Base Part 1_234: -1275443219
+      Base Part 1_235: 1881489469
+      Base Part 1_236: -2057614313
+      Base Part 1_237: 1172554196
+      Base Part 1_238: -586710613
+      Base Part 1_239: -38379711
+      Base Part 1_240: 1032199544
+      Base Part 1_241: -125146559
+      Base Part 1_242: 1073472400
+      Base Part 1_243: -1765260613
+      Base Part 1_244: -781034695
+      Base Part 1_245: 735280963
+      Base Part 1_246: 1862172359
+      Base Part 1_247: 52706764
+      Base Part 1_248: 1011148082
+      Base Part 1_249: -972489544
+      Base Part 1_250: -325642674
+      Base Part 1_251: 1663667219
+      Base Part 1_252: -562579733
+      Base Part 1_253: -1658948473
+      Base Part 1_254: -251093910
+      Base Part 1_255: 1149653875
+      Base Part 1_256: -361557148
+      Base Part 1_257: -12159372
+      Base Part 1_258: 1257885109
+      Base Part 1_259: 1728102181
+      Base Part 1_260: 64792548
+      Base Part 1_261: 810781569
+      Base Part 1_262: -588066109
+      Base Part 1_263: 1229074273
+      Base Part 1_264: -188456587
+      Base Part 1_265: -1721272959
+      Base Part 1_266: 847645200
+      Base Part 1_267: -1772972524
+      Base Part 1_268: -1707011140
+      Base Part 1_269: 40298075
+      Base Part 1_270: -385474598
+      Base Part 1_271: -17201898
+      Base Part 1_272: 297311018
+      Base Part 1_273: 1831231178
+      Base Part 1_274: -240489474
+      Base Part 1_275: 536234711
+      Base Part 1_276: -1401858831
+      Base Part 1_277: -744366368
+      Base Part 1_278: 1850884768
+      Base Part 1_279: -967052996
+      Base Part 1_280: 1576928193
+      Base Part 1_281: -921083840
+      Base Part 1_282: -1557005147
+      Base Part 1_283: -290516566
+      Base Part 1_284: -16463284
+      Base Part 1_285: -1179651336
+      Base Part 1_286: 2003540192
+      Base Part 1_287: 2137167714
+      Base Part 1_288: 467731246
+      Base Part 1_289: 1004492649
+      Base Part 1_290: -1371414690
+      Base Part 1_291: 1163896425
+      Base Part 1_292: 1790143382
+      Base Part 1_293: 1360654420
+      Base Part 1_294: -316401892
+      Base Part 1_295: 574550788
+      Base Part 1_296: 2046179200
+      Base Part 1_297: -239304082
+      Base Part 1_298: -1076382259
+      Base Part 1_299: 894439415
+      Base Part 1_300: -273444235
+      Base Part 1_301: -731569635
+      Base Part 1_302: -1793923513
+      Base Part 1_303: 1652390910
+      Base Part 1_304: 2025291630
+      Base Part 1_305: 35914752
+      Base Part 1_306: 1292614626
+      Base Part 1_307: -309842641
+      Base Part 1_308: 518708789
+      Base Part 1_309: 1003252821
+      Base Part 1_310: -1558377145
+      Base Part 1_311: -952440074
+      Base Part 1_312: -1935306330
+      Base Part 1_313: 1216259905
+      Base Part 1_314: -1308685504
+      Base Part 1_315: 800877582
+      Base Part 1_316: -1532003079
+      Base Part 1_317: 1529231375
+      Base Part 1_318: 1195401110
+      Base Part 1_319: -1988864926
+      Base Part 1_320: -189977890
+      Base Part 1_321: -975503278
+      Base Part 1_322: -649604392
+      Base Part 1_323: 1148886555
+      Break: 330273401
+      C: -419032041
+      Caps Lock: -2011772919
+      Caret: -852774571
+      Clear: -1935280388
+      Colon: -1117904458
+      Comma: 396060872
+      D: -722533724
+      Delete: -800399679
+      Dollar: 454361238
+      Double Quote: -38362596
+      Down Arrow: 594231393
+      E: -214646019
+      End: 1673730628
+      Equals: -1621635551
+      Escape: 182148575
+      Exclaim: -836542222
+      F: 1822036213
+      F1: 1367829827
+      F10: -951732839
+      F11: 508655287
+      F12: -307375991
+      F13: 1099936199
+      F14: -871924404
+      F15: -2095719949
+      F2: 328797463
+      F3: -1202195002
+      F4: -1318779579
+      F5: -1965648804
+      F6: 2010607807
+      F7: -2116240650
+      F8: -1739849699
+      F9: -428667001
+      G: 123150108
+      Greater: -1620670497
+      H: -80172472
+      Hash: 2652096
+      Help: -1732422746
+      Home: 1662292821
+      I: -1399794509
+      Insert: 316862979
+      J: 1743942255
+      Joystick 1 Button 0: 816517851
+      Joystick 1 Button 1: -1320050095
+      Joystick 1 Button 10: -1515743157
+      Joystick 1 Button 11: -667839175
+      Joystick 1 Button 12: 1606652141
+      Joystick 1 Button 13: -1995276566
+      Joystick 1 Button 14: -1357509253
+      Joystick 1 Button 15: -507288967
+      Joystick 1 Button 16: -2091116067
+      Joystick 1 Button 17: -1545087512
+      Joystick 1 Button 18: -1611404411
+      Joystick 1 Button 19: 1429652576
+      Joystick 1 Button 2: -1223799836
+      Joystick 1 Button 3: -2071497621
+      Joystick 1 Button 4: 1458166315
+      Joystick 1 Button 5: -1840114456
+      Joystick 1 Button 6: 1678573573
+      Joystick 1 Button 7: 405360700
+      Joystick 1 Button 8: 1736012455
+      Joystick 1 Button 9: 51522106
+      Joystick 2 Button 0: 1163689294
+      Joystick 2 Button 1: -2087779706
+      Joystick 2 Button 10: 1752256369
+      Joystick 2 Button 11: -2099472701
+      Joystick 2 Button 12: -812240052
+      Joystick 2 Button 13: -1252304065
+      Joystick 2 Button 14: -756451690
+      Joystick 2 Button 15: 677263975
+      Joystick 2 Button 16: 1075618335
+      Joystick 2 Button 17: -1771349859
+      Joystick 2 Button 18: 417375226
+      Joystick 2 Button 19: 44867274
+      Joystick 2 Button 2: 1155242503
+      Joystick 2 Button 3: -1356016809
+      Joystick 2 Button 4: -1348030907
+      Joystick 2 Button 5: 1021049516
+      Joystick 2 Button 6: 1220577071
+      Joystick 2 Button 7: 855264461
+      Joystick 2 Button 8: -55990394
+      Joystick 2 Button 9: -1224389132
+      Joystick 3 Button 0: -686637607
+      Joystick 3 Button 1: 310467966
+      Joystick 3 Button 10: 562268496
+      Joystick 3 Button 11: 451856710
+      Joystick 3 Button 12: -525122216
+      Joystick 3 Button 13: -1734089495
+      Joystick 3 Button 14: -1509759954
+      Joystick 3 Button 15: -1383394450
+      Joystick 3 Button 16: -1012526291
+      Joystick 3 Button 17: 334749381
+      Joystick 3 Button 18: -1257459729
+      Joystick 3 Button 19: 264277001
+      Joystick 3 Button 2: 1474028607
+      Joystick 3 Button 3: 144390413
+      Joystick 3 Button 4: 2146468909
+      Joystick 3 Button 5: -1543711788
+      Joystick 3 Button 6: -1348282236
+      Joystick 3 Button 7: -1300063423
+      Joystick 3 Button 8: -1531043367
+      Joystick 3 Button 9: 707051634
+      Joystick 4 Button 0: 3740074
+      Joystick 4 Button 1: 893960343
+      Joystick 4 Button 10: -2057614313
+      Joystick 4 Button 11: 1172554196
+      Joystick 4 Button 12: -586710613
+      Joystick 4 Button 13: -38379711
+      Joystick 4 Button 14: 1032199544
+      Joystick 4 Button 15: -125146559
+      Joystick 4 Button 16: 1073472400
+      Joystick 4 Button 17: -1765260613
+      Joystick 4 Button 18: -781034695
+      Joystick 4 Button 19: 735280963
+      Joystick 4 Button 2: -398601041
+      Joystick 4 Button 3: -1651303807
+      Joystick 4 Button 4: -1177565586
+      Joystick 4 Button 5: 362469444
+      Joystick 4 Button 6: -2076556905
+      Joystick 4 Button 7: -1067027433
+      Joystick 4 Button 8: -1275443219
+      Joystick 4 Button 9: 1881489469
+      Joystick 5 Button 0: 1862172359
+      Joystick 5 Button 1: 52706764
+      Joystick 5 Button 10: -361557148
+      Joystick 5 Button 11: -12159372
+      Joystick 5 Button 12: 1257885109
+      Joystick 5 Button 13: 1728102181
+      Joystick 5 Button 14: 64792548
+      Joystick 5 Button 15: 810781569
+      Joystick 5 Button 16: -588066109
+      Joystick 5 Button 17: 1229074273
+      Joystick 5 Button 18: -188456587
+      Joystick 5 Button 19: -1721272959
+      Joystick 5 Button 2: 1011148082
+      Joystick 5 Button 3: -972489544
+      Joystick 5 Button 4: -325642674
+      Joystick 5 Button 5: 1663667219
+      Joystick 5 Button 6: -562579733
+      Joystick 5 Button 7: -1658948473
+      Joystick 5 Button 8: -251093910
+      Joystick 5 Button 9: 1149653875
+      Joystick 6 Button 0: 847645200
+      Joystick 6 Button 1: -1772972524
+      Joystick 6 Button 10: -1401858831
+      Joystick 6 Button 11: -744366368
+      Joystick 6 Button 12: 1850884768
+      Joystick 6 Button 13: -967052996
+      Joystick 6 Button 14: 1576928193
+      Joystick 6 Button 15: -921083840
+      Joystick 6 Button 16: -1557005147
+      Joystick 6 Button 17: -290516566
+      Joystick 6 Button 18: -16463284
+      Joystick 6 Button 19: -1179651336
+      Joystick 6 Button 2: -1707011140
+      Joystick 6 Button 3: 40298075
+      Joystick 6 Button 4: -385474598
+      Joystick 6 Button 5: -17201898
+      Joystick 6 Button 6: 297311018
+      Joystick 6 Button 7: 1831231178
+      Joystick 6 Button 8: -240489474
+      Joystick 6 Button 9: 536234711
+      Joystick 7 Button 0: 2003540192
+      Joystick 7 Button 1: 2137167714
+      Joystick 7 Button 10: 2046179200
+      Joystick 7 Button 11: -239304082
+      Joystick 7 Button 12: -1076382259
+      Joystick 7 Button 13: 894439415
+      Joystick 7 Button 14: -273444235
+      Joystick 7 Button 15: -731569635
+      Joystick 7 Button 16: -1793923513
+      Joystick 7 Button 17: 1652390910
+      Joystick 7 Button 18: 2025291630
+      Joystick 7 Button 19: 35914752
+      Joystick 7 Button 2: 467731246
+      Joystick 7 Button 3: 1004492649
+      Joystick 7 Button 4: -1371414690
+      Joystick 7 Button 5: 1163896425
+      Joystick 7 Button 6: 1790143382
+      Joystick 7 Button 7: 1360654420
+      Joystick 7 Button 8: -316401892
+      Joystick 7 Button 9: 574550788
+      Joystick 8 Button 0: 1292614626
+      Joystick 8 Button 1: -309842641
+      Joystick 8 Button 10: -1532003079
+      Joystick 8 Button 11: 1529231375
+      Joystick 8 Button 12: 1195401110
+      Joystick 8 Button 13: -1988864926
+      Joystick 8 Button 14: -189977890
+      Joystick 8 Button 15: -975503278
+      Joystick 8 Button 16: -649604392
+      Joystick 8 Button 17: 1148886555
+      Joystick 8 Button 2: 518708789
+      Joystick 8 Button 3: 1003252821
+      Joystick 8 Button 4: -1558377145
+      Joystick 8 Button 5: -952440074
+      Joystick 8 Button 6: -1935306330
+      Joystick 8 Button 7: 1216259905
+      Joystick 8 Button 8: -1308685504
+      Joystick 8 Button 9: 800877582
+      Joystick Button 0: 1283729900
+      Joystick Button 1: 1545571943
+      Joystick Button 10: 266766217
+      Joystick Button 11: -1075095980
+      Joystick Button 12: 347913676
+      Joystick Button 13: 1032230905
+      Joystick Button 14: 762077540
+      Joystick Button 15: -501028307
+      Joystick Button 16: 951964779
+      Joystick Button 17: -1832598953
+      Joystick Button 18: -1838751710
+      Joystick Button 19: 969978512
+      Joystick Button 2: -1903617091
+      Joystick Button 3: 2017291242
+      Joystick Button 4: -139095071
+      Joystick Button 5: -832633606
+      Joystick Button 6: 1000756772
+      Joystick Button 7: -1598243212
+      Joystick Button 8: -1761352391
+      Joystick Button 9: -1290879621
+      K: 974001282
+      Keypad Divide: -469291940
+      Keypad Enter: -1140336846
+      Keypad Equals: 1902190706
+      Keypad Minus: 629922596
+      Keypad Multiply: -700734659
+      Keypad Period: 691022180
+      Keypad Plus: -1311550775
+      Keypad0: 902028811
+      Keypad1: 530380761
+      Keypad2: -194153299
+      Keypad3: 962601902
+      Keypad4: -1377491586
+      Keypad5: -1977879132
+      Keypad6: -981014734
+      Keypad7: -659682130
+      Keypad8: -461738692
+      Keypad9: 951498860
+      L: 1091551670
+      Left Alt: 512751408
+      Left Arrow: 1984514647
+      Left Bracket: -42983203
+      Left Control: -1006476595
+      Left Curly Bracket: 1153450314
+      Left Meta: 1935447130
+      Left Paren: 1400831481
+      Left Shift: 805257653
+      Left Windows: -1428475638
+      Less: -1801804816
+      M: -659154648
+      Menu: 2141276706
+      Minus: 1586520907
+      Mouse0: -1193491203
+      Mouse1: -1519933147
+      Mouse2: 1120775139
+      Mouse3: 2110126346
+      Mouse4: 1344381877
+      Mouse5: 1086784139
+      Mouse6: 1858267588
+      N: -1785475385
+      None: -1842620088
+      Numlock: -134062987
+      O: 120820717
+      P: -973801172
+      Page Down: 1224826600
+      Page Up: 275773759
+      Pause: 532021873
+      Percent: 1826308876
+      Period: -1331986186
+      Pipe: -704363207
+      Plus: -1309097270
+      Print: -565699218
+      Q: -348489005
+      Question: -651479440
+      Quote: 2123692866
+      R: 276207236
+      Return: 958523272
+      Right Alt: -174118728
+      Right Arrow: -1959162779
+      Right Bracket: -1351170924
+      Right Control: -1269598366
+      Right Curly Bracket: 815254083
+      Right Meta: -1622230823
+      Right Paren: -1945080384
+      Right Shift: -2015992562
+      Right Windows: -1640573624
+      S: -283653803
+      Scroll Lock: -1392505527
+      Semicolon: -232009712
+      Slash: 1975689392
+      Space: 1945054164
+      Sys Req: -490915625
+      T: -870488432
+      Tab: 135540887
+      Tilde: 663870720
+      U: 1681250217
+      Underscore: -738923398
+      Up Arrow: -585050151
+      V: -1032606803
+      W: -492814881
+      Wheel Down: -1691335662
+      Wheel Up: 1777493296
+      X: 1933536290
+      Y: 875792626
+      Z: -1223196427
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
