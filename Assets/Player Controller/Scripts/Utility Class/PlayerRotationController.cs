@@ -11,17 +11,10 @@ namespace PlayerController.TransformRuntime
     /// </summary>
     public class PlayerRotationController
     {
-        /// <summary>Provides the Transform to apply rotation to.</summary>
-        private Func<Transform> targetTransform;
-
-        /// <summary>Provides the normalized 2D movement direction (X, Y → X, Z).</summary>
-        private Func<Vector2> direction;
-
-        /// <summary>Provides the rotation speed multiplier.</summary>
-        private Func<float> speed;
-
-        /// <summary>Minimum magnitude required to trigger rotation.</summary>
-        private Func<float> magnitude;
+        private readonly Func<Transform> targetTransform; // Provides the Transform to apply rotation to.
+        private readonly Func<Vector2> direction;         // Provides the normalized 2D movement direction (X, Y → X, Z).
+        private readonly Func<float> speed;               // Provides the rotation speed multiplier.
+        private readonly Func<float> magnitude;           // Minimum magnitude required to trigger rotation.
 
         /// <summary>
         /// Creates a rotation controller that rotates a Transform based on 2D directional input.

@@ -10,20 +10,11 @@ namespace PlayerController.PhysicsRuntime
     /// </summary>
     public class BoxCollisionSensor
     {
-        /// <summary>Controls whether collision detection is enabled at runtime.</summary>
-        private Func<bool> enableDetectionProvider;
-
-        /// <summary>Controls whether collisions are logged in the console when detected.</summary>
-        private Func<bool> enableDebugLogProvider;
-
-        /// <summary>Specifies which filtering logic to apply to detected colliders.</summary>
-        private Func<DetectionFilter> filterModeProvider;
-
-        /// <summary>Used in filtering: a reference transform to exclude children from detection.</summary>
-        private Func<Transform> referenceParentTransformProvider;
-
-        /// <summary>Used in filtering: a set of tags to ignore from detection.</summary>
-        private Func<HashSet<string>> ignoredTagsProvider;
+        private readonly Func<bool> enableDetectionProvider; // Controls whether collision detection is enabled at runtime.
+        private readonly Func<bool> enableDebugLogProvider; // Controls whether collisions are logged in the console when detected.
+        private readonly Func<DetectionFilter> filterModeProvider; // Specifies which filtering logic to apply to detected colliders.
+        private readonly Func<Transform> referenceParentTransformProvider; // Used in filtering: a reference transform to exclude children from detection.
+        private readonly Func<HashSet<string>> ignoredTagsProvider; // Used in filtering: a set of tags to ignore from detection.
 
         /// <summary>Provides the world-space center position of the box.</summary>
         public Func<Vector3> boxCenterProvider;
@@ -34,11 +25,8 @@ namespace PlayerController.PhysicsRuntime
         /// <summary>Provides the rotation of the box in world space.</summary>
         public Func<Quaternion> boxRotationProvider;
 
-        /// <summary>Specifies which layers should be considered for collision detection.</summary>
-        private Func<LayerMask> collisionLayerMaskProvider;
-
-        /// <summary>Specifies whether trigger colliders should be included.</summary>
-        private Func<QueryTriggerInteraction> triggerInteractionProvider;
+        private readonly Func<LayerMask> collisionLayerMaskProvider; // Specifies which layers should be considered for collision detection.
+        private readonly Func<QueryTriggerInteraction> triggerInteractionProvider; // Specifies whether trigger colliders should be included.
 
         /// <summary>Target object for drawing gizmos (e.g., used with editor selection).</summary>
         public Func<GameObject> gizmoTargetObjectProvider;
@@ -49,17 +37,16 @@ namespace PlayerController.PhysicsRuntime
         /// <summary>Provides the color to use when drawing gizmos.</summary>
         public Func<Color> gizmosColorProvider;
 
-        /// <summary>Indicates whether a collision was detected during the last check.</summary>
-        public bool collisionDetected = false;
-
         /// <summary>Defines how collision results are filtered after detection.</summary>
         public enum DetectionFilter { None, IsNotChildOf, IgnoreByTags, All }
 
         /// <summary>Specifies when gizmos should be drawn in the editor.</summary>
         public enum GizmoDisplayMode { None, Always, SelectedOnly }
 
-        // Reusable array for OverlapBox collision hits.
-        private readonly Collider[] hitResults = new Collider[16];
+        private readonly Collider[] hitResults = new Collider[16]; // Reusable array for OverlapBox collision hits.
+
+        /// <summary>Indicates whether a collision was detected during the last check.</summary>
+        public bool collisionDetected = false;
 
         /// <summary>
         /// Constructs a new BoxCollisionSensor with configurable runtime data providers and filtering options.

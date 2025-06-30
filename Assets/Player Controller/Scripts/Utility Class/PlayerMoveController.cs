@@ -9,14 +9,9 @@ namespace PlayerController.PhysicsRuntime
     /// </summary>
     public class PlayerMoveController
     {
-        /// <summary>Provides the Rigidbody to apply movement to.</summary>
-        private Func<Rigidbody> targetRigidbody;
-
-        /// <summary>Provides the movement speed multiplier.</summary>
-        private Func<float> speed;
-
-        /// <summary>If true, prevents movement from being applied (e.g., hitting a wall).</summary>
-        private Func<bool> isObstacle;
+        private readonly Func<Rigidbody> targetRigidbody; // Provides the Rigidbody to apply movement to.
+        private readonly Func<float> speed;               // Provides the movement speed multiplier.
+        private readonly Func<bool> isObstacle;           // If true, prevents movement from being applied (e.g., hitting a wall).
 
         /// <summary>
         /// Constructs a movement controller with optional speed and obstacle logic.

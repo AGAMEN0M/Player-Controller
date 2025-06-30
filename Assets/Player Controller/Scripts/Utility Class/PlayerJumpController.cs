@@ -12,17 +12,10 @@ namespace PlayerController.PhysicsRuntime
     /// </summary>
     public class PlayerJumpController
     {
-        /// <summary>Function that provides the target Rigidbody to apply jump force.</summary>
-        private Func<Rigidbody> targetRigidbody;
-
-        /// <summary>Function that indicates whether the character is on the ground.</summary>
-        private Func<bool> isGrounded;
-
-        /// <summary>Function that returns the maximum number of jumps allowed.</summary>
-        private Func<int> maxJumps;
-
-        /// <summary>Function that returns the allowed coyote time (in seconds).</summary>
-        private Func<float> coyoteTime;
+        private readonly Func<Rigidbody> targetRigidbody; // Function that provides the target Rigidbody to apply jump force.
+        private readonly Func<bool> isGrounded;           // Function that indicates whether the character is on the ground.
+        private readonly Func<int> maxJumps;              // Function that returns the maximum number of jumps allowed.
+        private readonly Func<float> coyoteTime;          // Function that returns the allowed coyote time (in seconds).
 
         private int jumpCount;              // Number of jumps used since the last contact with the ground.
         private float lastGroundedTime;     // Time (fixedTime) of the last time the character touched the ground.

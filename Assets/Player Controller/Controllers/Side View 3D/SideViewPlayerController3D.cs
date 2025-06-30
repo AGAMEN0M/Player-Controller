@@ -12,97 +12,97 @@ using static PlayerController.Utils.PlayerUtils;
 
 /// <summary>
 /// Player controller for 3D side view platformer-style games.
-/// Handles movement, jump, crouch logic, and dynamic sensor detection.
+/// Handles movement, jumping, crouching, and environmental detection using dynamic sensors.
 /// </summary>
 [AddComponentMenu("Player Controller/3D/Player Controller (Side View)")]
 public class SideViewPlayerController3D : MonoBehaviour
 {
     [Header("Input Settings")]
-    [SerializeField, HighlightEmptyReference] private InputActionAsset inputAsset; // Asset with input mappings.
-    [SerializeField] private string moveInput = "Player/Move"; // Input path for movement.
+    [SerializeField, HighlightEmptyReference] private InputActionAsset inputAsset; // Input asset containing action maps.
+    [SerializeField] private string moveInput = "Player/Move"; // Input path for directional movement.
     [SerializeField] private string jumpInput = "Player/Jump"; // Input path for jump.
-    [SerializeField] private string crouchInput = "Player/Crouch"; // Input path for crouch.
+    [SerializeField] private string crouchInput = "Player/Crouch"; // Input path for crouch toggle.
 
     [Header("References")]
-    [SerializeField, HighlightEmptyReference] private Transform playerTransform; // Transform reference of the player.
-    [SerializeField, HighlightEmptyReference] private Rigidbody targetRigidbody; // Rigidbody for physics operations.
-    [SerializeField, HighlightEmptyReference] private Collider normalCollider; // Collider when standing.
-    [SerializeField, HighlightEmptyReference] private Collider crouchCollider; // Collider when crouching.
+    [SerializeField, HighlightEmptyReference] private Transform playerTransform; // Reference to the player's transform.
+    [SerializeField, HighlightEmptyReference] private Rigidbody targetRigidbody; // Rigidbody component for physics movement.
+    [SerializeField, HighlightEmptyReference] private Collider normalCollider; // Collider used when standing.
+    [SerializeField, HighlightEmptyReference] private Collider crouchCollider; // Collider used when crouching.
 
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 4f; // Speed when moving normally.
-    [SerializeField] private float crouchSpeed = 1f; // Speed when crouching.
-    [SerializeField] private float rotationSpeed = 10f; // Rotation interpolation speed.
-    [SerializeField] private float jumpForce = 5f; // Upward force applied when jumping.
-    [SerializeField] private float coyoteTime = 0.15f;
+    [SerializeField] private float moveSpeed = 4f; // Movement speed when standing.
+    [SerializeField] private float crouchSpeed = 1f; // Movement speed when crouching.
+    [SerializeField] private float rotationSpeed = 10f; // Speed of rotation smoothing.
+    [SerializeField] private float jumpForce = 5f; // Force applied when jumping.
+    [SerializeField] private float coyoteTime = 0.15f; // Grace period to jump after leaving ground.
     [Space(5)]
-    [SerializeField, Tooltip("Global input rotation offset in degrees.")] private float worldRotation = 0; // Adjusts direction relative to world.
+    [SerializeField, Tooltip("Global input rotation offset in degrees.")]
+    private float worldRotation = 0; // Rotates input direction globally.
 
     [Header("State Settings")]
-    [SerializeField] private PlayerControlMode capabilityMode = PlayerControlMode.Automatic; // Determines if the ability logic is automatic or external.
-    [SerializeField] private PlayerAbility activeAbility = PlayerAbility.CanJump; // Current active player capability.
+    [SerializeField] private PlayerControlMode capabilityMode = PlayerControlMode.Automatic; // Controls automatic or manual state handling.
+    [SerializeField] private PlayerAbility activeAbility = PlayerAbility.CanJump; // Currently active player ability.
 
     [Header("Collision Layers")]
-    [SerializeField] private LayerMask groundLayerMask = -1; // LayerMask used by the ground sensor.
-    [SerializeField] private LayerMask obstacleLayerMask = -1; // LayerMask used by the obstacle sensor.
-    [SerializeField] private LayerMask ceilingLayerMask = -1; // LayerMask used by the ceiling sensor.
+    [SerializeField] private LayerMask groundLayerMask = -1; // Layer mask used to detect ground.
+    [SerializeField] private LayerMask obstacleLayerMask = -1; // Layer mask for obstacle detection.
+    [SerializeField] private LayerMask ceilingLayerMask = -1; // Layer mask for checking overhead space.
 
     [Header("Ground Sensor Settings")]
-    [SerializeField] private Vector3 groundDetectionSize = new(0.2f, 0.3f, 0.2f); // Box size for detecting ground.
-    [SerializeField, TagDropdown] private List<string> ignoredTags = new() { "Ignore Collision" }; // Tags to ignore on ground sensor.
+    [SerializeField] private Vector3 groundDetectionSize = new(0.2f, 0.3f, 0.2f); // Box size used for ground detection.
+    [SerializeField, TagDropdown] private List<string> ignoredTags = new() { "Ignore Collision" }; // Tags to ignore when detecting ground.
 
     [Header("Obstacle Sensor Settings")]
-    [SerializeField] private Vector3 obstacleDetectionCenter = new(0f, 0.8f, 0.45f); // Default center for obstacle detection.
-    [SerializeField] private Vector3 obstacleDetectionSize = new(0.25f, 1.5f, 0.2f); // Size of obstacle detection box.
+    [SerializeField] private Vector3 obstacleDetectionCenter = new(0f, 0.8f, 0.45f); // Center position for detecting obstacles.
+    [SerializeField] private Vector3 obstacleDetectionSize = new(0.25f, 1.5f, 0.2f); // Box size for detecting obstacles.
     [Space(5)]
-    [SerializeField] private Vector3 obstacleCrouchDetectionCenter = new(0f, 0.35f, 0.45f); // Center when crouching.
-    [SerializeField] private Vector3 obstacleCrouchDetectionSize = new(0.25f, 0.4f, 0.2f); // Size when crouching.
-    [SerializeField, TagDropdown] private List<string> obstacleIgnoreTags = new() { "Ignore Collision" }; // Tags to ignore for obstacle sensor.
+    [SerializeField] private Vector3 obstacleCrouchDetectionCenter = new(0f, 0.35f, 0.45f); // Center position for crouch obstacle detection.
+    [SerializeField] private Vector3 obstacleCrouchDetectionSize = new(0.25f, 0.4f, 0.2f); // Box size for crouch obstacle detection.
+    [SerializeField, TagDropdown] private List<string> obstacleIgnoreTags = new() { "Ignore Collision" }; // Tags to ignore when detecting obstacles.
 
     [Header("Ceiling Sensor Settings")]
-    [SerializeField] private Vector3 hasSpaceDetectionCenter = new(0f, 0.8f, 0f); // Center of box to check space overhead.
-    [SerializeField] private Vector3 hasSpaceDetectionSize = new(0.34f, 1.4f, 0.36f); // Size of ceiling clearance box.
-    [SerializeField, TagDropdown] private List<string> hasSpaceIgnoredTags = new() { "Ignore Collision" }; // Tags to ignore for ceiling sensor.
+    [SerializeField] private Vector3 hasSpaceDetectionCenter = new(0f, 0.8f, 0f); // Center for detecting space to stand.
+    [SerializeField] private Vector3 hasSpaceDetectionSize = new(0.34f, 1.4f, 0.36f); // Box size to check for overhead clearance.
+    [SerializeField, TagDropdown] private List<string> hasSpaceIgnoredTags = new() { "Ignore Collision" }; // Tags to ignore when detecting ceiling space.
 
     [Header("Physics Material Settings")]
-    [SerializeField, HighlightEmptyReference] private PhysicsMaterial highFrictionMaterial;
-    [SerializeField, HighlightEmptyReference] private PhysicsMaterial lowFrictionMaterial;
+    [SerializeField, HighlightEmptyReference] private PhysicsMaterial highFrictionMaterial; // Material for grounded friction.
+    [SerializeField, HighlightEmptyReference] private PhysicsMaterial lowFrictionMaterial; // Material for airborne or low-friction surfaces.
     [Space(5)]
-    [SerializeField, Range(0f, 90f)] private float maxStableAngle = 45f;
+    [SerializeField, Range(0f, 90f)] private float maxStableAngle = 45f; // Maximum slope angle the player can stand on.
 
     [Header("Debug Settings")]
-    [SerializeField] private bool debugGroundSensor = false; // Toggle ground sensor gizmo.
-    [SerializeField] private bool debugObstacleSensor = false; // Toggle obstacle sensor gizmo.
-    [SerializeField] private bool debugHasSpaceSensor = false; // Toggle ceiling sensor gizmo.
-    [SerializeField] private bool debugAngleSensor = false;
+    [SerializeField] private bool debugGroundSensor = false; // Draw gizmos for ground sensor.
+    [SerializeField] private bool debugObstacleSensor = false; // Draw gizmos for obstacle sensor.
+    [SerializeField] private bool debugHasSpaceSensor = false; // Draw gizmos for ceiling sensor.
+    [SerializeField] private bool debugAngleSensor = false; // Draw debug for angle detection.
 
-    // Runtime sensor/controller references
+    // Sensor and controller instances
     private BoxCollisionSensor groundSensor;
     private BoxCollisionSensor obstacleSensor;
     private BoxCollisionSensor hasSpaceSensor;
+    private CheckValidAngleSensors validAngleSensors;
     private PlayerJumpController jumpController;
     private PlayerMoveController moveController;
     private PlayerRotationController rotationController;
 
-    // Input event configs
+    // Input event bindings
     private OnInputSystemEventConfig<float> jumpEvent;
     private OnInputSystemEventConfig<Vector2> moveEvent;
     private OnInputSystemEventConfig<float> crouchEvent;
 
-    // Internal state tracking
-    private Collider[] collisionList;
+    // Runtime states
+    private Collider[] collisionList; // List of colliders used for angle checking.
     private PlayerAbility previousAbility; // Stores previous ability state when toggling crouch.
-    private Vector3 playerPosition; // Cached position.
-    private Quaternion playerRotation; // Cached rotation.
+    private Vector3 playerPosition; // Cached world position of the player.
+    private Quaternion playerRotation; // Cached world rotation of the player.
     private Vector2 moveDirection; // Current movement direction from input.
-    private Vector3 obstacleCheckCenter; // Computed obstacle center.
-    private Vector3 obstacleCheckSize; // Computed obstacle size.
-    private Vector3 hasSpaceCheckCenter; // Computed ceiling check position.
-    private float lastSlopeAngle = -1f;
-    private float speed; // Current speed.
+    private Vector3 obstacleCheckCenter; // Current center position used for obstacle detection box.
+    private Vector3 obstacleCheckSize; // Current size of the box used for obstacle detection.
+    private Vector3 hasSpaceCheckCenter; // Current center used to check for space above the player.
+    private float speed; // Current movement speed depending on state.
     private bool isGrounded; // Whether the player is on the ground.
     private bool isCrouching; // Whether the player is crouching.
-    private bool isValidAngle;
     private bool isPlayable; // Flag that determines if the player is allowed to receive inputs and perform actions.
 
     /// <summary>Returns whether the player is currently grounded.</summary>
@@ -122,8 +122,8 @@ public class SideViewPlayerController3D : MonoBehaviour
     /// </summary>
     public enum PlayerControlMode
     {
-        Automatic,  // 0
-        Manual      // 1
+        Automatic,  // Capabilities handled automatically. (0)
+        Manual      // Capabilities must be set manually.  (1)
     }
 
     /// <summary>
@@ -131,13 +131,13 @@ public class SideViewPlayerController3D : MonoBehaviour
     /// </summary>
     public enum PlayerAbility
     {
-        None,       // 0
-        CanCrouch,  // 1
-        CanJump     // 2
+        None,       // No ability is currently active. (0)
+        CanCrouch,  // Enables crouching ability.      (1)
+        CanJump     // Enables jumping ability.        (2)
     }
 
     /// <summary>
-    /// Validates serialized references.
+    /// Validates serialized references at startup to ensure required components are assigned.
     /// </summary>
     private void Awake()
     {
@@ -147,32 +147,38 @@ public class SideViewPlayerController3D : MonoBehaviour
         if (!targetRigidbody) Debug.LogWarning("Rigidbody not assigned.", this);
         if (!normalCollider) Debug.LogWarning("Normal Collider not assigned.", this);
         if (!crouchCollider) Debug.LogWarning("Crouch Collider not assigned.", this);
+        if (!highFrictionMaterial || !lowFrictionMaterial)
+        {
+            Debug.LogWarning("One or both Physics Materials (High/Low Friction) are not assigned.", this);
+        }
     }
 
     /// <summary>
-    /// Initializes runtime values and sets up sensors, controllers, and input bindings.
+    /// Initializes runtime values and sets up sensors, controllers, and input bindings at the start of the game.
     /// </summary>
     private void Start()
     {
-        // Set initial ability state and movement speed.
+        // Initialize collider list with standing and crouching colliders.
         collisionList = new Collider[] { normalCollider, crouchCollider };
-        previousAbility = activeAbility;
-        isGrounded = true;
-        isCrouching = false;
-        speed = moveSpeed;
-        isPlayable = true;
 
-        SetupSensors(); // Initialize all sensors.
-        SetupControllers(); // Create movement, jump and rotation controllers.
-        SetupInputEvents(); // Bind input actions and link logic.
+        // Set the initial player ability and states.
+        previousAbility = activeAbility;
+        isGrounded = true;    // Assume player starts grounded.
+        isCrouching = false;  // Start in standing state.
+        speed = moveSpeed;    // Initialize movement speed to standing speed.
+        isPlayable = true;    // Enable player input and actions.
+
+        SetupSensors();      // Create and configure all collision sensors.
+        SetupControllers();  // Instantiate movement, jump, and rotation controllers.
+        SetupInputEvents();  // Bind input actions to corresponding event handlers.
     }
 
     /// <summary>
-    /// Creates and configures all sensors used by the player.
+    /// Creates and configures all collision sensors used by the player for ground, obstacle, ceiling, and angle detection.
     /// </summary>
     private void SetupSensors()
     {
-        // Sensor to detect ground contact.
+        // Ground sensor detects if the player is standing on a valid surface.
         groundSensor = new BoxCollisionSensor(
             boxCenterProvider: () => playerPosition,
             boxSizeProvider: () => groundDetectionSize,
@@ -189,7 +195,7 @@ public class SideViewPlayerController3D : MonoBehaviour
             gizmosColorProvider: () => Color.red
         );
 
-        // Sensor to detect obstacles in front of the player.
+        // Obstacle sensor detects obstacles in front of the player to block movement.
         obstacleSensor = new BoxCollisionSensor(
             boxCenterProvider: () => obstacleCheckCenter,
             boxSizeProvider: () => obstacleCheckSize,
@@ -206,7 +212,7 @@ public class SideViewPlayerController3D : MonoBehaviour
             gizmosColorProvider: () => Color.yellow
         );
 
-        // Sensor to detect if there's enough space above to stand.
+        // Ceiling sensor checks if there is enough overhead space for the player to stand up.
         hasSpaceSensor = new BoxCollisionSensor(
             boxCenterProvider: () => hasSpaceCheckCenter,
             boxSizeProvider: () => hasSpaceDetectionSize,
@@ -222,29 +228,40 @@ public class SideViewPlayerController3D : MonoBehaviour
             gizmoDrawingModeProvider: () => GizmoDisplayMode.SelectedOnly,
             gizmosColorProvider: () => Color.blue
         );
+
+        // Angle sensors verify if the player is standing on a surface with an acceptable slope angle.
+        validAngleSensors = new CheckValidAngleSensors(
+            targetTransform: () => playerTransform,
+            highFrictionMaterial: () => highFrictionMaterial,
+            lowFrictionMaterial: () => lowFrictionMaterial,
+            colliders: () => collisionList,
+            maxStableAngle: () => maxStableAngle,
+            raycastDistance: () => 0.5f,
+            debug: () => debugAngleSensor
+        );
     }
 
     /// <summary>
-    /// Initializes controllers used for movement, jumping, and rotation.
+    /// Initializes controllers responsible for player movement, jumping, and rotation.
     /// </summary>
     private void SetupControllers()
     {
-        // Create jump logic handler.
+        // Initialize jump controller with access to Rigidbody, grounded state, jump count, and coyote time.
         jumpController = new PlayerJumpController(() => targetRigidbody, () => isGrounded, () => 1, () => coyoteTime);
 
-        // Create movement handler with obstacle detection.
+        // Initialize movement controller that handles player translation and checks for obstacle collisions.
         moveController = new PlayerMoveController(() => targetRigidbody, () => speed, () => obstacleSensor.collisionDetected);
 
-        // Create smooth rotation handler.
+        // Initialize rotation controller to smoothly rotate the player toward movement direction.
         rotationController = new PlayerRotationController(() => playerTransform, () => moveDirection, () => rotationSpeed);
     }
 
     /// <summary>
-    /// Binds input actions to events and hooks behavior.
+    /// Binds player input actions to corresponding event handlers and links input logic.
     /// </summary>
     private void SetupInputEvents()
     {
-        // Bind jump event if jump is allowed.
+        // Bind jump input action, triggering jump if the player has jumping ability and is playable.
         jumpEvent = OnInputSystemEvent<float>.WithAction(inputAsset, jumpInput, () => isPlayable).OnPressed(_ =>
         {
             if (activeAbility == PlayerAbility.CanJump)
@@ -253,27 +270,27 @@ public class SideViewPlayerController3D : MonoBehaviour
             }
         });
 
-        // Bind movement events.
+        // Bind movement input action to handle movement while the input is held or released.
         moveEvent = OnInputSystemEvent<Vector2>.WithAction(inputAsset, moveInput, () => isPlayable)
             .OnHold(value =>
             {
-                // Convert movement input using world rotation.
+                // Apply world rotation offset to input direction and update movement controller.
                 moveDirection = ConvertRotation(value, worldRotation);
                 moveController.OnMove(moveDirection);
             })
             .OnReleased(() =>
             {
-                // Stop movement when released.
+                // Stop movement and reset input direction when released.
                 moveController.OnStop();
                 moveDirection = Vector2.zero;
             });
 
-        // Bind crouch toggle event.
+        // Bind crouch toggle input action with logic dependent on capability control mode.
         crouchEvent = OnInputSystemEvent<float>.WithAction(inputAsset, crouchInput, () => isPlayable).OnPressed(_ =>
         {
             if (capabilityMode == PlayerControlMode.Automatic)
             {
-                // Toggle crouch only if there's space to stand up.
+                // In automatic mode, toggle crouch only if there is no obstruction overhead.
                 if (!hasSpaceSensor.collisionDetected)
                 {
                     isCrouching = !isCrouching;
@@ -282,7 +299,7 @@ public class SideViewPlayerController3D : MonoBehaviour
             }
             else
             {
-                // Manual mode resets crouch state.
+                // In manual mode, crouch state is reset to standing.
                 isCrouching = false;
                 activeAbility = previousAbility;
             }
@@ -290,38 +307,42 @@ public class SideViewPlayerController3D : MonoBehaviour
     }
 
     /// <summary>
-    /// Cleans up allocated sensors, controllers, and unbinds events.
+    /// Cleans up all allocated sensors, controllers, and unbinds input events when the object is destroyed.
     /// </summary>
     private void OnDestroy()
     {
-        // Dispose all sensors and controllers.
+        // Dispose of all collision sensors to free resources.
         BoxCollisionSensor.Dispose(ref groundSensor);
         BoxCollisionSensor.Dispose(ref obstacleSensor);
         BoxCollisionSensor.Dispose(ref hasSpaceSensor);
+
+        // Dispose of angle validation sensors.
+        CheckValidAngleSensors.Dispose(ref validAngleSensors);
+
+        // Dispose of player control components.
         PlayerJumpController.Dispose(ref jumpController);
         PlayerMoveController.Dispose(ref moveController);
         PlayerRotationController.Dispose(ref rotationController);
 
-        // Unbind all input events.
+        // Unbind and clean up all input event subscriptions.
         jumpEvent?.UnbindAll();
         moveEvent?.UnbindAll();
         crouchEvent?.UnbindAll();
     }
 
     /// <summary>
-    /// Main game loop update. Applies runtime state updates.
+    /// Main update loop called once per frame; updates runtime state and sensor data.
     /// </summary>
     private void Update()
     {
-        UpdateTransformData(); // Refresh transform data for sensors.
-        UpdateSensorPositions(); // Recalculate sensor positions based on crouch state.
-        UpdateGroundStatus(); // Evaluate current grounded state.
-        UpdatePlayerAbilityState(); // Evaluate player abilities and crouch state.
-        UpdateSpeedAndCollider(); // Update speed and enable/disable correct collider.
+        UpdateTransformData();      // Refresh cached player transform position and rotation.
+        UpdateSensorPositions();    // Recalculate sensor positions based on current crouch state.
+        UpdateGroundStatus();       // Determine if the player is grounded according to sensors and state.
+        UpdatePlayerAbilityState(); // Update player abilities and crouch state logic.
+        UpdateSpeedAndCollider();   // Adjust movement speed and toggle colliders based on crouch state.
     }
-
     /// <summary>
-    /// Updates cached transform data from the player.
+    /// Updates cached player position and rotation for use by sensors and controllers.
     /// </summary>
     private void UpdateTransformData()
     {
@@ -330,37 +351,47 @@ public class SideViewPlayerController3D : MonoBehaviour
     }
 
     /// <summary>
-    /// Recomputes sensor positions based on crouch state.
+    /// Updates sensor positions and sizes based on whether the player is crouching or standing.
     /// </summary>
     private void UpdateSensorPositions()
     {
+        // Set obstacle sensor center and size depending on crouch state.
         obstacleCheckCenter = playerTransform.TransformPoint(isCrouching ? obstacleCrouchDetectionCenter : obstacleDetectionCenter);
         obstacleCheckSize = isCrouching ? obstacleCrouchDetectionSize : obstacleDetectionSize;
+
+        // Set ceiling space sensor center.
         hasSpaceCheckCenter = playerTransform.TransformPoint(hasSpaceDetectionCenter);
     }
 
     /// <summary>
-    /// Evaluates whether the player is grounded.
+    /// Updates grounded state based on sensor detection, crouch status, and surface angle validity.
     /// </summary>
-    private void UpdateGroundStatus() => isGrounded = (activeAbility != PlayerAbility.CanJump || groundSensor.collisionDetected) && isValidAngle;
-
+    private void UpdateGroundStatus()
+    {
+        // Player is grounded if not in jump ability mode or ground sensor detects ground, and player is not crouching and is on a valid slope angle.
+        isGrounded = (activeAbility != PlayerAbility.CanJump || groundSensor.collisionDetected) && (!isCrouching && validAngleSensors.isValidAngle);
+    }
     /// <summary>
-    /// Adjusts player ability and crouch logic depending on control mode.
+    /// Updates player ability and crouch logic based on the current control mode.
+    /// Ensures consistency between crouch state and ability flags.
     /// </summary>
     private void UpdatePlayerAbilityState()
     {
+        // In manual mode, reset crouch state and restore the previous ability.
         if (capabilityMode == PlayerControlMode.Manual && isCrouching)
         {
             isCrouching = false;
             activeAbility = previousAbility;
         }
 
+        // If no ability is active, ensure player is grounded and not crouching.
         if (activeAbility == PlayerAbility.None)
         {
             isGrounded = true;
             isCrouching = false;
         }
 
+        // Update previous ability unless crouch is currently active.
         if (activeAbility != PlayerAbility.CanCrouch)
         {
             previousAbility = activeAbility;
@@ -368,33 +399,30 @@ public class SideViewPlayerController3D : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates player movement speed and toggles colliders for crouch state.
+    /// Updates the player's movement speed and toggles the correct collider based on crouch state.
     /// </summary>
     private void UpdateSpeedAndCollider()
     {
+        // Switch movement speed based on whether the player is crouching.
         speed = isCrouching ? crouchSpeed : moveSpeed;
+
+        // Enable the appropriate collider for the current stance.
         normalCollider.enabled = !isCrouching;
         crouchCollider.enabled = isCrouching;
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (!isCrouching)
-        {
-            isValidAngle = CheckValidAngle(collision, collisionList, highFrictionMaterial, lowFrictionMaterial, ref lastSlopeAngle, maxStableAngle, debugAngleSensor);
-        }
-    }
-
     /// <summary>
-    /// Sets the capability control mode (manual or automatic).
+    /// Sets the player's capability control mode to manual or automatic.
+    /// Resets crouch state if switched to manual while crouching.
     /// </summary>
-    /// <param name="mode">Integer representing PlayerControlMode enum value.</param>
+    /// <param name="mode">Integer value representing the <see cref="PlayerControlMode"/> enum.</param>
     public void SetCapabilityMode(int mode)
     {
         if (Enum.IsDefined(typeof(PlayerControlMode), mode))
         {
             capabilityMode = (PlayerControlMode)mode;
 
+            // If switching to manual mode while crouching, reset crouch and restore previous ability.
             if (capabilityMode == PlayerControlMode.Manual && isCrouching)
             {
                 isCrouching = false;
@@ -408,22 +436,28 @@ public class SideViewPlayerController3D : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the active player ability externally (e.g., jump or crouch).
+    /// Sets the player's current ability externally (e.g., enable jumping or crouching).
+    /// Updates crouch state and tracks the previous ability when necessary.
     /// </summary>
-    /// <param name="ability">Integer representing PlayerAbility enum value.</param>
+    /// <param name="ability">Integer value representing the <see cref="PlayerAbility"/> enum.</param>
     public void SetPlayerAbility(int ability)
     {
         if (Enum.IsDefined(typeof(PlayerAbility), ability))
         {
-            if ((PlayerAbility)ability == PlayerAbility.CanCrouch && capabilityMode == PlayerControlMode.Manual)
+            PlayerAbility selectedAbility = (PlayerAbility)ability;
+
+            // Prevent crouching if in manual mode, as crouch toggling is not supported.
+            if (selectedAbility == PlayerAbility.CanCrouch && capabilityMode == PlayerControlMode.Manual)
             {
                 Debug.LogWarning("Cannot enter crouch state in Manual mode.", this);
                 return;
             }
 
-            activeAbility = (PlayerAbility)ability;
+            // Apply the selected ability and update crouch state.
+            activeAbility = selectedAbility;
             isCrouching = activeAbility == PlayerAbility.CanCrouch;
 
+            // Track the last non-crouch ability.
             if (activeAbility != PlayerAbility.CanCrouch)
             {
                 previousAbility = activeAbility;
@@ -436,45 +470,47 @@ public class SideViewPlayerController3D : MonoBehaviour
     }
 
     /// <summary>
-    /// Enables or disables the player's ability to act (movement, jump, crouch).
+    /// Enables or disables the player's ability to perform actions such as moving, jumping, or crouching.
     /// </summary>
-    /// <param name="toggle">True to enable input and logic; false to disable.</param>
+    /// <param name="toggle">If true, player input and action logic are enabled; if false, they are disabled.</param>
     public void TogglePlayerPlayable(bool toggle) => isPlayable = toggle;
 
     /// <summary>
-    /// Serializes current player data and returns a JSON string.
+    /// Serializes the current player state into a JSON string for saving.
+    /// Includes position, rotation, ability states, and control mode.
     /// </summary>
-    /// <returns>Serialized JSON with current player state.</returns>
+    /// <returns>A JSON string representing the current player state.</returns>
     public string SavePlayerData()
     {
         return CustomPlayerData.SaveData(() => new Dictionary<string, object>
-        {
-            { nameof(capabilityMode), capabilityMode }, // Save control mode.
-            { nameof(activeAbility), activeAbility }, // Save current ability.
-            { nameof(previousAbility), previousAbility }, // Save previous ability.
-            { nameof(playerPosition), playerTransform.position }, // Save position.
-            { nameof(playerRotation), playerTransform.rotation }, // Save rotation.
-            { nameof(isGrounded), isGrounded }, // Save ground state.
-            { nameof(isCrouching), isCrouching } // Save crouch state.
-        });
+    {
+        { nameof(capabilityMode), capabilityMode },             // Save control mode.
+        { nameof(activeAbility), activeAbility },               // Save current active ability.
+        { nameof(previousAbility), previousAbility },           // Save previous ability for toggling logic.
+        { nameof(playerPosition), playerTransform.position },   // Save player position.
+        { nameof(playerRotation), playerTransform.rotation },   // Save player rotation.
+        { nameof(isGrounded), isGrounded },                     // Save grounded state.
+        { nameof(isCrouching), isCrouching }                    // Save crouch state.
+    });
     }
 
     /// <summary>
-    /// Restores player data from a JSON string.
+    /// Restores player state from a previously saved JSON string.
+    /// Applies position, rotation, and ability state to the player.
     /// </summary>
-    /// <param name="json">Serialized JSON with saved player state.</param>
+    /// <param name="json">A JSON string containing saved player data.</param>
     public void LoadPlayerData(string json)
     {
         CustomPlayerData.LoadData(json, dict =>
         {
             capabilityMode = (PlayerControlMode)dict[nameof(capabilityMode)]; // Load control mode.
-            activeAbility = (PlayerAbility)dict[nameof(activeAbility)]; // Load current ability.
-            previousAbility = (PlayerAbility)dict[nameof(previousAbility)]; // Load previous ability.
+            activeAbility = (PlayerAbility)dict[nameof(activeAbility)];       // Load current ability.
+            previousAbility = (PlayerAbility)dict[nameof(previousAbility)];   // Load previous ability.
 
-            // Restore position and rotation
+            // Restore transform state.
             playerTransform.SetPositionAndRotation((Vector3)dict[nameof(playerPosition)], (Quaternion)dict[nameof(playerRotation)]);
 
-            isGrounded = Convert.ToBoolean(dict[nameof(isGrounded)]); // Restore ground state.
+            isGrounded = Convert.ToBoolean(dict[nameof(isGrounded)]);   // Restore grounded state.
             isCrouching = Convert.ToBoolean(dict[nameof(isCrouching)]); // Restore crouch state.
         });
     }
