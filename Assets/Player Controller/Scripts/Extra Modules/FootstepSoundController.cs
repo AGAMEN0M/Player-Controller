@@ -23,7 +23,7 @@ public class FootstepSoundController : MonoBehaviour
     [SerializeField, Range(-3, 3)] private float maximumPitch = 1f; // Maximum pitch for the audio.
 
     [Header("Walking & Running Settings")]
-    [SerializeField] private float walkInterval = 0.5f; // Time interval between footsteps when walking.
+    [SerializeField] private float walkInterval = 0.6f; // Time interval between footsteps when walking.
     [SerializeField] private float runInterval = 0.3f; // Time interval between footsteps when running.
     [SerializeField, HighlightEmptyReference] private List<AudioClip> walkClips; // List of footstep sounds for walking/running.
 
@@ -177,14 +177,14 @@ public class FootstepSoundController : MonoBehaviour
     /// <returns>The movement state used for sound playback.</returns>
     private MovementState GetMovementState()
     {
-        if (!playerState.IsMove) return MovementState.None;
+        if (!playerState.IsMoving) return MovementState.None;
 
         if (playerState.IsCrouching)
         {
-            return playerState.IsRun ? MovementState.CrouchRunning : MovementState.CrouchWalking;
+            return playerState.IsRunning ? MovementState.CrouchRunning : MovementState.CrouchWalking;
         }
 
-        return playerState.IsRun ? MovementState.Running : MovementState.Walking;
+        return playerState.IsRunning ? MovementState.Running : MovementState.Walking;
     }
 
     /// <summary>
@@ -212,9 +212,9 @@ public class FootstepSoundController : MonoBehaviour
 public interface IPlayerMovementState
 {
     bool IsGrounded { get; }   // Is the player currently on the ground?
-    bool IsMove { get; }       // Is the player currently moving?
+    bool IsMoving { get; }       // Is the player currently moving?
     bool IsCrouching { get; }  // Is the player crouching?
-    bool IsRun { get; }        // Is the player running?
+    bool IsRunning { get; }        // Is the player running?
 }
 
 /// <summary>
@@ -231,9 +231,9 @@ public class PlayerMovementStateAdapter : IPlayerMovementState
 
     // Uses extension method to safely get property values from the target MonoBehaviour.
     public bool IsGrounded => target.TryGetProperty(nameof(IsGrounded), out bool value) && value;
-    public bool IsMove => target.TryGetProperty(nameof(IsMove), out bool value) && value;
+    public bool IsMoving => target.TryGetProperty(nameof(IsMoving), out bool value) && value;
     public bool IsCrouching => target.TryGetProperty(nameof(IsCrouching), out bool value) && value;
-    public bool IsRun => target.TryGetProperty(nameof(IsRun), out bool value) && value;
+    public bool IsRunning => target.TryGetProperty(nameof(IsRunning), out bool value) && value;
 }
 
 /// <summary>

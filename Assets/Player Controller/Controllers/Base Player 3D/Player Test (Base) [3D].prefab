@@ -115,7 +115,7 @@ Transform:
   - {fileID: 9167502342424071539}
   - {fileID: 5611237721744566324}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -48.231, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &5049840048264847761
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -176,26 +176,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43985ff2e15a8b4089c8600b6f49ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputAsset: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
-  moveInput: Player/Move
-  jumpInput: Player/Jump
+  inputActions: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  moveActionPath: Player/Move
+  runActionPath: Player/Run
+  jumpActionPath: Player/Jump
+  crouchActionPath: Player/Crouch
   playerTransform: {fileID: 6612733790761812343}
-  targetRigidbody: {fileID: 4277057369611995169}
-  moveSpeed: 4
-  rotationSpeed: 10
+  playerRigidbody: {fileID: 4277057369611995169}
+  standingCollider: {fileID: 1862290882307370356}
+  crouchingCollider: {fileID: 760830863027703650}
+  walkSpeed: 1
+  runSpeed: 5
+  crouchWalkSpeed: 1
+  crouchRunSpeed: 1.5
+  rotationSmoothSpeed: 10
   jumpForce: 5
-  worldRotation: 0
-  collisionLayerMask:
+  maxJumpCount: 2
+  coyoteTimeDuration: 0.15
+  globalInputRotationOffset: 0
+  maxStamina: 50
+  minStaminaForRun: 12.5
+  staminaDepletionRate: 15
+  staminaRecoveryRate: 3
+  controlMode: 0
+  currentAbility: 2
+  movementMode: 1
+  groundLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  groundDetectionSize: {x: 0.2, y: 0.3, z: 0.2}
-  ignoredTags: []
-  obstacleDetectionCenter: {x: 0, y: 0.8, z: 0.45}
-  obstacleDetectionSize: {x: 0.25, y: 1.5, z: 0.2}
-  obstacleIgnoreTags:
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  ceilingLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  groundSensorBoxSize: {x: 0.2, y: 0.3, z: 0.2}
+  groundIgnoredTags: []
+  obstacleSensorCenter: {x: 0, y: 0.8, z: 0.45}
+  obstacleSensorSize: {x: 0.25, y: 1.5, z: 0.2}
+  crouchObstacleCenter: {x: 0, y: 0.35, z: 0.45}
+  crouchObstacleSize: {x: 0.25, y: 0.4, z: 0.2}
+  obstacleIgnoredTags:
   - Ignore Collision
+  ceilingSensorCenter: {x: 0, y: 0.8, z: 0}
+  ceilingSensorSize: {x: 0.34, y: 1.4, z: 0.36}
+  ceilingIgnoredTags:
+  - Ignore Collision
+  highFrictionMaterial: {fileID: 13400000, guid: f0754a578d4aa464c82acb4a8c658230, type: 2}
+  lowFrictionMaterial: {fileID: 13400000, guid: 6b1f8b320770c3e419cfffabd073a2ff, type: 2}
+  maxSlopeAngle: 45
   debugGroundSensor: 0
   debugObstacleSensor: 0
+  debugCeilingSensor: 0
+  debugSlopeAngle: 0
 --- !u!114 &8559908757993199825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +327,7 @@ MonoBehaviour:
   footstepVolume: 0.1
   minimumPitch: 0.8
   maximumPitch: 1
-  walkInterval: 0.36
+  walkInterval: 0.6
   runInterval: 0.3
   walkClips:
   - {fileID: 8300000, guid: 569997504289fb141a9f0fcbe23f0883, type: 3}
@@ -447,7 +480,7 @@ PrefabInstance:
     - target: {fileID: -827216368988784492, guid: 3d074174de0b96d4eb1245f3d985e405, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 684e9822cb7fa574ebc911adf45ae12b, type: 2}
+      objectReference: {fileID: 9100000, guid: 65860e3e8fa37e74b988cc08c9247db4, type: 2}
     - target: {fileID: 7358340754875459036, guid: 3d074174de0b96d4eb1245f3d985e405, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -519,16 +552,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 8390859643300075465}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1508550cf657f49b27bcb763013b0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 081f2ca3268706f479fd3bcb1f559fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 3193335335551233827}
   animator: {fileID: 7900072655940145211}
   stopped: Idle
   walking: Walking
+  running: Running
   jumping: Jump
   crouching: Crouch Idle
   crawling: Crouch Walking
+  crawlingRunning: Crouch Running
   currentState: 0
 --- !u!4 &9167502342424071539 stripped
 Transform:

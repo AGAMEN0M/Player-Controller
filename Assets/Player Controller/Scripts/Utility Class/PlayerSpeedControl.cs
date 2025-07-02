@@ -26,13 +26,17 @@ namespace PlayerController.Abilities
         
         private bool subscribedToUpdate; // Tracks whether the update method is subscribed to the fixed update loop.
         private bool inputActive; // Flag indicating if the run input is currently being held.
-        private bool hasStamina; // Indicates if the player currently has enough stamina to run.
         private bool isFast; // Indicates if the player is currently running at fast speed.
 
         /// <summary>
         /// Final resulting movement speed based on the player's current state.
         /// </summary>
         public float resultingVelocity;
+
+        /// </summary>
+        /// Indicates if the player currently has enough stamina to run.
+        /// </summary>
+        public bool hasStamina;
 
         /// <summary>
         /// Player's stamina percentage (0 to 100), based on current and max stamina.

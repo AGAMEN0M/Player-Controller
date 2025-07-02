@@ -368,8 +368,11 @@ public class SideViewPlayerController3D : MonoBehaviour
     /// </summary>
     private void UpdateGroundStatus()
     {
-        // Player is grounded if not in jump ability mode or ground sensor detects ground, and player is not crouching and is on a valid slope angle.
-        isGrounded = (activeAbility != PlayerAbility.CanJump || groundSensor.collisionDetected) && (!isCrouching && validAngleSensors.isValidAngle);
+        // Player is considered grounded if:
+        // - Jumping is disabled (manual override), or the ground sensor detects contact,
+        // AND
+        // - The player is either on a valid slope or currently crouching (slope angle is ignored when crouching).
+        isGrounded = (activeAbility != PlayerAbility.CanJump || groundSensor.collisionDetected) && (validAngleSensors.isValidAngle || isCrouching);
     }
     /// <summary>
     /// Updates player ability and crouch logic based on the current control mode.
