@@ -1,3 +1,15 @@
+/*
+ * ---------------------------------------------------------------------------
+ * Description: Controls the camera's active state based on input actions or 
+ *              the activity of specified GameObjects. Supports manual toggle, input-based 
+ *              toggle, or automatic updates using Update or FixedUpdate modes. Useful for 
+ *              enabling/disabling the camera when menus or UI elements are shown.
+ * 
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
 using PlayerController.InputEvents;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
@@ -12,41 +24,41 @@ using UnityEngine;
 public class CameraStateManager : MonoBehaviour
 {
     [Header("Input Settings")]
-    [SerializeField, HighlightEmptyReference] private InputActionAsset inputAsset; // Input Action Asset containing defined actions.
-    [SerializeField] private string toggleInput = "UI/Menu"; // Action name used to toggle camera manually.
+    [SerializeField, ValidateReference] private InputActionAsset inputAsset; // Input Action Asset containing defined actions.
+    [SerializeField] private string toggleActionPath = "UI/Menu"; // Input action path used to manually toggle the camera.
 
     [Header("Enable and Disable Camera")]
-    [SerializeField] private UpdateType updateType = UpdateType.InputEvent; // Defines when camera state should be checked.
-    [Tooltip("Executed in Update and FixedUpdate")]
-    [SerializeField, HighlightEmptyReference] private List<GameObject> activationObjects = new(); // Objects that determine camera activation.
+    [SerializeField] private UpdateType updateType = UpdateType.InputEvent; // Defines when the camera state should be evaluated.
+    [Tooltip("Executed in Update and FixedUpdate.")]
+    [SerializeField, ValidateReference] private List<GameObject> activationObjects = new(); // List of objects that control camera activation based on their active state.
 
     [Header("Events")]
-    [SerializeField] private bool debug = false; // Enables debug logging for camera state changes.
-    [SerializeField] private UnityEvent onEnable; // Event invoked when camera is enabled.
-    [SerializeField] private UnityEvent onDisable; // Event invoked when camera is disabled.
+    [SerializeField] private bool debug = false; // Enables debug logs for camera state changes.
+    [SerializeField] private UnityEvent onEnable; // Event invoked when the camera is enabled.
+    [SerializeField] private UnityEvent onDisable; // Event invoked when the camera is disabled.
 
     private bool isCameraActive; // Indicates whether the camera is currently active.
-    private bool lastActivationState; // Stores the last known activation state of the monitored objects.
-    private float lastUpdateTime; // Time of the last activation state check.
-    private float activeDuration; // Duration the activation objects have remained active.
-    private float inactiveDuration; // Duration the activation objects have remained inactive.
+    private bool lastActivationState; // Stores the previous activation state of the monitored objects.
+    private float lastUpdateTime; // Timestamp of the last state evaluation.
+    private float activeDuration; // Time the activation objects have been continuously active.
+    private float inactiveDuration; // Time the activation objects have been continuously inactive.
 
-    private OnInputSystemEventConfig<float> toggleEvent; // Cached input event listener for toggle action.
+    private OnInputSystemEventConfig<float> toggleEvent; // Cached input event listener for the toggle action.
 
     /// <summary>
-    /// Defines how the camera state is updated.
+    /// Defines how and when the camera state is updated.
     /// </summary>
     public enum UpdateType
     {
-        ManualToggle, // Camera is only toggled via external method calls.
-        InputEvent,   // Camera is toggled on input event (e.g., button press).
-        Update,       // Camera state is checked every frame in Update().
-        FixedUpdate,  // Camera state is checked in FixedUpdate().
+        ManualToggle, // Camera state is controlled manually through external method calls.
+        InputEvent,   // Camera state is toggled via input events (e.g., button press).
+        Update,       // Camera state is evaluated every frame in Update().
+        FixedUpdate,  // Camera state is evaluated at fixed intervals in FixedUpdate().
     }
 
     private void Awake()
     {
-        // Disable component if no input asset is assigned.
+        // Disable the component if no input asset is assigned.
         if (!inputAsset)
         {
             Debug.LogWarning("Input Asset not assigned.", this);
@@ -54,40 +66,42 @@ public class CameraStateManager : MonoBehaviour
             return;
         }
 
-        if (debug) Debug.Log($"[{nameof(CameraStateManager)}] Initialized with updateType: {updateType}", this);
+        if (debug) Debug.Log($"[{nameof(CameraStateManager)}] Initialized with updateType: {updateType}.", this);
     }
 
     private void Start()
     {
-        SetCameraState(true); // Set camera initially active.
+        SetCameraState(true); // Initially set the camera as active.
 
-        // Register input event to toggle camera if updateType allows it.
-        toggleEvent = OnInputSystemEvent<float>.WithAction(inputAsset, toggleInput).OnPressed(_ =>
+        // Register input event for toggling the camera if the update type allows it.
+        toggleEvent = OnInputSystemEvent<float>.WithAction(inputAsset, toggleActionPath).OnPressed(_ =>
         {
             if (updateType == UpdateType.InputEvent) SetCameraState(!isCameraActive);
         });
     }
 
-    // Clean up input event bindings when object is destroyed.
+    /// <summary>
+    /// Cleans up input event bindings when the object is destroyed.
+    /// </summary>
     private void OnDestroy() => toggleEvent?.UnbindAll();
 
     private void Update()
     {
-        // If Update mode is selected, check camera state every frame.
+        // If Update mode is selected, evaluate camera state every frame.
         if (updateType == UpdateType.Update) UpdateCameraStateFromObjects();
     }
 
     private void FixedUpdate()
     {
-        // If FixedUpdate mode is selected, check camera state in fixed intervals.
+        // If FixedUpdate mode is selected, evaluate camera state at fixed intervals.
         if (updateType == UpdateType.FixedUpdate) UpdateCameraStateFromObjects();
     }
 
     /// <summary>
-    /// Sets the current camera state and updates cursor lock and visibility.
-    /// Also triggers UnityEvents and optionally logs debug info.
+    /// Sets the current camera state, updates cursor lock/visibility,
+    /// invokes related events, and logs debug information if enabled.
     /// </summary>
-    /// <param name="active">If true, camera is activated; otherwise, deactivated.</param>
+    /// <param name="active">If true, activates the camera; otherwise, deactivates it.</param>
     public void SetCameraState(bool active)
     {
         if (isCameraActive == active) return;
@@ -106,12 +120,12 @@ public class CameraStateManager : MonoBehaviour
             onDisable?.Invoke();
         }
 
-        if (debug) Debug.Log($"[{nameof(CameraStateManager)}] Camera State set to: {active}", this);
+        if (debug) Debug.Log($"[{nameof(CameraStateManager)}] Camera state set to: {active}.", this);
     }
 
     /// <summary>
-    /// Checks if monitored objects are active or not and updates camera state accordingly.
-    /// Uses a time threshold (0.1s) to prevent immediate toggling on flickering.
+    /// Evaluates the active state of monitored objects and toggles the camera accordingly.
+    /// Includes a 0.1s threshold to avoid flickering from rapid state changes.
     /// </summary>
     private void UpdateCameraStateFromObjects()
     {
@@ -123,7 +137,7 @@ public class CameraStateManager : MonoBehaviour
         float deltaTime = now - lastUpdateTime;
         lastUpdateTime = now;
 
-        // If activation state changed, reset timers.
+        // If the activation state has changed, reset duration timers.
         if (anyActive != lastActivationState)
         {
             lastActivationState = anyActive;
@@ -132,13 +146,13 @@ public class CameraStateManager : MonoBehaviour
             return;
         }
 
-        // If objects remain active for threshold time, disable camera.
+        // Disable camera if objects remain active for the threshold duration.
         if (anyActive)
         {
             activeDuration += deltaTime;
             if (activeDuration >= 0.1f) SetCameraState(false);
         }
-        else // If objects remain inactive for threshold time, enable camera.
+        else // Enable camera if objects remain inactive for the threshold duration.
         {
             inactiveDuration += deltaTime;
             if (inactiveDuration >= 0.1f) SetCameraState(true);
@@ -146,9 +160,9 @@ public class CameraStateManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks whether any of the monitored objects are currently active in the scene.
+    /// Checks whether any of the monitored GameObjects are currently active in the scene.
     /// </summary>
-    /// <returns>True if at least one object is active; false otherwise.</returns>
+    /// <returns>True if at least one object is active; otherwise, false.</returns>
     private bool IsAnyActivationObjectActive()
     {
         return activationObjects.Exists(obj => obj != null && obj.activeSelf);

@@ -1,3 +1,15 @@
+/*
+ * ---------------------------------------------------------------------------
+ * Description: Singleton MonoBehaviour that broadcasts Unity lifecycle events
+ *              (Update, FixedUpdate, LateUpdate) via static events. It manages a list of
+ *              BoxCollisionSensor components to draw gizmos based on their configured modes.
+ *              Ensures a single persistent instance across all scenes.
+ * 
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
 using System.Collections.Generic;
 using UnityEngine;
 using System;

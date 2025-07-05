@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+ * ---------------------------------------------------------------------------
+ * Description: Controls smooth rotation of a Transform based on directional input in the XZ plane.
+ * 
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
+using UnityEngine;
 using System;
 
 using static PlayerController.PhysicsRuntime.PhysicsUpdateBroadcaster;

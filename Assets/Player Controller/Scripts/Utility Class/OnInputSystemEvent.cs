@@ -1,4 +1,13 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * ---------------------------------------------------------------------------
+ * Description: Generic static dispatcher for InputAction<T> events (pressed, hold, released).
+ * 
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;

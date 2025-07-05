@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1711500161454389570}
   - component: {fileID: 5347350141186111905}
   - component: {fileID: 4298668176493376552}
-  - component: {fileID: 8628653627061001309}
+  - component: {fileID: 5411008224161646954}
   - component: {fileID: 8650748826652411231}
   m_Layer: 0
   m_Name: 'Player Test (Side View) [3D]'
@@ -38,7 +38,7 @@ Transform:
   - {fileID: 5887588734176098991}
   - {fileID: 3819767581797850218}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -48.231, z: 0}
 --- !u!135 &5347350141186111905
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8628653627061001309
+--- !u!114 &5411008224161646954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,51 +96,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 410183016787286760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59317ecf669c7914fb23805595ce0446, type: 3}
+  m_Script: {fileID: 11500000, guid: c02d70107864e3b4a9f22b9468be07a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputAsset: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
-  moveInput: Player/Move
-  jumpInput: Player/Jump
-  crouchInput: Player/Crouch
+  inputActions: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  moveActionPath: Player/Move
+  runActionPath: Player/Run
+  jumpActionPath: Player/Jump
+  crouchActionPath: Player/Crouch
   playerTransform: {fileID: 1711500161454389570}
-  targetRigidbody: {fileID: 4298668176493376552}
-  normalCollider: {fileID: 1900250441697885482}
-  crouchCollider: {fileID: 2929373380736456248}
-  moveSpeed: 4
-  crouchSpeed: 1
-  rotationSpeed: 10
+  playerRigidbody: {fileID: 4298668176493376552}
+  standingCollider: {fileID: 1900250441697885482}
+  crouchingCollider: {fileID: 2929373380736456248}
+  walkSpeed: 1
+  runSpeed: 5
+  crouchWalkSpeed: 1
+  crouchRunSpeed: 1.5
+  rotationSmoothSpeed: 10
   jumpForce: 5
-  worldRotation: 0
-  capabilityMode: 0
-  activeAbility: 2
-  groundLayerMask:
+  maxJumpCount: 2
+  coyoteTimeDuration: 0.15
+  globalInputRotationOffset: 0
+  maxStamina: 50
+  minStaminaForRun: 12.5
+  staminaDepletionRate: 15
+  staminaRecoveryRate: 3
+  controlMode: 0
+  currentAbility: 2
+  movementMode: 1
+  groundLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  obstacleLayerMask:
+  obstacleLayers:
     serializedVersion: 2
     m_Bits: 55
-  ceilingLayerMask:
+  ceilingLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  groundDetectionSize: {x: 0.2, y: 0.3, z: 0.2}
-  ignoredTags: []
-  obstacleDetectionCenter: {x: 0, y: 0.8, z: 0.45}
-  obstacleDetectionSize: {x: 0.25, y: 1.5, z: 0.2}
-  obstacleCrouchDetectionCenter: {x: 0, y: 0.35, z: 0.45}
-  obstacleCrouchDetectionSize: {x: 0.25, y: 0.4, z: 0.2}
-  obstacleIgnoreTags:
+  groundSensorBoxSize: {x: 0.2, y: 0.3, z: 0.2}
+  groundIgnoredTags: []
+  obstacleSensorCenter: {x: 0, y: 0.8, z: 0.45}
+  obstacleSensorSize: {x: 0.25, y: 1.5, z: 0.2}
+  crouchObstacleCenter: {x: 0, y: 0.35, z: 0.45}
+  crouchObstacleSize: {x: 0.25, y: 0.4, z: 0.2}
+  obstacleIgnoredTags:
   - Ignore Collision
-  hasSpaceDetectionCenter: {x: 0, y: 0.8, z: 0}
-  hasSpaceDetectionSize: {x: 0.34, y: 1.4, z: 0.36}
-  hasSpaceIgnoredTags:
+  ceilingSensorCenter: {x: 0, y: 0.8, z: 0}
+  ceilingSensorSize: {x: 0.34, y: 1.4, z: 0.36}
+  ceilingIgnoredTags:
   - Ignore Collision
   highFrictionMaterial: {fileID: 13400000, guid: f0754a578d4aa464c82acb4a8c658230, type: 2}
   lowFrictionMaterial: {fileID: 13400000, guid: 6b1f8b320770c3e419cfffabd073a2ff, type: 2}
-  maxStableAngle: 45
+  maxSlopeAngle: 45
   debugGroundSensor: 0
   debugObstacleSensor: 0
-  debugHasSpaceSensor: 0
+  debugCeilingSensor: 0
+  debugSlopeAngle: 0
 --- !u!114 &8650748826652411231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,16 +165,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputAsset: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
-  toggleInput: UI/Menu
+  toggleActionPath: UI/Menu
   updateType: 1
   activationObjects: []
   debug: 0
   onEnable:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8628653627061001309}
+      - m_Target: {fileID: 5411008224161646954}
         m_TargetAssemblyTypeName: SideViewPlayerController3D, Assembly-CSharp
-        m_MethodName: TogglePlayerPlayable
+        m_MethodName: TogglePlayable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -176,9 +187,9 @@ MonoBehaviour:
   onDisable:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8628653627061001309}
+      - m_Target: {fileID: 5411008224161646954}
         m_TargetAssemblyTypeName: SideViewPlayerController3D, Assembly-CSharp
-        m_MethodName: TogglePlayerPlayable
+        m_MethodName: TogglePlayable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -233,13 +244,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6b3415aa81cf84a9c016d35acf0452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 8628653627061001309}
+  playerController: {fileID: 5411008224161646954}
   audioSource: {fileID: 7412039609963364913}
   audioMixerGroup: {fileID: 0}
   footstepVolume: 0.1
   minimumPitch: 0.8
   maximumPitch: 1
-  walkInterval: 0.36
+  walkInterval: 0.6
   runInterval: 0.3
   walkClips:
   - {fileID: 8300000, guid: 569997504289fb141a9f0fcbe23f0883, type: 3}
@@ -520,7 +531,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7878417814410887014, guid: 3d074174de0b96d4eb1245f3d985e405, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6935626083977047736}
+      addedObject: {fileID: 7560356397762521636}
   m_SourcePrefab: {fileID: 100100000, guid: 3d074174de0b96d4eb1245f3d985e405, type: 3}
 --- !u!95 &4841328045556049895 stripped
 Animator:
@@ -537,7 +548,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7878417814410887014, guid: 3d074174de0b96d4eb1245f3d985e405, type: 3}
   m_PrefabInstance: {fileID: 4011292388227669875}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6935626083977047736
+--- !u!114 &7560356397762521636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -546,14 +557,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6557023826974613525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1508550cf657f49b27bcb763013b0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b79e23f58043ba499e677db4a4b4e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 8628653627061001309}
+  playerController: {fileID: 5411008224161646954}
   animator: {fileID: 4841328045556049895}
   stopped: Idle
   walking: Walking
+  running: Running
   jumping: Jump
   crouching: Crouch Idle
   crawling: Crouch Walking
+  crawlingRunning: Crouch Running
   currentState: 0

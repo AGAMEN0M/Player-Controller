@@ -1,4 +1,15 @@
-﻿using System.Collections.Generic;
+﻿/*
+ * ---------------------------------------------------------------------------
+ * Description: Performs downward raycasts to check if the player is grounded on a slope
+ *              within a valid angle range and applies corresponding friction materials to colliders.
+ *              Integrates with PhysicsUpdateBroadcaster to perform checks on FixedUpdate.
+ * 
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 

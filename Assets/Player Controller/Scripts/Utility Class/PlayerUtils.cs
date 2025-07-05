@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+ * ---------------------------------------------------------------------------
+ * Description: Utility class for player movement and collision handling,
+ *              including vector rotation and slope detection/handling.
+ *              
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
+using UnityEngine;
 
 namespace PlayerController.Utils
 {

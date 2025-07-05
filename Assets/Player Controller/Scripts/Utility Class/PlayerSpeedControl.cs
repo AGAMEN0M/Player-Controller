@@ -1,3 +1,12 @@
+/*
+ * ---------------------------------------------------------------------------
+ * Description: Manages player's movement speed and stamina system with running and stamina depletion/regeneration.
+ * 
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
 using UnityEngine;
 using System;
 
@@ -12,34 +21,35 @@ namespace PlayerController.Abilities
     /// </summary>
     public class PlayerSpeedControl
     {
-        private readonly Func<float> normalSpeed; // Delegate returning the player's normal movement speed.
-        private readonly Func<float> fastSpeed; // Delegate returning the player's fast (running) speed.
-        private readonly Func<float> maxStamina; // Delegate returning the maximum stamina the player can have.
-        private readonly Func<float> minimumAmountVigor; // Delegate returning the minimum stamina required to run.
-        private readonly Func<float> staminaDepletionRate; // Delegate returning the rate at which stamina is depleted while running.
-        private readonly Func<float> staminaRecoveryRate; // Delegate returning the rate at which stamina regenerates when not running.
-        private readonly Func<bool> isMove; // Delegate indicating whether the player is currently moving.
-        
-        private readonly bool useStamina; // Flag to indicate whether the stamina system is enabled.
-        
-        private float currentStamina; // Player's current stamina value.
-        
-        private bool subscribedToUpdate; // Tracks whether the update method is subscribed to the fixed update loop.
-        private bool inputActive; // Flag indicating if the run input is currently being held.
-        private bool isFast; // Indicates if the player is currently running at fast speed.
+        // Delegates returning configuration values or state information.
+        private readonly Func<float> normalSpeed;            // Returns the player's normal movement speed.
+        private readonly Func<float> fastSpeed;              // Returns the player's fast (running) speed.
+        private readonly Func<float> maxStamina;             // Returns the maximum stamina the player can have.
+        private readonly Func<float> minimumAmountVigor;     // Returns the minimum stamina required to run.
+        private readonly Func<float> staminaDepletionRate;   // Returns the rate at which stamina depletes when running.
+        private readonly Func<float> staminaRecoveryRate;    // Returns the rate at which stamina regenerates when not running.
+        private readonly Func<bool> isMove;                  // Returns whether the player is currently moving.
+
+        private readonly bool useStamina; // Indicates whether the stamina system is enabled.
+
+        private float currentStamina; // Current stamina value of the player.
+
+        private bool subscribedToUpdate; // Tracks subscription to the fixed update event.
+        private bool isFast;             // Whether the player is currently running.
+        private bool haveEnoughStamina;  // Whether the player currently has enough stamina to run.
 
         /// <summary>
         /// Final resulting movement speed based on the player's current state.
         /// </summary>
         public float resultingVelocity;
 
-        /// </summary>
-        /// Indicates if the player currently has enough stamina to run.
+        /// <summary>
+        /// Indicates if the player is currently running and has stamina.
         /// </summary>
         public bool hasStamina;
 
         /// <summary>
-        /// Player's stamina percentage (0 to 100), based on current and max stamina.
+        /// Player's stamina percentage (0 to 100) based on current and max stamina.
         /// </summary>
         public float staminaPercentage;
 
@@ -65,8 +75,8 @@ namespace PlayerController.Abilities
         /// <param name="isMove">Function that returns whether the player is moving.</param>
         /// <param name="maxStamina">Function that returns max stamina. Default is 50.</param>
         /// <param name="minimumAmountVigor">Function that returns minimum stamina required to run. Default is 12.5.</param>
-        /// <param name="staminaDepletionRate">Function that returns depletion rate. Default is 15.</param>
-        /// <param name="staminaRecoveryRate">Function that returns recovery rate. Default is 3.</param>
+        /// <param name="staminaDepletionRate">Function that returns stamina depletion rate. Default is 15.</param>
+        /// <param name="staminaRecoveryRate">Function that returns stamina recovery rate. Default is 3.</param>
         public PlayerSpeedControl(
             Func<float> normalSpeed,
             Func<float> fastSpeed,
@@ -85,7 +95,7 @@ namespace PlayerController.Abilities
             this.staminaRecoveryRate = staminaRecoveryRate ?? (() => 3f);
 
             currentStamina = this.maxStamina();
-            hasStamina = true;
+            haveEnoughStamina = true;
             resultingVelocity = normalSpeed();
 
             useStamina = true;
@@ -93,7 +103,7 @@ namespace PlayerController.Abilities
         }
 
         /// <summary>
-        /// Subscribes the internal Update method to the global fixed update loop.
+        /// Subscribes the Update method to the fixed update event.
         /// </summary>
         private void SubscribeUpdate()
         {
@@ -105,9 +115,9 @@ namespace PlayerController.Abilities
         }
 
         /// <summary>
-        /// Disposes of the controller and unsubscribes it from update loop.
+        /// Disposes the controller, unsubscribing from the update loop.
         /// </summary>
-        /// <param name="controller">Reference to the controller to dispose.</param>
+        /// <param name="controller">Reference to the controller instance to dispose.</param>
         public static void Dispose(ref PlayerSpeedControl controller)
         {
             if (controller == null) return;
@@ -122,13 +132,11 @@ namespace PlayerController.Abilities
         }
 
         /// <summary>
-        /// Attempts to activate fast movement (running), depending on stamina availability.
+        /// Attempts to start running if stamina permits.
         /// </summary>
         public void StartRunning()
         {
-            inputActive = true;
-
-            if (useStamina && hasStamina)
+            if (useStamina && haveEnoughStamina)
             {
                 isFast = true;
                 resultingVelocity = fastSpeed();
@@ -147,14 +155,12 @@ namespace PlayerController.Abilities
         /// </summary>
         public void StopRunning()
         {
-            inputActive = false;
             isFast = false;
             resultingVelocity = normalSpeed();
         }
 
         /// <summary>
-        /// Updates stamina logic every fixed frame (depletion or recovery),
-        /// and recalculates resulting velocity based on state.
+        /// Updates stamina depletion, regeneration, and resulting velocity each fixed frame.
         /// </summary>
         private void Update()
         {
@@ -163,43 +169,41 @@ namespace PlayerController.Abilities
             float max = maxStamina();
             float deltaTime = Time.fixedDeltaTime;
 
-            // --- Deplete stamina if running and moving ---
-            if (isFast && hasStamina && isMove())
+            // Deplete stamina if running and moving.
+            if (isFast && haveEnoughStamina && isMove())
             {
                 currentStamina -= staminaDepletionRate() * deltaTime;
                 currentStamina = Mathf.Clamp(currentStamina, 0f, max);
 
-                // If stamina fully depleted, stop running.
+                // If stamina fully depleted, stop running and reset velocity.
                 if (currentStamina <= 0f)
                 {
+                    haveEnoughStamina = false;
                     hasStamina = false;
                     isFast = false;
                     resultingVelocity = normalSpeed();
+                    staminaPercentage = 0f;
                     return;
                 }
             }
 
-            // --- Regenerate stamina if not running or not moving ---
+            // Regenerate stamina if not running or not moving.
             if ((!isFast || !isMove()) && currentStamina < max)
             {
                 currentStamina += staminaRecoveryRate() * deltaTime;
                 currentStamina = Mathf.Clamp(currentStamina, 0f, max);
 
-                // If enough stamina is recovered to run again
-                if (!hasStamina && currentStamina > minimumAmountVigor())
+                // Mark stamina as sufficient again if threshold reached.
+                if (!haveEnoughStamina && currentStamina > minimumAmountVigor())
                 {
-                    hasStamina = true;
-
-                    // If run input is still active, resume fast movement.
-                    if (inputActive)
-                    {
-                        isFast = true;
-                        resultingVelocity = fastSpeed();
-                    }
+                    haveEnoughStamina = true;
                 }
             }
 
-            // --- Update stamina percentage for UI or logic feedback ---
+            // Update running state based on velocity and stamina.
+            hasStamina = resultingVelocity == fastSpeed() && haveEnoughStamina;
+
+            // Update stamina percentage for UI or logic.
             staminaPercentage = (currentStamina / max) * 100f;
         }
     }

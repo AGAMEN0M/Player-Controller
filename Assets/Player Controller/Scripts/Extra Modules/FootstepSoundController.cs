@@ -1,20 +1,31 @@
+/*
+ * ---------------------------------------------------------------------------
+ * Description: Controls footstep and landing sounds for the player, adapting 
+ *              audio playback to the player's movement state (walking, running, crouching, 
+ *              and landing). Uses reflection to access movement state properties from any 
+ *              player controller implementing the expected interface.
+ * 
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine.Audio;
 using UnityEngine;
 
 /// <summary>
 /// Controls the playback of player footstep sounds, adapting to the player's movement state
-/// (walking, running, crouching, and landing sounds).
+/// (walking, running, crouching, and landing).
 /// Uses reflection to work with any player controller exposing the properties defined in IPlayerMovementState.
 /// </summary>
 [AddComponentMenu("Player Controller/Extra Modules/Footstep Sound Controller")]
 public class FootstepSoundController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField, HighlightEmptyReference] private MonoBehaviour playerController; // Player controller component, should implement the required properties.
-    [SerializeField, HighlightEmptyReference] private AudioSource audioSource; // AudioSource used to play sounds.
-    [SerializeField, HighlightEmptyReference] private AudioMixerGroup audioMixerGroup; // Optional audio mixer group for volume and effects control.
+    [SerializeField, ValidateReference] private MonoBehaviour playerController; // Player controller component. Should implement the required properties.
+    [SerializeField, ValidateReference] private AudioSource audioSource; // AudioSource used to play sounds.
+    [SerializeField, ValidateReference(false)] private AudioMixerGroup audioMixerGroup; // Optional audio mixer group for volume and effects control.
 
     [Header("Audio Settings")]
     [SerializeField, Range(0f, 1f)] private float footstepVolume = 0.1f; // Base volume for footstep sounds.
@@ -25,16 +36,16 @@ public class FootstepSoundController : MonoBehaviour
     [Header("Walking & Running Settings")]
     [SerializeField] private float walkInterval = 0.6f; // Time interval between footsteps when walking.
     [SerializeField] private float runInterval = 0.3f; // Time interval between footsteps when running.
-    [SerializeField, HighlightEmptyReference] private List<AudioClip> walkClips; // List of footstep sounds for walking/running.
+    [SerializeField, ValidateReference] private List<AudioClip> walkClips; // List of footstep sounds for walking/running.
 
     [Header("Crouching Settings")]
     [SerializeField] private float crouchWalkInterval = 1.0f; // Interval between footsteps when crouch-walking.
     [SerializeField] private float crouchRunInterval = 0.5f; // Interval between footsteps when crouch-running.
-    [SerializeField, HighlightEmptyReference] private List<AudioClip> crouchClips; // List of footstep sounds for crouching.
+    [SerializeField, ValidateReference] private List<AudioClip> crouchClips; // List of footstep sounds for crouching.
 
     [Header("Landing Sound")]
     [SerializeField] private bool playLandingSound = false; // Toggle landing sound playback on/off.
-    [SerializeField, HighlightEmptyReference] private List<AudioClip> landingClips; // Possible landing sounds.
+    [SerializeField, ValidateReference] private List<AudioClip> landingClips; // Possible landing sounds.
 
     private IPlayerMovementState playerState; // Interface representing the player's movement state.
     private float currentInterval; // Current interval between footstep sounds based on movement state.
@@ -54,14 +65,15 @@ public class FootstepSoundController : MonoBehaviour
     }
 
     #region Unity Lifecycle Methods
+
     /// <summary>
-    /// Initializes references and settings.
+    /// Sets up references and audio configuration for footstep playback.
     /// </summary>
     private void Awake()
     {
         // Check required references to prevent runtime errors.
-        if (!playerController) Debug.LogWarning("Player Controller not assigned.", this);
-        if (!audioSource) Debug.LogWarning("Audio Source not assigned.", this);
+        if (!playerController) Debug.LogError("Player Controller not assigned.", this);
+        if (!audioSource) Debug.LogError("Audio Source not assigned.", this);
 
         // Create an adapter that uses reflection to access properties from playerController.
         playerState = new PlayerMovementStateAdapter(playerController);
@@ -79,7 +91,7 @@ public class FootstepSoundController : MonoBehaviour
     }
 
     /// <summary>
-    /// Physics update to check and play sounds based on player state.
+    /// Performs physics-based update to manage footstep and landing sounds.
     /// </summary>
     private void FixedUpdate()
     {
@@ -90,9 +102,11 @@ public class FootstepSoundController : MonoBehaviour
         var state = GetMovementState(); // Get current movement state.
         UpdateFootsteps(state); // Update footstep sound timing and playback.
     }
+
     #endregion
 
     #region Footstep Sound Logic
+
     /// <summary>
     /// Detects changes in the grounded state and plays landing sound if enabled.
     /// </summary>
@@ -111,7 +125,7 @@ public class FootstepSoundController : MonoBehaviour
             }
             else if (!playLandingSound)
             {
-                // If landing sounds disabled, play a regular footstep sound instead.
+                // If landing sounds are disabled, play a regular footstep sound instead.
                 PlayFootstep(GetMovementState());
             }
         }
@@ -122,7 +136,7 @@ public class FootstepSoundController : MonoBehaviour
 
     /// <summary>
     /// Checks if enough time has passed to play the next footstep sound, then plays it.
-    /// Prevents footstep sound if player is not grounded.
+    /// Skips footstep sounds if the player is not grounded.
     /// </summary>
     /// <param name="state">Current movement state of the player.</param>
     private void UpdateFootsteps(MovementState state)
@@ -146,7 +160,7 @@ public class FootstepSoundController : MonoBehaviour
     /// <param name="state">Current movement state.</param>
     private void PlayFootstep(MovementState state)
     {
-        var clips = (state == MovementState.CrouchWalking || state == MovementState.CrouchRunning)? crouchClips : walkClips;
+        var clips = (state == MovementState.CrouchWalking || state == MovementState.CrouchRunning) ? crouchClips : walkClips;
 
         if (clips == null || clips.Count == 0) return; // No clips available to play.
 
@@ -168,9 +182,11 @@ public class FootstepSoundController : MonoBehaviour
             audioSource.PlayOneShot(clip); // Play the clip once through the AudioSource.
         }
     }
+
     #endregion
 
     #region State Evaluation
+
     /// <summary>
     /// Determines the current movement state based on player state flags.
     /// </summary>
@@ -188,7 +204,7 @@ public class FootstepSoundController : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the current time interval between footsteps based on the movement state.
+    /// Updates the time interval between footsteps according to the current movement state.
     /// </summary>
     /// <param name="state">Current movement state.</param>
     private void SetCurrentInterval(MovementState state)
@@ -199,22 +215,24 @@ public class FootstepSoundController : MonoBehaviour
             MovementState.Running => runInterval,
             MovementState.CrouchWalking => crouchWalkInterval,
             MovementState.CrouchRunning => crouchRunInterval,
-            _ => float.MaxValue  // Prevent footstep sounds if no movement.
+            _ => float.MaxValue // Prevent footstep sounds if no movement.
         };
     }
+
     #endregion
 }
 
 #region Helpers (Interfaces & Reflection)
+
 /// <summary>
 /// Interface defining properties required to retrieve the player's movement state.
 /// </summary>
 public interface IPlayerMovementState
 {
     bool IsGrounded { get; }   // Is the player currently on the ground?
-    bool IsMoving { get; }       // Is the player currently moving?
+    bool IsMoving { get; }     // Is the player currently moving?
     bool IsCrouching { get; }  // Is the player crouching?
-    bool IsRunning { get; }        // Is the player running?
+    bool IsRunning { get; }    // Is the player running?
 }
 
 /// <summary>
@@ -236,30 +254,4 @@ public class PlayerMovementStateAdapter : IPlayerMovementState
     public bool IsRunning => target.TryGetProperty(nameof(IsRunning), out bool value) && value;
 }
 
-/// <summary>
-/// Extension methods for MonoBehaviour to simplify reflection-based property access.
-/// </summary>
-public static class MonoBehaviourExtensions
-{
-    /// <summary>
-    /// Tries to get a public property value by name using reflection.
-    /// </summary>
-    /// <typeparam name="T">Type of the property.</typeparam>
-    /// <param name="mono">The MonoBehaviour to inspect.</param>
-    /// <param name="propName">Name of the property.</param>
-    /// <param name="value">Output value if property exists and is of type T.</param>
-    /// <returns>True if the property was found and value retrieved; otherwise false.</returns>
-    public static bool TryGetProperty<T>(this MonoBehaviour mono, string propName, out T value)
-    {
-        var prop = mono.GetType().GetProperty(propName, BindingFlags.Instance | BindingFlags.Public);
-        if (prop != null && prop.PropertyType == typeof(T))
-        {
-            value = (T)prop.GetValue(mono);
-            return true;
-        }
-
-        value = default;
-        return false;
-    }
-}
 #endregion

@@ -1,3 +1,15 @@
+/*
+ * ---------------------------------------------------------------------------
+ * Description: Detects box-shaped collisions using OverlapBox with runtime-configurable 
+ *              providers for position, size, rotation, layers, triggers, and filtering.
+ *              Supports debug logging and editor gizmo visualization via PhysicsUpdateBroadcaster.
+ *              Automatically registers and unregisters from update cycles.
+ * 
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
 using System.Collections.Generic;
 using UnityEngine;
 using System;

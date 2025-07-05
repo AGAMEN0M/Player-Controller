@@ -1,3 +1,13 @@
+/*
+ * ---------------------------------------------------------------------------
+ * Description: Helper class for serializing and deserializing custom player data
+ *              using JSON, supporting Unity types and enums with type metadata.
+ * 
+ * Author: Lucas Gomes Cecchini
+ * Pseudonym: AGAMENOM
+ * ---------------------------------------------------------------------------
+*/
+
 using System.Collections.Generic;
 using UnityEngine;
 using System;
