@@ -1,9 +1,9 @@
 /*
  * ---------------------------------------------------------------------------
- * Description: Controls footstep and landing sounds for the player, adapting 
- *              audio playback to the player's movement state (walking, running, crouching, 
- *              and landing). Uses reflection to access movement state properties from any 
- *              player controller implementing the expected interface.
+ * Description: Handles playback of footstep and landing sounds based on the player's 
+ *              current movement state. Dynamically adapts timing and clip selection 
+ *              using reflection to read movement properties from any controller 
+ *              implementing the required interface.
  * 
  * Author: Lucas Gomes Cecchini
  * Pseudonym: AGAMENOM
@@ -221,37 +221,3 @@ public class FootstepSoundController : MonoBehaviour
 
     #endregion
 }
-
-#region Helpers (Interfaces & Reflection)
-
-/// <summary>
-/// Interface defining properties required to retrieve the player's movement state.
-/// </summary>
-public interface IPlayerMovementState
-{
-    bool IsGrounded { get; }   // Is the player currently on the ground?
-    bool IsMoving { get; }     // Is the player currently moving?
-    bool IsCrouching { get; }  // Is the player crouching?
-    bool IsRunning { get; }    // Is the player running?
-}
-
-/// <summary>
-/// Adapter using reflection to access the required properties from any player controller.
-/// </summary>
-public class PlayerMovementStateAdapter : IPlayerMovementState
-{
-    private readonly MonoBehaviour target;
-
-    public PlayerMovementStateAdapter(MonoBehaviour target)
-    {
-        this.target = target;
-    }
-
-    // Uses extension method to safely get property values from the target MonoBehaviour.
-    public bool IsGrounded => target.TryGetProperty(nameof(IsGrounded), out bool value) && value;
-    public bool IsMoving => target.TryGetProperty(nameof(IsMoving), out bool value) && value;
-    public bool IsCrouching => target.TryGetProperty(nameof(IsCrouching), out bool value) && value;
-    public bool IsRunning => target.TryGetProperty(nameof(IsRunning), out bool value) && value;
-}
-
-#endregion
