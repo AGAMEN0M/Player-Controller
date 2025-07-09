@@ -25,7 +25,7 @@ public static class PlayerPrefabManager
     private static void InstantiateAndSetupPrefab(string prefabName, GameObject parentObject)
     {
         // Search the project for prefabs with the specified name.
-        string[] prefabGuids = AssetDatabase.FindAssets($"{prefabName} t:Prefab");
+        string[] prefabGuids = AssetDatabase.FindAssets($"\"{prefabName}\" t:Prefab");
 
         // If no prefab was found, log an error and exit.
         if (prefabGuids.Length == 0)
@@ -36,6 +36,12 @@ public static class PlayerPrefabManager
 
         // Convert the first GUID found into a path to the prefab asset.
         string prefabPath = AssetDatabase.GUIDToAssetPath(prefabGuids[0]);
+
+        // If multiple prefabs with the same name are found, log a warning and use the first one found.
+        if (prefabGuids.Length > 1)
+        {
+            Debug.LogWarning($"Multiple prefabs found with name '{prefabName}'. Using the first found: {prefabPath}");
+        }
 
         // Load the prefab asset at the found path.
         GameObject prefabAsset = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
@@ -88,7 +94,7 @@ public static class PlayerPrefabManager
     /// <summary>
     /// Instantiates the "Base Player 3D" prefab under the currently selected object in the editor.
     /// </summary>
-    [MenuItem("GameObject/Player Controller/3D/Base Player 3D", false, 1)]
+    [MenuItem("GameObject/Player Controller/3D/Base Player", false, 1)]
     public static void CreateBasePlayer()
     {
         InstantiateAndSetupPrefab("Player Test (Base) [3D]", Selection.activeGameObject);
@@ -97,9 +103,36 @@ public static class PlayerPrefabManager
     /// <summary>
     /// Instantiates the "Side View 3D" player prefab under the currently selected object in the editor.
     /// </summary>
-    [MenuItem("GameObject/Player Controller/3D/Side View 3D", false, 2)]
+    [MenuItem("GameObject/Player Controller/3D/Side View", false, 2)]
     public static void CreateBasePlayerSideView()
     {
         InstantiateAndSetupPrefab("Player Test (Side View) [3D]", Selection.activeGameObject);
+    }
+
+    /// <summary>
+    /// Instantiates the "First Person 3D" player prefab under the currently selected object in the editor.
+    /// </summary>
+    [MenuItem("GameObject/Player Controller/3D/First Person", false, 3)]
+    public static void CreateBasePlayerFirstPerson()
+    {
+        InstantiateAndSetupPrefab("Player Test (First Person) [3D]", Selection.activeGameObject);
+    }
+
+    /// <summary>
+    /// Instantiates the "Third Person 3D" player prefab under the currently selected object in the editor.
+    /// </summary>
+    [MenuItem("GameObject/Player Controller/3D/Third Person/Player Controller", false, 4)]
+    public static void CreateBasePlayerThirdPerson()
+    {
+        InstantiateAndSetupPrefab("Player Test (Third Person) [3D]", Selection.activeGameObject);
+    }
+
+    /// <summary>
+    /// Instantiates the "Third Person 3D" camera controller prefab under the currently selected object in the editor.
+    /// </summary>
+    [MenuItem("GameObject/Player Controller/3D/Third Person/Camera Controller", false, 5)]
+    public static void CreateBasePlayerThirdPersonCameraController()
+    {
+        InstantiateAndSetupPrefab("Camera Controller (Third Person) [3D]", Selection.activeGameObject);
     }
 }
