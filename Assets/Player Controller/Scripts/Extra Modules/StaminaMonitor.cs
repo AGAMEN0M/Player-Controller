@@ -14,42 +14,142 @@ using UnityEngine;
 using TMPro;
 
 /// <summary>
-/// Displays and updates the player's stamina UI using a generic MonoBehaviour reference.
-/// Uses reflection to read stamina percentage from any component that exposes a public 'StaminaPercent' property.
+/// Displays and updates the player's stamina UI using reflection.
+/// Reads stamina percentage from any component exposing a public 'StaminaPercent' property,
+/// updating the slider and text display accordingly.
 /// </summary>
 [AddComponentMenu("Player Controller/Extra Modules/Stamina Monitor")]
 public class StaminaMonitor : MonoBehaviour
 {
+    #region === Serialized Fields ===
+
     [Header("Player Controller Reference")]
-    [SerializeField, ValidateReference] private MonoBehaviour playerController; // Player controller reference. Must have a public float StaminaPercent property.
+    [SerializeField, ValidateReference, Tooltip("MonoBehaviour that exposes a public 'StaminaPercent' property.")]
+    private MonoBehaviour playerController; // Reference to the player controller providing stamina data.
 
     [Header("Stamina Threshold Settings")]
-    [SerializeField] private float maxStamina = 50f; // Maximum stamina value used for normalization.
-    [SerializeField] private float minStaminaForRun = 12.5f; // Minimum stamina required to run. Used to determine color threshold.
+    [SerializeField, Tooltip("Maximum stamina value used for normalization.")]
+    private float maxStamina = 50f; // Defines the full stamina value for scaling the slider.
+
+    [SerializeField, Tooltip("Minimum stamina required to run, used as a low threshold.")]
+    private float minStaminaForRun = 12.5f; // Minimum stamina value for low-level warning.
 
     [Header("UI Slider Reference")]
-    [SerializeField, ValidateReference(false)] private Slider staminaSlider; // Reference to the UI Slider showing stamina percentage.
+    [SerializeField, ValidateReference(false), Tooltip("UI Slider that displays current stamina percentage.")]
+    private Slider staminaSlider; // Slider that visually represents current stamina.
+
     [Space(5)]
-    [SerializeField] private Color emptyStaminaColor = Color.red; // Color when stamina reaches 0%.
-    [SerializeField] private Color lowStaminaColor = Color.yellow; // Color when stamina is low but above zero.
-    [SerializeField] private Color normalStaminaColor = Color.green; // Color when stamina is at a healthy level.
+
+    [SerializeField, Tooltip("Color used when stamina is completely empty.")]
+    private Color emptyStaminaColor = Color.red; // Red when stamina is zero.
+
+    [SerializeField, Tooltip("Color used when stamina is low but not empty.")]
+    private Color lowStaminaColor = Color.yellow; // Yellow when stamina is below threshold.
+
+    [SerializeField, Tooltip("Color used when stamina is at normal levels.")]
+    private Color normalStaminaColor = Color.green; // Green when stamina is healthy.
 
     [Header("UI Text Reference")]
-    [SerializeField, ValidateReference(false)] private TMP_Text staminaText; // Optional text display of stamina percentage.
+    [SerializeField, ValidateReference(false), Tooltip("Optional text displaying the stamina percentage.")]
+    private TMP_Text staminaText; // Optional text field to display stamina numerically.
 
-    private Image sliderFillImage; // Reference to the fill image of the slider.
-    private float minimumStaminaColorThreshold; // Threshold below which the slider changes to yellow.
-    private IPlayerStaminaInfo playerStamina; // Interface-based adapter to access stamina value via reflection.
+    #endregion
+
+    #region === Private Fields ===
+
+    private Image sliderFillImage; // Reference to the fill area image of the slider.
+    private float minimumStaminaColorThreshold; // Normalized threshold for color change.
+    private IPlayerStaminaInfo playerStamina; // Interface used to access stamina value via reflection.
+
+    #endregion
+
+    #region === Public Properties ===
 
     /// <summary>
-    /// Initializes stamina thresholds, UI components, and adapter for stamina access.
+    /// Gets or sets the player controller reference.
+    /// </summary>
+    public MonoBehaviour PlayerController
+    {
+        get => playerController;
+        set => playerController = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the maximum stamina value.
+    /// </summary>
+    public float MaxStamina
+    {
+        get => maxStamina;
+        set => maxStamina = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the minimum stamina required to run.
+    /// </summary>
+    public float MinStaminaForRun
+    {
+        get => minStaminaForRun;
+        set => minStaminaForRun = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the stamina UI slider reference.
+    /// </summary>
+    public Slider StaminaSlider
+    {
+        get => staminaSlider;
+        set => staminaSlider = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the color used when stamina is empty.
+    /// </summary>
+    public Color EmptyStaminaColor
+    {
+        get => emptyStaminaColor;
+        set => emptyStaminaColor = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the color used when stamina is low.
+    /// </summary>
+    public Color LowStaminaColor
+    {
+        get => lowStaminaColor;
+        set => lowStaminaColor = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the color used when stamina is normal.
+    /// </summary>
+    public Color NormalStaminaColor
+    {
+        get => normalStaminaColor;
+        set => normalStaminaColor = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the text element that displays stamina percentage.
+    /// </summary>
+    public TMP_Text StaminaText
+    {
+        get => staminaText;
+        set => staminaText = value;
+    }
+
+    #endregion
+
+    #region === Unity Lifecycle Methods ===
+
+    /// <summary>
+    /// Initializes stamina thresholds, slider configuration, and reflection adapter.
     /// </summary>
     private void Start()
     {
-        // Calculate the percentage threshold below which stamina is considered low.
+        // Compute color change threshold as percentage.
         minimumStaminaColorThreshold = (minStaminaForRun / maxStamina) * 100f;
 
-        // Setup slider min/max values and get reference to fill image.
+        // Configure slider range and cache fill image reference.
         if (staminaSlider != null)
         {
             staminaSlider.minValue = 0;
@@ -57,62 +157,60 @@ public class StaminaMonitor : MonoBehaviour
             sliderFillImage = staminaSlider.fillRect.GetComponent<Image>();
         }
 
-        // Instantiate the adapter using the reflected stamina property from the target controller.
+        // Initialize reflection adapter if player controller is assigned.
         if (playerController != null)
         {
             playerStamina = new PlayerStaminaAdapter(playerController);
         }
         else
         {
-            Debug.LogError("Player Controller not assigned.", this);
+            Debug.LogError("StaminaMonitor: Player Controller is not assigned.", this);
         }
     }
 
     /// <summary>
-    /// Updates the stamina UI slider and text based on the current stamina percentage.
+    /// Continuously updates the stamina UI each frame.
     /// </summary>
     private void Update()
     {
-        // Skip if the player controller or stamina adapter is not available.
+        // Skip update if no stamina source is available.
         if (playerStamina == null) return;
 
-        // Retrieve current stamina percentage from adapter.
         float stamina = playerStamina.StaminaPercent;
 
-        // Update slider value and color.
+        // Update slider value and adjust color based on current stamina.
         if (staminaSlider != null)
         {
             staminaSlider.value = stamina;
 
             if (stamina <= 0f)
             {
-                // Change color to red if stamina is empty.
-                sliderFillImage.color = emptyStaminaColor;
+                sliderFillImage.color = emptyStaminaColor; // Empty.
             }
             else if (sliderFillImage.color != emptyStaminaColor && stamina <= minimumStaminaColorThreshold)
             {
-                // Change color to yellow if stamina is low but not empty.
-                sliderFillImage.color = lowStaminaColor;
+                sliderFillImage.color = lowStaminaColor; // Low.
             }
             else if (stamina > minimumStaminaColorThreshold)
             {
-                // Change color to green if stamina is in normal range.
-                sliderFillImage.color = normalStaminaColor;
+                sliderFillImage.color = normalStaminaColor; // Normal.
             }
         }
 
-        // Update text label with formatted stamina percentage.
+        // Update text if assigned.
         if (staminaText != null)
         {
             staminaText.text = stamina % 1 == 0 ? $"{stamina:0}%" : $"{stamina:F1}%";
         }
     }
+
+    #endregion
 }
 
 #region Helpers (Interfaces & Reflection)
 
 /// <summary>
-/// Interface defining required stamina property for use with StaminaMonitor.
+/// Defines the stamina information required by the StaminaMonitor.
 /// </summary>
 public interface IPlayerStaminaInfo
 {
@@ -120,24 +218,24 @@ public interface IPlayerStaminaInfo
 }
 
 /// <summary>
-/// Adapter using reflection to access the stamina property from any MonoBehaviour.
+/// Adapter that uses reflection to access 'StaminaPercent' from any MonoBehaviour.
 /// </summary>
 public class PlayerStaminaAdapter : IPlayerStaminaInfo
 {
     private readonly MonoBehaviour target;
 
     /// <summary>
-    /// Constructor that receives the MonoBehaviour reference to extract stamina data.
+    /// Creates a reflection-based adapter for a given MonoBehaviour.
     /// </summary>
-    /// <param name="target">MonoBehaviour that exposes a public StaminaPercent property.</param>
+    /// <param name="target">MonoBehaviour exposing 'StaminaPercent'.</param>
     public PlayerStaminaAdapter(MonoBehaviour target)
     {
         this.target = target;
     }
 
     /// <summary>
-    /// Gets the current stamina percentage using reflection.
-    /// Returns 0 if the property is not found or not valid.
+    /// Retrieves the stamina percentage value using reflection.
+    /// Returns 0 if not found or invalid.
     /// </summary>
     public float StaminaPercent => target.TryGetProperty(nameof(StaminaPercent), out float value) ? value : 0f;
 }

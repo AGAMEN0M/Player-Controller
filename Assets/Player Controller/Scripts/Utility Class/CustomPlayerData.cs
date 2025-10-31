@@ -19,6 +19,28 @@ namespace PlayerController.CustomData
     /// </summary>
     public class CustomPlayerData
     {
+        #region === Inner Classes ===
+
+        /// <summary>Represents a serializable key-value pair with type metadata.</summary>
+        [Serializable]
+        private class Entry
+        {
+            public string key;
+            public string value;
+            public string type;
+        }
+
+        /// <summary>Container class for a list of <see cref="Entry"/> objects for serialization.</summary>
+        [Serializable]
+        private class EntryList
+        {
+            public List<Entry> entries = new();
+        }
+
+        #endregion
+
+        #region === Serialization Methods ===
+
         /// <summary>
         /// Serializes a dictionary of data into a JSON string.
         /// </summary>
@@ -114,20 +136,6 @@ namespace PlayerController.CustomData
             applyData(dict); // Apply the final data.
         }
 
-        /// <summary>Represents a serializable key-value pair with type information.</summary>
-        [Serializable]
-        private class Entry
-        {
-            public string key;
-            public string value;
-            public string type;
-        }
-
-        /// <summary>Container for a list of entries.</summary>
-        [Serializable]
-        private class EntryList
-        {
-            public List<Entry> entries = new();
-        }
+        #endregion
     }
 }

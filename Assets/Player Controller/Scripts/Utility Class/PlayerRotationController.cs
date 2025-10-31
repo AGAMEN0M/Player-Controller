@@ -20,10 +20,16 @@ namespace PlayerController.TransformRuntime
     /// </summary>
     public class PlayerRotationController
     {
+        #region === Delegates & Dependencies ===
+
         private readonly Func<Transform> targetTransform; // Provides the Transform to apply rotation to.
         private readonly Func<Vector2> direction;         // Provides the normalized 2D movement direction (X, Y → X, Z).
         private readonly Func<float> speed;               // Provides the rotation speed multiplier.
         private readonly Func<float> magnitude;           // Minimum magnitude required to trigger rotation.
+
+        #endregion
+
+        #region === Constructor ===
 
         /// <summary>
         /// Creates a rotation controller that rotates a Transform based on 2D directional input.
@@ -42,6 +48,10 @@ namespace PlayerController.TransformRuntime
             OnFixedUpdate += UpdateRotation;
         }
 
+        #endregion
+
+        #region === Public Methods ===
+
         /// <summary>
         /// Disposes the controller and unregisters from FixedUpdate.
         /// </summary>
@@ -54,6 +64,10 @@ namespace PlayerController.TransformRuntime
                 controller = null;
             }
         }
+
+        #endregion
+
+        #region === Private Methods ===
 
         /// <summary>Rotates the target transform toward the input direction on the XZ plane.</summary>
         private void UpdateRotation()
@@ -72,5 +86,7 @@ namespace PlayerController.TransformRuntime
                 targetTransform.Invoke().rotation = Quaternion.Lerp(targetTransform.Invoke().rotation, targetRotation, speed.Invoke() * Time.fixedDeltaTime);
             }
         }
+
+        #endregion
     }
 }

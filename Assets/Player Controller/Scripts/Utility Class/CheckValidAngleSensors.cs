@@ -22,6 +22,8 @@ namespace PlayerController.PhysicsRuntime
     /// </summary>
     public class CheckValidAngleSensors
     {
+        #region === Providers ===
+
         // Delegates for deferred access to runtime values.
         private readonly Func<Transform> targetTransform;
         private readonly Func<float> maxStableAngle;
@@ -31,11 +33,21 @@ namespace PlayerController.PhysicsRuntime
         private readonly Func<Collider[]> colliders;
         private readonly Func<bool> debug;
 
-        // Stores the result of the last slope check.
+        #endregion
+
+        #region === Fields ===
+
+        /// <summary>
+        /// Stores the result of the last slope check.
+        /// </summary>
         public bool isValidAngle = true;
 
         // Reusable buffer to avoid allocations when raycasting.
         private static readonly RaycastHit[] raycastHits = new RaycastHit[8];
+
+        #endregion
+
+        #region === Constructor & Disposal ===
 
         /// <summary>
         /// Initializes the ground angle validation system by injecting all necessary references and configuration options.
@@ -80,6 +92,10 @@ namespace PlayerController.PhysicsRuntime
                 detector = null;
             }
         }
+
+        #endregion
+
+        #region === Core Logic ===
 
         /// <summary>
         /// Performs a downward raycast to check for valid ground below the player.
@@ -167,14 +183,19 @@ namespace PlayerController.PhysicsRuntime
             isValidAngle = false;
         }
 
+        #endregion
+
+        #region === Utilities ===
+
         /// <summary>
         /// Custom comparer to sort RaycastHit results by distance (nearest first).
         /// </summary>
         private class RaycastHitComparer : IComparer<RaycastHit>
         {
             public static readonly RaycastHitComparer Instance = new();
-
             public int Compare(RaycastHit a, RaycastHit b) => a.distance.CompareTo(b.distance);
         }
+
+        #endregion
     }
 }

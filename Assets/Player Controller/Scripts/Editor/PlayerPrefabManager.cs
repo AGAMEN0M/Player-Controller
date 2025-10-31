@@ -17,6 +17,8 @@ using UnityEditor;
 /// </summary>
 public static class PlayerPrefabManager
 {
+    #region === Core Methods ===
+
     /// <summary>
     /// Instantiates a prefab by name and sets it up in the scene under a given parent object.
     /// </summary>
@@ -44,7 +46,7 @@ public static class PlayerPrefabManager
         }
 
         // Load the prefab asset at the found path.
-        GameObject prefabAsset = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+        var prefabAsset = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
         if (prefabAsset == null)
         {
             Debug.LogError($"Prefab not found: {prefabName}.prefab. Please check if the prefab exists in the project and the name is correct.");
@@ -52,10 +54,10 @@ public static class PlayerPrefabManager
         }
 
         // Determine the parent transform, if a parent object was provided.
-        Transform parentTransform = parentObject != null ? parentObject.transform : null;
+        var parentTransform = parentObject != null ? parentObject.transform : null;
 
         // Instantiate the prefab into the scene under the parent.
-        GameObject instantiatedObject = PrefabUtility.InstantiatePrefab(prefabAsset, parentTransform) as GameObject;
+        var instantiatedObject = PrefabUtility.InstantiatePrefab(prefabAsset, parentTransform) as GameObject;
 
         // Proceed to complete the prefab setup process.
         CompletePrefabSetup(prefabName, instantiatedObject);
@@ -90,6 +92,10 @@ public static class PlayerPrefabManager
             }
         };
     }
+
+    #endregion
+
+    #region === Menu Items ===
 
     /// <summary>
     /// Instantiates the "Base Player 3D" prefab under the currently selected object in the editor.
@@ -135,4 +141,6 @@ public static class PlayerPrefabManager
     {
         InstantiateAndSetupPrefab("Camera Controller (Third Person) [3D]", Selection.activeGameObject);
     }
+
+    #endregion
 }

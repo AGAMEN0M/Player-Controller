@@ -4,16 +4,17 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - inputActions: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5,
-      type: 3}
+  - moveAction: {fileID: -8900447243662054193, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  - runAction: {fileID: 4823704372130048406, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  - jumpAction: {fileID: 4366201743391738435, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  - crouchAction: {fileID: 1943687926148146052, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
   - playerTransform: {instanceID: 0}
   - playerRigidbody: {instanceID: 0}
   - standingCollider: {instanceID: 0}
   - crouchingCollider: {instanceID: 0}
-  - highFrictionMaterial: {fileID: 13400000, guid: f0754a578d4aa464c82acb4a8c658230,
-      type: 2}
-  - lowFrictionMaterial: {fileID: 13400000, guid: 6b1f8b320770c3e419cfffabd073a2ff,
-      type: 2}
+  - cameraPivot: {instanceID: 0}
+  - highFrictionMaterial: {fileID: 13400000, guid: f0754a578d4aa464c82acb4a8c658230, type: 2}
+  - lowFrictionMaterial: {fileID: 13400000, guid: 6b1f8b320770c3e419cfffabd073a2ff, type: 2}
   executionOrder: 0
   icon: {fileID: 2800000, guid: cf38a541a1ea83f4f987671c86d5c228, type: 3}
   userData: 

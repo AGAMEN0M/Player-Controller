@@ -18,39 +18,76 @@ public class ThirdPersonCameraController : MonoBehaviour
     #region === Serialized Fields ===
 
     [Header("Input Settings")]
-    [SerializeField, ValidateReference] private InputActionAsset inputActions; // Input action asset used for input binding.
-    [SerializeField] private string zoomActionPath = "UI/ScrollWheel"; // Action path for zooming input.
+    [SerializeField, ValidateReference, Tooltip("Input action for zooming the camera in/out.")]
+    private InputActionReference zoomAction; // Action for zooming input.
 
     [Header("References")]
-    [SerializeField, ValidateReference] private LookInputHandler lookInputHandler; // Input handler for camera rotation.
-    [SerializeField, ValidateReference] private Transform playerTransform; // Root transform of the player.
-    [SerializeField, ValidateReference] private Transform playerPivotTransform; // Pivot from which the camera rotates.
-    [SerializeField, ValidateReference] private Transform mainCameraPivotTransform; // Transform used to orient the camera.
-    [SerializeField, ValidateReference] private Transform collisionCameraPivotTransform; // Camera transform that gets pushed on collision.
+    [SerializeField, ValidateReference, Tooltip("Input handler responsible for capturing camera rotation.")]
+    private LookInputHandler lookInputHandler; // Input handler for camera rotation.
+    
+    [SerializeField, ValidateReference, Tooltip("Root transform of the player.")]
+    private Transform playerTransform; // Root transform of the player.
+    
+    [SerializeField, ValidateReference, Tooltip("Pivot transform from which the camera rotates.")]
+    private Transform playerPivotTransform; // Pivot from which the camera rotates.
+    
+    [SerializeField, ValidateReference, Tooltip("Transform used to orient the camera for rotation.")]
+    private Transform mainCameraPivotTransform; // Transform used to orient the camera.
+    
+    [SerializeField, ValidateReference, Tooltip("Camera transform that adjusts when colliding with objects.")]
+    private Transform collisionCameraPivotTransform; // Camera transform that gets pushed on collision.
 
     [Header("Camera Settings")]
-    [SerializeField, Range(0.05f, 1f)] private float cameraSensitivity = 0.15f; // Sensitivity multiplier for camera rotation.
-    [SerializeField] private Vector2 angleSensitivity = new(1f, 1f); // Per-axis sensitivity for yaw and pitch.
+    [SerializeField, Range(0.05f, 1f), Tooltip("Global multiplier for camera rotation sensitivity.")]
+    private float cameraSensitivity = 0.15f; // Sensitivity multiplier for camera rotation.
+    
+    [SerializeField, Tooltip("Separate sensitivity multipliers for yaw (X) and pitch (Y) axes.")]
+    private Vector2 angleSensitivity = new(1f, 1f); // Per-axis sensitivity for yaw and pitch.
+    
     [Space(5)]
-    [SerializeField] private float minPitch = -40f; // Minimum vertical angle.
-    [SerializeField] private float maxPitch = 90f;  // Maximum vertical angle.
+    
+    [SerializeField, Tooltip("Minimum vertical angle the camera can rotate to (looking down).")]
+    private float minPitch = -40f; // Minimum vertical angle.
+    
+    [SerializeField, Tooltip("Maximum vertical angle the camera can rotate to (looking up).")]
+    private float maxPitch = 90f;  // Maximum vertical angle.
+    
     [Space(5)]
-    [SerializeField] private bool invertY = false; // Whether to invert the vertical look input.
+    
+    [SerializeField, Tooltip("Invert vertical camera input when true.")]
+    private bool invertY = false; // Whether to invert the vertical look input.
 
     [Header("Distance Settings")]
-    [SerializeField, Min(0.1f)] private float minDistance = 1f; // Minimum distance the camera can zoom in.
-    [SerializeField, Min(0f)] private float maxDistance = 5f; // Maximum distance the camera can zoom out.
+    [SerializeField, Min(0.1f), Tooltip("Minimum zoom distance of the camera.")]
+    private float minDistance = 1f; // Minimum distance the camera can zoom in.
+    
+    [SerializeField, Min(0f), Tooltip("Maximum zoom distance of the camera.")]
+    private float maxDistance = 5f; // Maximum distance the camera can zoom out.
+    
     [Space(5)]
-    [SerializeField, Min(0.1f)] private float minCollisionDistance = 0.1f; // Minimum camera distance when colliding.
+    
+    [SerializeField, Min(0.1f), Tooltip("Minimum camera distance when colliding with objects.")]
+    private float minCollisionDistance = 0.1f; // Minimum camera distance when colliding.
+    
     [Space(5)]
-    [SerializeField] private float zoomSpeed = 20f; // Speed at which the camera zooms in/out.
-    [SerializeField] private float collisionDistanceSmoothSpeed = 100f; // Speed of smoothing camera collision movement.
+    
+    [SerializeField, Tooltip("Speed at which the camera zooms in/out.")]
+    private float zoomSpeed = 20f; // Speed at which the camera zooms in/out.
+    
+    [SerializeField, Tooltip("Speed of smoothing camera collision adjustments.")]
+    private float collisionDistanceSmoothSpeed = 100f; // Speed of smoothing camera collision movement.
+    
     [Space(5)]
-    [SerializeField] private float targetCameraDistance = -2f; // Desired camera distance from the pivot.
+    
+    [SerializeField, Tooltip("Target camera distance from pivot.")]
+    private float targetCameraDistance = -2f; // Desired camera distance from the pivot.
 
     [Header("Collision Settings")]
-    [SerializeField] private LayerMask collisionDetectionLayers = -1; // Layers considered for collision detection.
-    [SerializeField] private float collisionDetectionOffset = 0.3f; // Offset to avoid clipping when hitting surfaces.
+    [SerializeField, Tooltip("Layers used for camera collision detection.")]
+    private LayerMask collisionDetectionLayers = -1; // Layers considered for collision detection.
+    
+    [SerializeField, Tooltip("Offset applied to avoid camera clipping into surfaces.")]
+    private float collisionDetectionOffset = 0.3f; // Offset to avoid clipping when hitting surfaces.
 
     #endregion
 
@@ -63,8 +100,164 @@ public class ThirdPersonCameraController : MonoBehaviour
     private bool isCameraActive = true; // Whether camera logic is active.
     private float currentCameraDistance; // Current distance between pivot and camera.
 
-    private float NegativeMaxDistance => -minDistance;
-    private float NegativeMinDistance => -maxDistance;
+    private float NegativeMaxDistance => -minDistance; // Negative equivalent of minimum zoom distance.
+    private float NegativeMinDistance => -maxDistance; // Negative equivalent of maximum zoom distance.
+
+    #endregion
+
+    #region === Properties ===
+
+    /// <summary>
+    /// Gets or sets the input action used for camera zoom.
+    /// </summary>
+    public InputActionReference ZoomAction
+    {
+        get => zoomAction;
+        set => zoomAction = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the input handler for camera rotation.
+    /// </summary>
+    public LookInputHandler LookInputHandler
+    {
+        get => lookInputHandler;
+        set => lookInputHandler = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the player's root transform.
+    /// </summary>
+    public Transform PlayerTransform
+    {
+        get => playerTransform;
+        set => playerTransform = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the pivot transform used for camera rotation.
+    /// </summary>
+    public Transform PlayerPivotTransform
+    {
+        get => playerPivotTransform;
+        set => playerPivotTransform = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the main camera pivot transform.
+    /// </summary>
+    public Transform MainCameraPivotTransform
+    {
+        get => mainCameraPivotTransform;
+        set => mainCameraPivotTransform = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the collision-adjusted camera transform.
+    /// </summary>
+    public Transform CollisionCameraPivotTransform
+    {
+        get => collisionCameraPivotTransform;
+        set => collisionCameraPivotTransform = value;
+    }
+
+    /// <summary>
+    /// Gets or sets separate sensitivity multipliers for yaw and pitch axes.
+    /// </summary>
+    public Vector2 AngleSensitivity
+    {
+        get => angleSensitivity;
+        set => angleSensitivity = value;
+    }
+
+    /// <summary>Gets or sets minimum vertical rotation angle.
+    /// </summary>
+    public float MinPitch
+    {
+        get => minPitch;
+        set => minPitch = value;
+    }
+
+    /// <summary>
+    /// Gets or sets maximum vertical rotation angle.
+    /// </summary>
+    public float MaxPitch
+    {
+        get => maxPitch;
+        set => maxPitch = value;
+    }
+
+    /// <summary>
+    /// Gets or sets minimum zoom distance.
+    /// </summary>
+    public float MinDistance
+    {
+        get => minDistance;
+        set => minDistance = value;
+    }
+
+    /// <summary>
+    /// Gets or sets maximum zoom distance.
+    /// </summary>
+    public float MaxDistance
+    {
+        get => maxDistance;
+        set => maxDistance = value;
+    }
+
+    /// <summary>
+    /// Gets or sets minimum camera collision distance.
+    /// </summary>
+    public float MinCollisionDistance
+    {
+        get => minCollisionDistance;
+        set => minCollisionDistance = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the camera zoom speed.
+    /// </summary>
+    public float ZoomSpeed
+    {
+        get => zoomSpeed;
+        set => zoomSpeed = value;
+    }
+
+    /// <summary>
+    /// Gets or sets smoothing speed for camera collision adjustments.
+    /// </summary>
+    public float CollisionDistanceSmoothSpeed
+    {
+        get => collisionDistanceSmoothSpeed;
+        set => collisionDistanceSmoothSpeed = value;
+    }
+
+    /// <summary>
+    /// Gets or sets target camera distance from pivot.
+    /// </summary>
+    public float TargetCameraDistance
+    {
+        get => targetCameraDistance;
+        set => targetCameraDistance = value;
+    }
+
+    /// <summary>
+    /// Gets or sets collision layers for camera detection.
+    /// </summary>
+    public LayerMask CollisionDetectionLayers
+    {
+        get => collisionDetectionLayers;
+        set => collisionDetectionLayers = value;
+    }
+
+    /// <summary>
+    /// Gets or sets collision offset for camera placement.
+    /// </summary>
+    public float CollisionDetectionOffset
+    {
+        get => collisionDetectionOffset;
+        set => collisionDetectionOffset = value;
+    }
 
     #endregion
 
@@ -73,12 +266,14 @@ public class ThirdPersonCameraController : MonoBehaviour
     private void Awake()
     {
         // Validate required references.
-        if (!inputActions) Debug.LogWarning("inputActions not assigned.", this);
+        if (zoomAction == null) Debug.LogWarning("Zoom Action not assigned.", this);
         if (!lookInputHandler) Debug.LogWarning("LookInputHandler not assigned.", this);
         if (!playerTransform) Debug.LogWarning("Player Transform not assigned.", this);
         if (!playerPivotTransform) Debug.LogWarning("Player Pivot Transform not assigned.", this);
         if (!mainCameraPivotTransform) Debug.LogWarning("Main Camera Pivot Transform not assigned.", this);
         if (!collisionCameraPivotTransform) Debug.LogWarning("Collision Camera Pivot Transform not assigned.", this);
+        if (minPitch > maxPitch) Debug.LogError("Minimum pitch cannot be greater than maximum pitch.", this);
+        if (minDistance > maxDistance) Debug.LogError("Minimum distance cannot be greater than maximum distance.", this);
     }
 
     private void Start()
@@ -88,7 +283,7 @@ public class ThirdPersonCameraController : MonoBehaviour
         currentCameraDistance = targetCameraDistance;
 
         // Bind zoom input from the input system.
-        zoomInputEvent = OnInputSystemEvent<Vector2>.WithAction(inputActions, zoomActionPath, () => isCameraActive)
+        zoomInputEvent = OnInputSystemEvent<Vector2>.WithAction(zoomAction, this, () => isCameraActive)
             .OnHold(value =>
             {
                 targetCameraDistance = Mathf.Clamp(targetCameraDistance + value.y * zoomSpeed * Time.deltaTime, NegativeMinDistance, NegativeMaxDistance);
@@ -98,7 +293,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     }
 
     // Clean up input bindings on destroy.
-    private void OnDestroy() => zoomInputEvent?.UnbindAll();
+    private void OnDestroy() => zoomInputEvent?.Dispose();
 
     private void Update()
     {
@@ -132,7 +327,7 @@ public class ThirdPersonCameraController : MonoBehaviour
         mainCameraPivotTransform.position = playerPivotTransform.position;
 
         // Apply sensitivity to input.
-        Vector2 lookDelta = lookInputHandler.lookDirection * cameraSensitivity;
+        Vector2 lookDelta = lookInputHandler.LookDirection * cameraSensitivity;
 
         // Adjust yaw and pitch with optional Y inversion.
         float yawChange = lookDelta.x * angleSensitivity.x;
@@ -208,13 +403,25 @@ public class ThirdPersonCameraController : MonoBehaviour
 
     #region === Public API ===
 
-    /// <summary>Set camera sensitivity between 0.05 and 1.</summary>
+    /// <summary>
+    /// Sets the global camera rotation sensitivity multiplier.
+    /// Clamps the value between 0.05 (very slow) and 1.0 (full speed).
+    /// </summary>
+    /// <param name="sensitivity">New sensitivity value to apply.</param>
     public void SetCameraSensitivity(float sensitivity) => cameraSensitivity = Mathf.Clamp(sensitivity, 0.05f, 1f);
 
-    /// <summary>Enable or disable Y-axis inversion for camera look.</summary>
+    /// <summary>
+    /// Enables or disables vertical axis inversion for the camera.
+    /// When enabled, moving the input upwards will rotate the camera downwards and vice versa.
+    /// </summary>
+    /// <param name="enabled">True to invert Y-axis, false to use normal orientation.</param>
     public void SetInvertYAxis(bool enabled) => invertY = enabled;
 
-    /// <summary>Enable or disable camera logic processing.</summary>
+    /// <summary>
+    /// Enables or disables all camera processing logic.
+    /// When disabled, the camera will ignore rotation and collision updates.
+    /// </summary>
+    /// <param name="active">True to enable camera logic, false to disable.</param>
     public void SetCameraActive(bool active) => isCameraActive = active;
 
     #endregion

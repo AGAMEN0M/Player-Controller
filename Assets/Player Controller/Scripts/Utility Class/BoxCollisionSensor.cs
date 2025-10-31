@@ -22,11 +22,15 @@ namespace PlayerController.PhysicsRuntime
     /// </summary>
     public class BoxCollisionSensor
     {
+        #region === Providers ===
+
         private readonly Func<bool> enableDetectionProvider; // Controls whether collision detection is enabled at runtime.
         private readonly Func<bool> enableDebugLogProvider; // Controls whether collisions are logged in the console when detected.
         private readonly Func<DetectionFilter> filterModeProvider; // Specifies which filtering logic to apply to detected colliders.
         private readonly Func<Transform> referenceParentTransformProvider; // Used in filtering: a reference transform to exclude children from detection.
         private readonly Func<HashSet<string>> ignoredTagsProvider; // Used in filtering: a set of tags to ignore from detection.
+        private readonly Func<LayerMask> collisionLayerMaskProvider; // Specifies which layers should be considered for collision detection.
+        private readonly Func<QueryTriggerInteraction> triggerInteractionProvider; // Specifies whether trigger colliders should be included.
 
         /// <summary>Provides the world-space center position of the box.</summary>
         public Func<Vector3> boxCenterProvider;
@@ -37,9 +41,6 @@ namespace PlayerController.PhysicsRuntime
         /// <summary>Provides the rotation of the box in world space.</summary>
         public Func<Quaternion> boxRotationProvider;
 
-        private readonly Func<LayerMask> collisionLayerMaskProvider; // Specifies which layers should be considered for collision detection.
-        private readonly Func<QueryTriggerInteraction> triggerInteractionProvider; // Specifies whether trigger colliders should be included.
-
         /// <summary>Target object for drawing gizmos (e.g., used with editor selection).</summary>
         public Func<GameObject> gizmoTargetObjectProvider;
 
@@ -49,16 +50,51 @@ namespace PlayerController.PhysicsRuntime
         /// <summary>Provides the color to use when drawing gizmos.</summary>
         public Func<Color> gizmosColorProvider;
 
-        /// <summary>Defines how collision results are filtered after detection.</summary>
-        public enum DetectionFilter { None, IsNotChildOf, IgnoreByTags, All }
+        #endregion
 
-        /// <summary>Specifies when gizmos should be drawn in the editor.</summary>
-        public enum GizmoDisplayMode { None, Always, SelectedOnly }
+        #region === Enums ===
+
+        /// <summary> Defines how collision results are filtered after detection. </summary>
+        public enum DetectionFilter
+        {
+            /// <summary> No filtering is applied. All colliders are considered valid detections. </summary>
+            None,
+
+            /// <summary> Colliders that are children of the specified reference transform are excluded. </summary>
+            IsNotChildOf,
+
+            /// <summary> Colliders whose tags are included in the ignored tags list are excluded. </summary>
+            IgnoreByTags,
+
+            /// <summary> Combines both filters: excludes children of the reference transform and ignored tags. </summary>
+            All
+        }
+
+        /// <summary> Specifies when gizmos should be drawn in the editor. </summary>
+        public enum GizmoDisplayMode
+        {
+            /// <summary> Gizmos are never drawn. </summary>
+            None,
+
+            /// <summary> Gizmos are always drawn, regardless of selection state. </summary>
+            Always,
+
+            /// <summary> Gizmos are drawn only when the target object is selected. </summary>
+            SelectedOnly
+        }
+
+        #endregion
+
+        #region === Fields ===
 
         private readonly Collider[] hitResults = new Collider[16]; // Reusable array for OverlapBox collision hits.
 
         /// <summary>Indicates whether a collision was detected during the last check.</summary>
         public bool collisionDetected = false;
+
+        #endregion
+
+        #region === Constructor & Disposal ===
 
         /// <summary>
         /// Constructs a new BoxCollisionSensor with configurable runtime data providers and filtering options.
@@ -132,6 +168,10 @@ namespace PlayerController.PhysicsRuntime
             }
         }
 
+        #endregion
+
+        #region === Core Logic ===
+
         // Performs collision detection using OverlapBox and updates the state accordingly.
         private void CheckForCollisions()
         {
@@ -186,5 +226,7 @@ namespace PlayerController.PhysicsRuntime
                 _ => true, // Fallback case, default to accepting.
             };
         }
+
+        #endregion
     }
 }

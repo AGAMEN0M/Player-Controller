@@ -18,9 +18,7 @@ using UnityEditor;
 public class SceneListEditor : ScriptableObject
 {
 #if UNITY_EDITOR
-    /// <summary>
-    /// List of scene assets to display in the dropdown.
-    /// </summary>
+    [Tooltip("List of scene assets to display in the dropdown.")]
     public List<SceneAsset> scenes = new();
 #endif
 }

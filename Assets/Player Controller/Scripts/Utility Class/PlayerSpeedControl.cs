@@ -21,6 +21,8 @@ namespace PlayerController.Abilities
     /// </summary>
     public class PlayerSpeedControl
     {
+        #region === Delegates ===
+
         // Delegates returning configuration values or state information.
         private readonly Func<float> normalSpeed;            // Returns the player's normal movement speed.
         private readonly Func<float> fastSpeed;              // Returns the player's fast (running) speed.
@@ -30,13 +32,19 @@ namespace PlayerController.Abilities
         private readonly Func<float> staminaRecoveryRate;    // Returns the rate at which stamina regenerates when not running.
         private readonly Func<bool> isMove;                  // Returns whether the player is currently moving.
 
+        #endregion
+
+        #region === Private Fields ===
+
         private readonly bool useStamina; // Indicates whether the stamina system is enabled.
-
         private float currentStamina; // Current stamina value of the player.
-
         private bool subscribedToUpdate; // Tracks subscription to the fixed update event.
         private bool isFast;             // Whether the player is currently running.
         private bool haveEnoughStamina;  // Whether the player currently has enough stamina to run.
+
+        #endregion
+
+        #region === Public Fields ===
 
         /// <summary>
         /// Final resulting movement speed based on the player's current state.
@@ -52,6 +60,10 @@ namespace PlayerController.Abilities
         /// Player's stamina percentage (0 to 100) based on current and max stamina.
         /// </summary>
         public float staminaPercentage;
+
+        #endregion
+
+        #region === Constructors ===
 
         /// <summary>
         /// Constructor for speed control without stamina system.
@@ -102,6 +114,10 @@ namespace PlayerController.Abilities
             SubscribeUpdate();
         }
 
+        #endregion
+
+        #region === Subscriptions ===
+
         /// <summary>
         /// Subscribes the Update method to the fixed update event.
         /// </summary>
@@ -131,6 +147,10 @@ namespace PlayerController.Abilities
             controller = null;
         }
 
+        #endregion
+
+        #region === Movement Methods ===
+
         /// <summary>
         /// Attempts to start running if stamina permits.
         /// </summary>
@@ -158,6 +178,10 @@ namespace PlayerController.Abilities
             isFast = false;
             resultingVelocity = normalSpeed();
         }
+
+        #endregion
+
+        #region === Update Logic ===
 
         /// <summary>
         /// Updates stamina depletion, regeneration, and resulting velocity each fixed frame.
@@ -206,5 +230,7 @@ namespace PlayerController.Abilities
             // Update stamina percentage for UI or logic.
             staminaPercentage = (currentStamina / max) * 100f;
         }
+
+        #endregion
     }
 }

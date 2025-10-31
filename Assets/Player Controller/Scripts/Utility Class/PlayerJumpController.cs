@@ -21,6 +21,8 @@ namespace PlayerController.PhysicsRuntime
     /// </summary>
     public class PlayerJumpController
     {
+        #region === Fields ===
+
         private readonly Func<Rigidbody> targetRigidbody; // Function that provides the target Rigidbody to apply jump force.
         private readonly Func<bool> isGrounded;           // Function that indicates whether the character is on the ground.
         private readonly Func<int> maxJumps;              // Function that returns the maximum number of jumps allowed.
@@ -35,6 +37,10 @@ namespace PlayerController.PhysicsRuntime
 
         private bool coyoteJumpUsed;        // Indicates whether the coyote's jump has already been consumed.
         private bool isInCoyoteWindow;      // Indicates whether we are still within the coyote time window.
+
+        #endregion
+
+        #region === Constructor ===
 
         /// <summary>
         /// Initializes the jump controller with mandatory and optional functions.
@@ -53,6 +59,10 @@ namespace PlayerController.PhysicsRuntime
             OnFixedUpdate += Update;
         }
 
+        #endregion
+
+        #region === Public Methods ===
+
         /// <summary>
         /// Unregisters the controller from the FixedUpdate event and resets it.
         /// </summary>
@@ -67,57 +77,13 @@ namespace PlayerController.PhysicsRuntime
         }
 
         /// <summary>
-        /// Updates the controller state with each FixedUpdate.
-        /// Responsible for updating the grounded, controlling the coyote time window and resetting the jump counter.
-        /// </summary>
-        private void Update()
-        {
-            bool groundedNow = isGrounded.Invoke();
-
-            // Ignores grounded immediately after jumping to avoid detecting collision with ceiling or floor incorrectly.
-            if (Time.fixedTime < jumpCooldownTime)
-            {
-                groundedNow = false;
-            }
-
-            // Detects landing: resets the jump counter and allows the coyote to jump again.
-            if (groundedNow && !wasGroundedLastFrame)
-            {
-                jumpCount = 0;
-                coyoteJumpUsed = false;
-                lastGroundedTime = Time.fixedTime;
-            }
-
-            // Detects ground exit: starts coyote timing and releases coyote jump.
-            if (!groundedNow && wasGroundedLastFrame)
-            {
-                lastGroundedTime = Time.fixedTime;
-                coyoteJumpUsed = false;
-            }
-
-            wasGroundedLastFrame = groundedNow;
-
-            // Calculates whether we are still within the coyote time window.
-            float allowedCoyote = Mathf.Max(0f, coyoteTime.Invoke());
-            isInCoyoteWindow = (Time.fixedTime - lastGroundedTime) <= allowedCoyote;
-
-            // If the coyote's timer is up, the character is not on the ground, has not used the coyote jump
-            // and has not yet jumped, consumes the jump to prevent infinite jumps off the ground.
-            if (!isInCoyoteWindow && !groundedNow && !coyoteJumpUsed && jumpCount == 0)
-            {
-                jumpCount++;
-                coyoteJumpUsed = true;
-            }
-        }
-
-        /// <summary>
         /// Attempts to perform the jump by applying force to the Rigidbody, respecting the maximum jumps and coyote time rules.
         /// </summary>
         /// <param name="jumpForce">Force applied to the jump (default 5f).</param>
         /// <returns>True if the jump was performed, false otherwise.</returns>
         public bool OnJump(float jumpForce = 5f)
         {
-            if (targetRigidbody == null || targetRigidbody.Invoke() == null) return false;
+            if (targetRigidbody == null || targetRigidbody.Invoke() == null || Time.timeScale == 0f) return false;
 
             int maxAllowedJumps = Mathf.Max(1, maxJumps.Invoke());
             bool groundedNow = isGrounded.Invoke();
@@ -163,5 +129,55 @@ namespace PlayerController.PhysicsRuntime
 
             return true;
         }
+
+        #endregion
+
+        #region === Private Methods ===
+
+        /// <summary>
+        /// Updates the controller state with each FixedUpdate.
+        /// Responsible for updating the grounded, controlling the coyote time window and resetting the jump counter.
+        /// </summary>
+        private void Update()
+        {
+            bool groundedNow = isGrounded.Invoke();
+
+            // Ignores grounded immediately after jumping to avoid detecting collision with ceiling or floor incorrectly.
+            if (Time.fixedTime < jumpCooldownTime)
+            {
+                groundedNow = false;
+            }
+
+            // Detects landing: resets the jump counter and allows the coyote to jump again.
+            if (groundedNow && !wasGroundedLastFrame)
+            {
+                jumpCount = 0;
+                coyoteJumpUsed = false;
+                lastGroundedTime = Time.fixedTime;
+            }
+
+            // Detects ground exit: starts coyote timing and releases coyote jump.
+            if (!groundedNow && wasGroundedLastFrame)
+            {
+                lastGroundedTime = Time.fixedTime;
+                coyoteJumpUsed = false;
+            }
+
+            wasGroundedLastFrame = groundedNow;
+
+            // Calculates whether we are still within the coyote time window.
+            float allowedCoyote = Mathf.Max(0f, coyoteTime.Invoke());
+            isInCoyoteWindow = (Time.fixedTime - lastGroundedTime) <= allowedCoyote;
+
+            // If the coyote's timer is up, the character is not on the ground, has not used the coyote jump
+            // and has not yet jumped, consumes the jump to prevent infinite jumps off the ground.
+            if (!isInCoyoteWindow && !groundedNow && !coyoteJumpUsed && jumpCount == 0)
+            {
+                jumpCount++;
+                coyoteJumpUsed = true;
+            }
+        }
+
+        #endregion
     }
 }

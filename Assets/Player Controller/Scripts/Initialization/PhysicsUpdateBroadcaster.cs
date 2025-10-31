@@ -29,6 +29,8 @@ namespace PlayerController.PhysicsRuntime
     /// </summary>
     public class PhysicsUpdateBroadcaster : MonoBehaviour
     {
+        #region === Fields ===
+
         /// <summary> Singleton instance of this broadcaster. </summary>
         public static PhysicsUpdateBroadcaster Instance { get; private set; }
 
@@ -43,6 +45,10 @@ namespace PlayerController.PhysicsRuntime
 
         // List of all registered sensors for gizmo rendering.
         private static readonly List<BoxCollisionSensor> registeredSensors = new();
+
+        #endregion
+
+        #region === Unity Lifecycle Methods ===
 
         private void Awake()
         {
@@ -61,6 +67,10 @@ namespace PlayerController.PhysicsRuntime
         private void FixedUpdate() => OnFixedUpdate?.Invoke(); // Broadcast FixedUpdate event.
         private void LateUpdate() => OnLateUpdate?.Invoke(); // Broadcast LateUpdate event.
 
+        #endregion
+
+        #region === Gizmo Drawing ===
+
         // Draw gizmos for all registered sensors, if applicable.
         private void OnDrawGizmos()
         {
@@ -70,10 +80,7 @@ namespace PlayerController.PhysicsRuntime
                 var gizmoMode = sensor.gizmoDrawingModeProvider?.Invoke() ?? GizmoDisplayMode.None;
                 var gizmoTarget = sensor.gizmoTargetObjectProvider?.Invoke();
 
-                if (gizmoMode == GizmoDisplayMode.Always)
-                {
-                    DrawSensorGizmo(sensor);
-                }
+                if (gizmoMode == GizmoDisplayMode.Always) DrawSensorGizmo(sensor);
 
             #if UNITY_EDITOR
                 // Only draw if the sensor target is selected in the editor.
@@ -93,16 +100,17 @@ namespace PlayerController.PhysicsRuntime
             Gizmos.DrawWireCube(Vector3.zero, sensor.boxSizeProvider());
         }
 
+        #endregion
+
+        #region === Sensor Management ===
+
         /// <summary>
         /// Registers a sensor to receive gizmo drawing.
         /// </summary>
         /// <param name="sensor">Sensor to register.</param>
         public static void AddSensor(BoxCollisionSensor sensor)
         {
-            if (!registeredSensors.Contains(sensor))
-            {
-                registeredSensors.Add(sensor);
-            }
+            if (!registeredSensors.Contains(sensor)) registeredSensors.Add(sensor);
         }
 
         /// <summary>
@@ -111,11 +119,12 @@ namespace PlayerController.PhysicsRuntime
         /// <param name="sensor">Sensor to unregister.</param>
         public static void RemoveSensor(BoxCollisionSensor sensor)
         {
-            if (registeredSensors.Contains(sensor))
-            {
-                registeredSensors.Remove(sensor);
-            }
+            if (registeredSensors.Contains(sensor)) registeredSensors.Remove(sensor);
         }
+
+        #endregion
+
+        #region === Initialization ===
 
         /// <summary>
         /// Automatically ensures a single persistent instance exists across scenes.
@@ -123,14 +132,13 @@ namespace PlayerController.PhysicsRuntime
         [RuntimeInitializeOnLoadMethod]
         public static void Initialize()
         {
-            if (Instance != null)
-            {
-                return; // Already initialized.
-            }
+            if (Instance != null) return; // Already initialized.
 
             GameObject gameObject = new("[Physics Update Broadcaster]");
             gameObject.AddComponent<PhysicsUpdateBroadcaster>();
             DontDestroyOnLoad(gameObject);
         }
+
+        #endregion
     }
 }

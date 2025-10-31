@@ -17,16 +17,20 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+#region === Attribute Definition ===
+
 /// <summary>
 /// Attribute to display a field as read-only in the Unity Inspector.
 /// This does not prevent modification via code; it only disables editing in the Inspector.
 /// </summary>
-public class ReadOnlyInInspectorAttribute : PropertyAttribute
-{
-    // This is a marker attribute with no additional logic.
-}
+public class ReadOnlyInInspectorAttribute : PropertyAttribute { }
+
+#endregion
 
 #if UNITY_EDITOR
+
+#region === Property Drawer ===
+
 /// <summary>
 /// Custom property drawer for the ReadOnlyInInspectorAttribute.
 /// Renders the decorated field as disabled (read-only) in the Inspector.
@@ -44,4 +48,7 @@ public class ReadOnlyInInspectorDrawer : PropertyDrawer
         GUI.enabled = true; // Re-enable GUI for other fields.
     }
 }
+
+#endregion
+
 #endif

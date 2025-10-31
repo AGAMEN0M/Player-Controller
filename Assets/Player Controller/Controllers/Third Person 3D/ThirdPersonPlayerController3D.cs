@@ -27,89 +27,211 @@ using static PlayerController.Utils.PlayerUtils;
 /// collision detection, stamina, and rotation logic. Designed for modular extension using sensors, 
 /// input events, and gameplay states.
 /// </summary>
+[UseHeaderGroupInspector]
 [AddComponentMenu("Player Controller/3D/Player Controller (Third Person)")]
 public class ThirdPersonPlayerController3D : MonoBehaviour
 {
+    #region === Enums ===
+
+    /// <summary>
+    /// Defines how the player control behaves.
+    /// </summary>
+    public enum PlayerControlMode
+    {
+        Automatic, // Automatic control mode.
+        Manual     // Manual control mode.
+    }
+
+    /// <summary>
+    /// Defines available abilities the player can have.
+    /// </summary>
+    public enum PlayerAbility
+    {
+        None,      // No abilities.
+        CanCrouch, // Ability to crouch.
+        CanJump    // Ability to jump.
+    }
+
+    /// <summary>
+    /// Defines player movement modes.
+    /// </summary>
+    public enum PlayerMovement
+    {
+        justWalk, // Player can only walk.
+        canRun    // Player can run.
+    }
+
+    #endregion
+
     #region === Serialized Fields ===
 
-    [Header("Input Settings")]
-    [SerializeField, ValidateReference] private InputActionAsset inputActions; // Reference to the Input Action Asset for player controls.
-    [SerializeField] private string moveActionPath = "Player/Move"; // Input action path for movement.
-    [SerializeField] private string runActionPath = "Player/Run"; // Input action path for running.
-    [SerializeField] private string jumpActionPath = "Player/Jump"; // Input action path for jumping.
-    [SerializeField] private string crouchActionPath = "Player/Crouch"; // Input action path for crouching.
+    [Header("Input Settings"), HeaderGroup]
+    [SerializeField, ValidateReference, Tooltip("Input action that controls player movement.")]
+    private InputActionReference moveAction; // Input action for movement.
 
-    [Header("References")]
-    [SerializeField, ValidateReference] private Transform playerTransform; // Transform of the player object.
-    [SerializeField, ValidateReference] private Rigidbody playerRigidbody; // Rigidbody used for physics movement.
-    [SerializeField, ValidateReference] private Collider standingCollider; // Collider used when player is standing.
-    [SerializeField, ValidateReference] private Collider crouchingCollider; // Collider used when player is crouching.
+    [SerializeField, ValidateReference, Tooltip("Input action that triggers running when pressed.")]
+    private InputActionReference runAction; // Input action for running.
 
-    [Header("Camera Settings")]
-    [SerializeField, ValidateReference] private Transform cameraPivot; // Reference to camera pivot transform.
-    [SerializeField, ValidateReference] private Transform worldCameraPivot;
-    [SerializeField] private Vector3 standingCameraLocalPos = new(0f, 1.4f, 0f); // Local position when standing.
-    [SerializeField] private Vector3 crouchingCameraLocalPos = new(0f, 0.3f, 0.4f); // Local position when crouching.
-    [SerializeField] private float cameraLerpSpeed = 10f; // Speed for camera position interpolation.
+    [SerializeField, ValidateReference, Tooltip("Input action that triggers jump behavior.")]
+    private InputActionReference jumpAction; // Input action for jumping.
 
-    [Header("Movement Settings")]
-    [SerializeField] private float walkSpeed = 1f; // Walking speed.
-    [SerializeField] private float runSpeed = 5f; // Running speed.
+    [SerializeField, ValidateReference, Tooltip("Input action that triggers crouch behavior.")]
+    private InputActionReference crouchAction; // Input action for crouching.
+
+    [Header("References"), HeaderGroup]
+    [SerializeField, ValidateReference, Tooltip("Transform component representing the player in the scene.")]
+    private Transform playerTransform; // Transform of the player object.
+
+    [SerializeField, ValidateReference, Tooltip("Rigidbody component responsible for physics-based movement.")]
+    private Rigidbody playerRigidbody; // Rigidbody used for physics movement.
+
+    [SerializeField, ValidateReference, Tooltip("Collider used when the player is standing upright.")]
+    private Collider standingCollider; // Collider used when player is standing.
+
+    [SerializeField, ValidateReference, Tooltip("Collider used when the player is crouching.")]
+    private Collider crouchingCollider; // Collider used when player is crouching.
+
+    [Header("Camera Settings"), HeaderGroup]
+    [SerializeField, ValidateReference, Tooltip("Pivot transform used for local camera movement.")]
+    private Transform cameraPivot; // Reference to camera pivot transform.
+
+    [SerializeField, ValidateReference, Tooltip("Pivot used for world-space camera alignment.")]
+    private Transform worldCameraPivot; // Reference to world-space camera pivot.
+
+    [SerializeField, Tooltip("Local camera position when standing.")]
+    private Vector3 standingCameraLocalPos = new(0f, 1.4f, 0f); // Local position when standing.
+    
+    [SerializeField, Tooltip("Local camera position when crouching.")]
+    private Vector3 crouchingCameraLocalPos = new(0f, 0.3f, 0.4f); // Local position when crouching.
+    
+    [SerializeField, Tooltip("Speed used to interpolate between camera positions.")]
+    private float cameraLerpSpeed = 10f; // Speed for camera position interpolation.
+
+    [Header("Movement Settings"), HeaderGroup]
+    [SerializeField, Tooltip("Base speed applied when walking.")]
+    private float walkSpeed = 1f; // Walking speed.
+
+    [SerializeField, Tooltip("Base speed applied when running.")]
+    private float runSpeed = 5f; // Running speed.
+
     [Space(5)]
-    [SerializeField] private float crouchWalkSpeed = 1f; // Walking speed while crouching.
-    [SerializeField] private float crouchRunSpeed = 1.5f; // Running speed while crouching.
+
+    [SerializeField, Tooltip("Walking speed applied while crouching.")]
+    private float crouchWalkSpeed = 1f; // Walking speed while crouching.
+
+    [SerializeField, Tooltip("Running speed applied while crouching.")]
+    private float crouchRunSpeed = 1.5f; // Running speed while crouching.
+
     [Space(5)]
-    [SerializeField] private float rotationSmoothSpeed = 10f; // Smooth factor for player rotation.
+
+    [SerializeField, Tooltip("Rotation smooth factor for gradual turning during movement.")]
+    private float rotationSmoothSpeed = 10f; // Smooth factor for player rotation.
+
     [Space(5)]
-    [SerializeField] private float jumpForce = 5f; // Force applied on jump.
-    [SerializeField] private int maxJumpCount = 2; // Maximum number of jumps allowed (for double jump, etc.).
-    [SerializeField] private float coyoteTimeDuration = 0.15f; // Time window to still allow jump after leaving ground.
 
-    [Header("Stamina Settings")]
-    [SerializeField] private float maxStamina = 50f; // Maximum stamina value.
-    [SerializeField] private float minStaminaForRun = 12.5f; // Minimum stamina required to start running.
+    [SerializeField, Tooltip("Vertical force applied to the player when jumping.")]
+    private float jumpForce = 5f; // Force applied on jump.
+
+    [SerializeField, Tooltip("Maximum number of consecutive jumps allowed (e.g., double jump).")]
+    private int maxJumpCount = 2; // Maximum number of jumps allowed (for double jump, etc.).
+
+    [SerializeField, Tooltip("Extra time allowed to jump after leaving the ground.")]
+    private float coyoteTimeDuration = 0.15f; // Time window to still allow jump after leaving ground.
+
+    [Header("Stamina Settings"), HeaderGroup]
+    [SerializeField, Tooltip("Maximum stamina value the player can have.")]
+    private float maxStamina = 50f; // Maximum stamina value.
+
+    [SerializeField, Tooltip("Minimum stamina required before the player can run.")]
+    private float minStaminaForRun = 12.5f; // Minimum stamina required to start running.
+
     [Space(5)]
-    [SerializeField] private float staminaDepletionRate = 15f; // Stamina drain rate when running.
-    [SerializeField] private float staminaRecoveryRate = 3f; // Stamina recovery rate when not running.
 
-    [Header("Player State Settings")]
-    [SerializeField] private PlayerControlMode controlMode = PlayerControlMode.Automatic; // Player control mode.
-    [SerializeField] private PlayerAbility currentAbility = PlayerAbility.CanJump; // Current player ability.
-    [SerializeField] private PlayerMovement movementMode = PlayerMovement.canRun; // Movement mode (walk or run enabled).
+    [SerializeField, Tooltip("Rate at which stamina decreases while running.")]
+    private float staminaDepletionRate = 15f; // Stamina drain rate when running.
 
-    [Header("Collision Layers")]
-    [SerializeField] private LayerMask groundLayers = -1; // Layers considered as ground.
-    [SerializeField] private LayerMask obstacleLayers = -1; // Layers considered as obstacles.
-    [SerializeField] private LayerMask ceilingLayers = -1; // Layers considered as ceiling for crouch checks.
+    [SerializeField, Tooltip("Rate at which stamina regenerates while idle or walking.")]
+    private float staminaRecoveryRate = 3f; // Stamina recovery rate when not running.
 
-    [Header("Ground Sensor Settings")]
-    [SerializeField] private Vector3 groundSensorBoxSize = new(0.2f, 0.3f, 0.2f); // Size of ground detection box.
-    [SerializeField, TagsDropdown] private List<string> groundIgnoredTags = new() { "Ignore Collision" }; // Tags ignored by ground sensor.
+    [Header("Player State Settings"), HeaderGroup]
+    [SerializeField, Tooltip("Defines how player control input is handled (automatic or manual).")]
+    private PlayerControlMode controlMode = PlayerControlMode.Automatic; // Player control mode.
 
-    [Header("Obstacle Sensor Settings")]
-    [SerializeField] private Vector3 obstacleSensorCenter = new(0f, 0.8f, 0.45f); // Center offset for obstacle sensor.
-    [SerializeField] private Vector3 obstacleSensorSize = new(0.25f, 1.5f, 0.2f); // Size of obstacle detection box.
+    [SerializeField, Tooltip("Defines the current active ability the player can use.")]
+    private PlayerAbility currentAbility = PlayerAbility.CanJump; // Current player ability.
+
+    [SerializeField, Tooltip("Defines current movement mode (walking or running capability).")]
+    private PlayerMovement movementMode = PlayerMovement.canRun; // Movement mode (walk or run enabled).
+
+    [Header("Collision Layers"), HeaderGroup]
+    [SerializeField, Tooltip("Specifies which layers are treated as ground for movement detection.")]
+    private LayerMask groundLayers = -1; // Layers considered as ground.
+
+    [SerializeField, Tooltip("Specifies which layers are treated as obstacles for movement blocking.")]
+    private LayerMask obstacleLayers = -1; // Layers considered as obstacles.
+
+    [SerializeField, Tooltip("Specifies which layers are treated as ceilings for crouch detection.")]
+    private LayerMask ceilingLayers = -1; // Layers considered as ceiling for crouch checks.
+
+    [Header("Ground Sensor Settings"), HeaderGroup]
+    [SerializeField, Tooltip("Defines the size of the ground detection box for grounded checks.")]
+    private Vector3 groundSensorBoxSize = new(0.2f, 0.3f, 0.2f); // Size of ground detection box.
+
+    [SerializeField, TagsDropdown, Tooltip("List of tags ignored by the ground sensor during detection.")]
+    private List<string> groundIgnoredTags = new() { "Ignore Collision" }; // Tags ignored by ground sensor.
+
+    [Header("Obstacle Sensor Settings"), HeaderGroup]
+    [SerializeField, Tooltip("Center offset of the obstacle detection box.")]
+    private Vector3 obstacleSensorCenter = new(0f, 0.8f, 0.45f); // Center offset for obstacle sensor.
+
+    [SerializeField, Tooltip("Defines the size of the obstacle detection box.")]
+    private Vector3 obstacleSensorSize = new(0.25f, 1.5f, 0.2f); // Size of obstacle detection box.
+
     [Space(5)]
-    [SerializeField] private Vector3 crouchObstacleCenter = new(0f, 0.35f, 0.45f); // Obstacle sensor center when crouching.
-    [SerializeField] private Vector3 crouchObstacleSize = new(0.25f, 0.4f, 0.2f); // Obstacle sensor size when crouching.
-    [SerializeField, TagsDropdown] private List<string> obstacleIgnoredTags = new() { "Ignore Collision" }; // Tags ignored by obstacle sensor.
 
-    [Header("Ceiling Sensor Settings")]
-    [SerializeField] private Vector3 ceilingSensorCenter = new(0f, 0.8f, 0f); // Center offset for ceiling sensor.
-    [SerializeField] private Vector3 ceilingSensorSize = new(0.34f, 1.4f, 0.36f); // Size of ceiling detection box.
-    [SerializeField, TagsDropdown] private List<string> ceilingIgnoredTags = new() { "Ignore Collision" }; // Tags ignored by ceiling sensor.
+    [SerializeField, Tooltip("Center offset of the obstacle detection box when crouching.")]
+    private Vector3 crouchObstacleCenter = new(0f, 0.35f, 0.45f); // Obstacle sensor center when crouching.
 
-    [Header("Physics Material Settings")]
-    [SerializeField, ValidateReference] private PhysicsMaterial highFrictionMaterial; // Physics material for high friction surfaces.
-    [SerializeField, ValidateReference] private PhysicsMaterial lowFrictionMaterial; // Physics material for low friction surfaces.
+    [SerializeField, Tooltip("Size of the obstacle detection box when crouching.")]
+    private Vector3 crouchObstacleSize = new(0.25f, 0.4f, 0.2f); // Obstacle sensor size when crouching.
+
+    [SerializeField, TagsDropdown, Tooltip("List of tags ignored by the obstacle sensor during detection.")]
+    private List<string> obstacleIgnoredTags = new() { "Ignore Collision" }; // Tags ignored by obstacle sensor.
+
+    [Header("Ceiling Sensor Settings"), HeaderGroup]
+    [SerializeField, Tooltip("Center offset of the ceiling detection box.")]
+    private Vector3 ceilingSensorCenter = new(0f, 0.8f, 0f); // Center offset for ceiling sensor.
+
+    [SerializeField, Tooltip("Defines the size of the ceiling detection box.")]
+    private Vector3 ceilingSensorSize = new(0.34f, 1.4f, 0.36f); // Size of ceiling detection box.
+
+    [SerializeField, TagsDropdown, Tooltip("List of tags ignored by the ceiling sensor during detection.")]
+    private List<string> ceilingIgnoredTags = new() { "Ignore Collision" }; // Tags ignored by ceiling sensor.
+
+    [Header("Physics Material Settings"), HeaderGroup]
+    [SerializeField, ValidateReference, Tooltip("Physics material used for high-friction ground surfaces.")]
+    private PhysicsMaterial highFrictionMaterial; // Physics material for high friction surfaces.
+
+    [SerializeField, ValidateReference, Tooltip("Physics material used for low-friction ground surfaces.")]
+    private PhysicsMaterial lowFrictionMaterial; // Physics material for low friction surfaces.
+
     [Space(5)]
-    [SerializeField, Range(0f, 90f)] private float maxSlopeAngle = 45f; // Maximum walkable slope angle in degrees.
 
-    [Header("Debug Settings")]
-    [SerializeField] private bool debugGroundSensor = false; // Enable debug visualization for ground sensor.
-    [SerializeField] private bool debugObstacleSensor = false; // Enable debug visualization for obstacle sensor.
-    [SerializeField] private bool debugCeilingSensor = false; // Enable debug visualization for ceiling sensor.
-    [SerializeField] private bool debugSlopeAngle = false; // Enable debug visualization for slope angle.
+    [SerializeField, Range(0f, 90f), Tooltip("Maximum slope angle in degrees that the player can walk on.")]
+    private float maxSlopeAngle = 45f; // Maximum walkable slope angle in degrees.
+
+    [Header("Debug Settings"), HeaderGroup]
+    [SerializeField, Tooltip("Enables visual debug for ground sensor.")]
+    private bool debugGroundSensor = false; // Enable debug visualization for ground sensor.
+
+    [SerializeField, Tooltip("Enables visual debug for obstacle sensor.")]
+    private bool debugObstacleSensor = false; // Enable debug visualization for obstacle sensor.
+
+    [SerializeField, Tooltip("Enables visual debug for ceiling sensor.")]
+    private bool debugCeilingSensor = false; // Enable debug visualization for ceiling sensor.
+
+    [SerializeField, Tooltip("Enables visual debug for current slope angle.")]
+    private bool debugSlopeAngle = false; // Enable debug visualization for slope angle.
 
     #endregion
 
@@ -156,6 +278,10 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
     private bool isPlayable; // Whether the player can receive and respond to input.
     private bool canRun; // Whether running is allowed based on state and mode.
 
+    // Timing and action control for crouch input.
+    private readonly ActionBlockTimer crouchBlock = new(0.15f); // Prevents rapid toggling of crouch state; blocks input for 0.15 seconds after a crouch action.
+    private bool allowCrouchThisFrame; // Temporary flag to check if crouch action is allowed on the current frame.
+
     #endregion
 
     #region === Public Properties ===
@@ -180,34 +306,285 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
 
     #endregion
 
-    #region === Enums ===
+    #region === Properties ===
 
     /// <summary>
-    /// Defines how the player control behaves.
+    /// Gets or sets the input action used for player movement.
     /// </summary>
-    public enum PlayerControlMode
+    public InputActionReference MoveAction
     {
-        Automatic, // Automatic control mode.
-        Manual     // Manual control mode.
+        get => moveAction;
+        set => moveAction = value;
     }
 
     /// <summary>
-    /// Defines available abilities the player can have.
+    /// Gets or sets the input action used for running.
     /// </summary>
-    public enum PlayerAbility
+    public InputActionReference RunAction
     {
-        None,      // No abilities.
-        CanCrouch, // Ability to crouch.
-        CanJump    // Ability to jump.
+        get => runAction;
+        set => runAction = value;
     }
 
     /// <summary>
-    /// Defines player movement modes.
+    /// Gets or sets the input action used for jumping.
     /// </summary>
-    public enum PlayerMovement
+    public InputActionReference JumpAction
     {
-        justWalk, // Player can only walk.
-        canRun    // Player can run.
+        get => jumpAction;
+        set => jumpAction = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the input action used for crouching.
+    /// </summary>
+    public InputActionReference CrouchAction
+    {
+        get => crouchAction;
+        set => crouchAction = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the player's Transform component.
+    /// </summary>
+    public Transform PlayerTransform
+    {
+        get => playerTransform;
+        set => playerTransform = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the player's Rigidbody component.
+    /// </summary>
+    public Rigidbody PlayerRigidbody
+    {
+        get => playerRigidbody;
+        set => playerRigidbody = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the collider used when the player is standing.
+    /// </summary>
+    public Collider StandingCollider
+    {
+        get => standingCollider;
+        set => standingCollider = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the collider used when the player is crouching.
+    /// </summary>
+    public Collider CrouchingCollider
+    {
+        get => crouchingCollider;
+        set => crouchingCollider = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the player's walking speed.
+    /// </summary>
+    public float WalkSpeed
+    {
+        get => walkSpeed;
+        set => walkSpeed = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the player's running speed.
+    /// </summary>
+    public float RunSpeed
+    {
+        get => runSpeed;
+        set => runSpeed = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the player's crouch walking speed.
+    /// </summary>
+    public float CrouchWalkSpeed
+    {
+        get => crouchWalkSpeed;
+        set => crouchWalkSpeed = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the player's crouch running speed.
+    /// </summary>
+    public float CrouchRunSpeed
+    {
+        get => crouchRunSpeed;
+        set => crouchRunSpeed = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the player rotation smoothing speed.
+    /// </summary>
+    public float RotationSmoothSpeed
+    {
+        get => rotationSmoothSpeed;
+        set => rotationSmoothSpeed = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the jump force applied to the player.
+    /// </summary>
+    public float JumpForce
+    {
+        get => jumpForce;
+        set => jumpForce = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the maximum number of jumps allowed.
+    /// </summary>
+    public int MaxJumpCount
+    {
+        get => maxJumpCount;
+        set => maxJumpCount = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the coyote time duration for jump forgiveness.
+    /// </summary>
+    public float CoyoteTimeDuration
+    {
+        get => coyoteTimeDuration;
+        set => coyoteTimeDuration = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the local camera pivot transform.
+    /// </summary>
+    public Transform CameraPivot
+    {
+        get => cameraPivot;
+        set => cameraPivot = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the world-space camera pivot transform.
+    /// </summary>
+    public Transform WorldCameraPivot
+    {
+        get => worldCameraPivot;
+        set => worldCameraPivot = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the camera's local position when standing.
+    /// </summary>
+    public Vector3 StandingCameraLocalPos
+    {
+        get => standingCameraLocalPos;
+        set => standingCameraLocalPos = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the camera's local position when crouching.
+    /// </summary>
+    public Vector3 CrouchingCameraLocalPos
+    {
+        get => crouchingCameraLocalPos;
+        set => crouchingCameraLocalPos = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the interpolation speed for camera transitions.
+    /// </summary>
+    public float CameraLerpSpeed
+    {
+        get => cameraLerpSpeed;
+        set => cameraLerpSpeed = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the maximum stamina value for the player.
+    /// </summary>
+    public float MaxStamina
+    {
+        get => maxStamina;
+        set => maxStamina = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the minimum stamina required to start running.
+    /// </summary>
+    public float MinStaminaForRun
+    {
+        get => minStaminaForRun;
+        set => minStaminaForRun = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the stamina depletion rate while running.
+    /// </summary>
+    public float StaminaDepletionRate
+    {
+        get => staminaDepletionRate;
+        set => staminaDepletionRate = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the stamina recovery rate when not running.
+    /// </summary>
+    public float StaminaRecoveryRate
+    {
+        get => staminaRecoveryRate;
+        set => staminaRecoveryRate = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the ground detection layers.
+    /// </summary>
+    public LayerMask GroundLayers
+    {
+        get => groundLayers;
+        set => groundLayers = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the obstacle detection layers.
+    /// </summary>
+    public LayerMask ObstacleLayers
+    {
+        get => obstacleLayers;
+        set => obstacleLayers = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the ceiling detection layers.
+    /// </summary>
+    public LayerMask CeilingLayers
+    {
+        get => ceilingLayers;
+        set => ceilingLayers = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the physics material used for high friction surfaces.
+    /// </summary>
+    public PhysicsMaterial HighFrictionMaterial
+    {
+        get => highFrictionMaterial;
+        set => highFrictionMaterial = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the physics material used for low friction surfaces.
+    /// </summary>
+    public PhysicsMaterial LowFrictionMaterial
+    {
+        get => lowFrictionMaterial;
+        set => lowFrictionMaterial = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the maximum slope angle the player can walk on.
+    /// </summary>
+    public float MaxSlopeAngle
+    {
+        get => maxSlopeAngle;
+        set => maxSlopeAngle = value;
     }
 
     #endregion
@@ -228,7 +605,7 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
 
     /// <summary>
     /// Called once per frame.
-    /// Updates player state and sensors.
+    /// Updates player state, sensors and action timers.
     /// </summary>
     private void Update()
     {
@@ -238,6 +615,7 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
         UpdateAbilityAndCrouchLogic();
         UpdateSpeedAndColliders();
         UpdateCameraPivotPosition();
+        crouchBlock.Update();
     }
 
     /// <summary>
@@ -282,7 +660,10 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
     /// </summary>
     private void ValidateSerializedReferences()
     {
-        if (!inputActions) Debug.LogWarning("InputAsset not assigned.", this);
+        if (moveAction == null) Debug.LogWarning("Move Action not assigned.", this);
+        if (runAction == null) Debug.LogWarning("Run Action not assigned.", this);
+        if (jumpAction == null) Debug.LogWarning("Jump Action not assigned.", this);
+        if (crouchAction == null) Debug.LogWarning("Crouch Action not assigned.", this);
         if (!playerTransform) Debug.LogWarning("Player Transform not assigned.", this);
         if (!playerRigidbody) Debug.LogWarning("Rigidbody not assigned.", this);
         if (!cameraPivot) Debug.LogWarning("Camera Pivot not assigned.", this);
@@ -406,17 +787,18 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
     private void SetupInputBindings()
     {
         // Jump event.
-        jumpInputEvent = OnInputSystemEvent<float>.WithAction(inputActions, jumpActionPath, () => isPlayable)
+        jumpInputEvent = OnInputSystemEvent<float>.WithAction(jumpAction, this, () => isPlayable)
             .OnPressed(_ =>
             {
                 if (currentAbility == PlayerAbility.CanJump)
                 {
                     jumpController.OnJump(jumpForce);
+                    crouchBlock.Activate();
                 }
             });
 
         // Movement event.
-        moveInputEvent = OnInputSystemEvent<Vector2>.WithAction(inputActions, moveActionPath, () => isPlayable)
+        moveInputEvent = OnInputSystemEvent<Vector2>.WithAction(moveAction, this, () => isPlayable)
             .OnHold(value =>
             {
                 currentMoveInput = ConvertRotation(value, -worldCameraPivot.eulerAngles.y);
@@ -429,12 +811,14 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
             });
 
         // Crouch event.
-        crouchInputEvent = OnInputSystemEvent<float>.WithAction(inputActions, crouchActionPath, () => isPlayable)
+        crouchInputEvent = OnInputSystemEvent<float>.WithAction(crouchAction, this, () => isPlayable)
             .OnPressed(_ =>
             {
+                if (crouchBlock.IsBlocked) return;
+
                 if (controlMode == PlayerControlMode.Automatic)
                 {
-                    if (!ceilingSensor.collisionDetected)
+                    if ((isGrounded || allowCrouchThisFrame) && !ceilingSensor.collisionDetected)
                     {
                         isCrouching = !isCrouching;
                         currentAbility = isCrouching ? PlayerAbility.CanCrouch : lastNonCrouchAbility;
@@ -448,7 +832,7 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
             });
 
         // Racing event.
-        runInputEvent = OnInputSystemEvent<float>.WithAction(inputActions, runActionPath, () => canRun)
+        runInputEvent = OnInputSystemEvent<float>.WithAction(runAction, this, () => canRun)
             .OnPressed(_ =>
             {
                 isRunning = true;
@@ -490,15 +874,20 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates the grounded state based on sensors and player abilities.
+    /// Updates the grounded state based on sensors, abilities, and slope validation.
     /// </summary>
     private void UpdateGroundedState()
     {
+        bool wasGrounded = isGrounded; // Cache previous grounded state to detect transitions.
+
         // Checks if the player is on the ground:
         // - If the current ability does not allow jumping, considers it as on the ground.
         // - Or if the ground sensor detects collision.
         // Also checks if the surface angle is valid for walking or if the player is crouched.
         isGrounded = (currentAbility != PlayerAbility.CanJump || groundSensor.collisionDetected) && (slopeAngleSensors.isValidAngle || isCrouching);
+
+        // Allow crouch input on this frame only if the player just landed.
+        allowCrouchThisFrame = !wasGrounded && isGrounded;
     }
 
     /// <summary>
@@ -694,10 +1083,10 @@ public class ThirdPersonPlayerController3D : MonoBehaviour
         PlayerSpeedControl.Dispose(ref staminaController);
 
         // Remove all input events.
-        jumpInputEvent?.UnbindAll();
-        moveInputEvent?.UnbindAll();
-        crouchInputEvent?.UnbindAll();
-        runInputEvent?.UnbindAll();
+        jumpInputEvent?.Dispose();
+        moveInputEvent?.Dispose();
+        crouchInputEvent?.Dispose();
+        runInputEvent?.Dispose();
     }
 
     #endregion

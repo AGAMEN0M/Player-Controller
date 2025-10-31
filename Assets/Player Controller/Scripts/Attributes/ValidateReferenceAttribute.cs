@@ -17,6 +17,8 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+#region === Attribute Definition ===
+
 /// <summary>
 /// Attribute to highlight object reference fields when they are empty.
 /// Displays a message in the Inspector if the reference is missing.
@@ -38,7 +40,12 @@ public class ValidateReferenceAttribute : PropertyAttribute
     }
 }
 
+#endregion
+
 #if UNITY_EDITOR
+
+#region === Property Drawer ===
+
 /// <summary>
 /// Custom property drawer for ValidateReferenceAttribute.
 /// Highlights empty object reference fields and shows a help message.
@@ -60,10 +67,7 @@ public class ValidateReferenceDrawer : PropertyDrawer
         var attr = (ValidateReferenceAttribute)attribute;
 
         // Highlight field: red for error, yellow for warning.
-        if (isEmpty)
-        {
-            GUI.backgroundColor = attr.UseError ? Color.red : Color.yellow;
-        }
+        if (isEmpty) GUI.backgroundColor = attr.UseError ? Color.red : Color.yellow;
 
         // Draw the property field.
         Rect propertyRect = new(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
@@ -102,4 +106,7 @@ public class ValidateReferenceDrawer : PropertyDrawer
         return isEmpty ? EditorGUIUtility.singleLineHeight * 3 + 4 : EditorGUIUtility.singleLineHeight;
     }
 }
+
+#endregion
+
 #endif

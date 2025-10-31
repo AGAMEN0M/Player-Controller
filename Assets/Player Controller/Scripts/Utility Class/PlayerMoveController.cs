@@ -18,9 +18,15 @@ namespace PlayerController.PhysicsRuntime
     /// </summary>
     public class PlayerMoveController
     {
+        #region === Delegates & Dependencies ===
+
         private readonly Func<Rigidbody> targetRigidbody; // Provides the Rigidbody to apply movement to.
         private readonly Func<float> speed;               // Provides the movement speed multiplier.
         private readonly Func<bool> isObstacle;           // If true, prevents movement from being applied (e.g., hitting a wall).
+
+        #endregion
+
+        #region === Constructor ===
 
         /// <summary>
         /// Constructs a movement controller with optional speed and obstacle logic.
@@ -35,17 +41,9 @@ namespace PlayerController.PhysicsRuntime
             this.isObstacle = isObstacle ?? (() => false);
         }
 
-        /// <summary>
-        /// Disposes the controller by clearing its reference.
-        /// </summary>
-        /// <param name="controller">Reference to this controller to nullify.</param>
-        public static void Dispose(ref PlayerMoveController controller)
-        {
-            if (controller != null)
-            {
-                controller = null;
-            }
-        }
+        #endregion
+
+        #region === Public Methods ===
 
         /// <summary>
         /// Applies movement to the Rigidbody in the XZ plane.
@@ -86,5 +84,20 @@ namespace PlayerController.PhysicsRuntime
             // Reset only horizontal (X and Z) velocity.
             rb.linearVelocity = new Vector3(0f, currentVelocity.y, 0f);
         }
+
+        #endregion
+
+        #region === Utility Methods ===
+
+        /// <summary>
+        /// Disposes the controller by clearing its reference.
+        /// </summary>
+        /// <param name="controller">Reference to this controller to nullify.</param>
+        public static void Dispose(ref PlayerMoveController controller)
+        {
+            if (controller != null) controller = null;
+        }
+
+        #endregion
     }
 }

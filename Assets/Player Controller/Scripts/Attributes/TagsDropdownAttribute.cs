@@ -18,15 +18,19 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 
+#region === Attribute Definition ===
+
 /// <summary>
 /// Attribute to display a dropdown of Unity tags in the Inspector.
 /// </summary>
-public class TagsDropdownAttribute : PropertyAttribute
-{
-    // This attribute is just a marker. No additional implementation is needed.
-}
+public class TagsDropdownAttribute : PropertyAttribute { }
+
+#endregion
 
 #if UNITY_EDITOR
+
+#region === Property Drawer ===
+
 /// <summary>
 /// Custom property drawer for the TagsDropdownAttribute.
 /// Displays a dropdown list of Unity tags in the Inspector.
@@ -62,6 +66,9 @@ public class TagsDropdownDrawer : PropertyDrawer
         int currentIndex = tagList.IndexOf(currentString);
         if (currentIndex == -1) currentIndex = 0; // If not found, default to the "Tag Missing" entry.
 
+        // Label with tooltip above the popup.
+        EditorGUI.LabelField(position, new GUIContent("", label.tooltip));
+
         // Display the dropdown in the Inspector.
         int newIndex = EditorGUI.Popup(position, label.text, currentIndex, tagList.ToArray());
 
@@ -92,4 +99,7 @@ public class TagsDropdownDrawer : PropertyDrawer
         return EditorGUIUtility.singleLineHeight;
     }
 }
+
+#endregion
+
 #endif

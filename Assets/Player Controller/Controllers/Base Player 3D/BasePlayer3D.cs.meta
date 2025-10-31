@@ -4,7 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - inputActions: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  - moveAction: {fileID: -8900447243662054193, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  - runAction: {fileID: 4823704372130048406, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  - jumpAction: {fileID: 4366201743391738435, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  - crouchAction: {fileID: 1943687926148146052, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
   - playerTransform: {instanceID: 0}
   - playerRigidbody: {instanceID: 0}
   - standingCollider: {instanceID: 0}

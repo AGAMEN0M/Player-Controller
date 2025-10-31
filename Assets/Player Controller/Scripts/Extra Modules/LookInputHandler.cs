@@ -14,64 +14,92 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 
 /// <summary>
-/// MonoBehaviour responsible for handling look input for the camera.
-/// It listens to a configured input action and updates a direction vector,
-/// typically used to rotate the camera based on player input.
+/// Handles camera look input through Unity's Input System.
+/// Captures and stores the current look direction for use in camera rotation.
 /// </summary>
 [AddComponentMenu("Player Controller/Extra Modules/Look Input Handler")]
 public class LookInputHandler : MonoBehaviour
 {
+    #region === Serialized Fields ===
+
     [Header("Input Settings")]
-    [SerializeField, ValidateReference] private InputActionAsset inputActions; // Reference to the InputActionAsset containing all input actions.
-    [SerializeField] private string lookActionPath = "Player/Look"; // Path to the input action responsible for camera look.
+    [SerializeField, ValidateReference, Tooltip("Input action that captures look input.")]
+    private InputActionReference lookAction; // Input action responsible for camera look control.
+
+    [Header("Runtime Look Input")]
+    [ReadOnlyInInspector, Tooltip("Current look direction from input.")]
+    public Vector2 LookDirection; // Stores the latest look direction value.
+
+    #endregion
+
+    #region === Private Fields ===
+
+    private OnInputSystemEventConfig<Vector2> lookInputEvent; // Stores the configured look input event.
+    private bool isPlayable = true; // Determines if input processing is currently enabled.
+
+    #endregion
+
+    #region === Properties ===
 
     /// <summary>
-    /// Current directional input value for look control (e.g., mouse delta or right stick).
-    /// Updated while the input is held and reset when released.
+    /// Gets or sets the input action used to capture look input.
     /// </summary>
-    [Header("Runtime Look Input")]
-    [ReadOnlyInInspector] public Vector2 lookDirection;
+    public InputActionReference LookAction
+    {
+        get => lookAction;
+        set => lookAction = value;
+    }
 
-    private OnInputSystemEventConfig<Vector2> lookInputEvent; // Event configuration for binding and unbinding look input events.
-    private bool isPlayable = true; // Indicates whether input processing is currently enabled.
+    #endregion
 
+    #region === Unity Lifecycle Methods ===
+
+    /// <summary>
+    /// Checks if the input action is assigned and warns if not.
+    /// </summary>
     private void Awake()
     {
-        if (!inputActions) Debug.LogWarning("InputActions not assigned in LookInputHandler.", this);
+        if (lookAction == null) Debug.LogWarning("LookInputHandler: InputAction is not assigned.", this);
     }
 
     /// <summary>
-    /// Initializes the look input action and sets up handlers for hold and release events.
-    /// Input is processed only if 'isPlayable' is true.
+    /// Configures and binds the look input event.
+    /// Updates LookDirection when the player moves the camera input.
     /// </summary>
     private void Start()
     {
-        lookInputEvent = OnInputSystemEvent<Vector2>.WithAction(inputActions, lookActionPath, () => isPlayable)
+        // Bind hold and release events for look input.
+        lookInputEvent = OnInputSystemEvent<Vector2>.WithAction(lookAction, this, () => isPlayable)
             .OnHold(value =>
             {
-                lookDirection = value; // Update look direction when input is held.
+                LookDirection = value; // Update direction while input is held.
             })
             .OnReleased(() =>
             {
-                lookDirection = Vector2.zero; // Reset look direction when input is released.
+                LookDirection = Vector2.zero; // Reset direction when input stops.
             });
     }
 
     /// <summary>
-    /// Unbinds all input events to prevent memory leaks or unintended behavior.
+    /// Unbinds input events when this object is destroyed.
     /// </summary>
-    private void OnDestroy() => lookInputEvent?.UnbindAll();
+    private void OnDestroy() => lookInputEvent?.Dispose();
+
+    #endregion
+
+    #region === Public Methods ===
 
     /// <summary>
-    /// Enables or disables look input processing at runtime.
+    /// Enables or disables look input at runtime.
     /// </summary>
-    /// <param name="enabled">If true, input will be processed; otherwise, it will be ignored.</param>
+    /// <param name="enabled">If true, input will be processed; otherwise ignored.</param>
     public void TogglePlayable(bool enabled)
     {
         isPlayable = enabled;
-        if (!isPlayable)
-        {
-            lookDirection = Vector2.zero;
-        }
+
+        // Clear direction when input is disabled.
+        if (!isPlayable) LookDirection = Vector2.zero;
     }
+
+    #endregion
 }

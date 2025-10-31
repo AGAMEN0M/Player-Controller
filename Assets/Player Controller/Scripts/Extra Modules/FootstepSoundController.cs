@@ -22,49 +22,224 @@ using UnityEngine;
 [AddComponentMenu("Player Controller/Extra Modules/Footstep Sound Controller")]
 public class FootstepSoundController : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField, ValidateReference] private MonoBehaviour playerController; // Player controller component. Should implement the required properties.
-    [SerializeField, ValidateReference] private AudioSource audioSource; // AudioSource used to play sounds.
-    [SerializeField, ValidateReference(false)] private AudioMixerGroup audioMixerGroup; // Optional audio mixer group for volume and effects control.
-
-    [Header("Audio Settings")]
-    [SerializeField, Range(0f, 1f)] private float footstepVolume = 0.1f; // Base volume for footstep sounds.
-    [Space(5)]
-    [SerializeField, Range(-3, 3)] private float minimumPitch = 0.8f; // Minimum pitch for the audio.
-    [SerializeField, Range(-3, 3)] private float maximumPitch = 1f; // Maximum pitch for the audio.
-
-    [Header("Walking & Running Settings")]
-    [SerializeField] private float walkInterval = 0.6f; // Time interval between footsteps when walking.
-    [SerializeField] private float runInterval = 0.3f; // Time interval between footsteps when running.
-    [SerializeField, ValidateReference] private List<AudioClip> walkClips; // List of footstep sounds for walking/running.
-
-    [Header("Crouching Settings")]
-    [SerializeField] private float crouchWalkInterval = 1.0f; // Interval between footsteps when crouch-walking.
-    [SerializeField] private float crouchRunInterval = 0.5f; // Interval between footsteps when crouch-running.
-    [SerializeField, ValidateReference] private List<AudioClip> crouchClips; // List of footstep sounds for crouching.
-
-    [Header("Landing Sound")]
-    [SerializeField] private bool playLandingSound = false; // Toggle landing sound playback on/off.
-    [SerializeField, ValidateReference] private List<AudioClip> landingClips; // Possible landing sounds.
-
-    private IPlayerMovementState playerState; // Interface representing the player's movement state.
-    private float currentInterval; // Current interval between footstep sounds based on movement state.
-    private float lastFootstepTime; // The time when the last footstep sound was played.
-    private bool wasGroundedLastFrame = true; // Tracks whether the player was grounded last frame to detect changes.
+    #region === Enumerations ===
 
     /// <summary>
     /// Enum representing possible movement states for controlling footstep sounds.
     /// </summary>
     public enum MovementState
     {
+        /// <summary>Default state when player is not moving.</summary>
         None,
+
+        /// <summary>Player is walking normally.</summary>
         Walking,
+
+        /// <summary>Player is running.</summary>
         Running,
+
+        /// <summary>Player is walking while crouched.</summary>
         CrouchWalking,
+
+        /// <summary>Player is running while crouched.</summary>
         CrouchRunning
     }
 
-    #region Unity Lifecycle Methods
+    #endregion
+
+    #region === Serialized Fields ===
+
+    [Header("References")]
+    [SerializeField, ValidateReference, Tooltip("Reference to the MonoBehaviour component that controls player movement. This object must expose the properties defined in IPlayerMovementState for reflection-based access.")]
+    private MonoBehaviour playerController; // Player controller component. Should implement the required properties.
+
+    [SerializeField, ValidateReference, Tooltip("AudioSource component responsible for playing footstep and landing sounds. It will be automatically configured on Awake.")]
+    private AudioSource audioSource; // AudioSource used to play sounds.
+
+    [SerializeField, ValidateReference(false), Tooltip("Optional AudioMixerGroup reference for routing the AudioSource output. Used to control volume and apply effects globally through Unity's Audio Mixer.")]
+    private AudioMixerGroup audioMixerGroup; // Optional audio mixer group for volume and effects control.
+
+    [Header("Audio Settings")]
+    [SerializeField, Range(0f, 1f), Tooltip("Base volume multiplier for all footstep and landing sounds played by this controller.")]
+    private float footstepVolume = 0.1f; // Base volume for footstep sounds.
+
+    [Space(5)]
+
+    [SerializeField, Range(-3, 3), Tooltip("Minimum random pitch variation applied when playing a sound. Used to create natural variation between repeated footsteps.")]
+    private float minimumPitch = 0.8f; // Minimum pitch for the audio.
+
+    [SerializeField, Range(-3, 3), Tooltip("Maximum random pitch variation applied when playing a sound. Used to create natural variation between repeated footsteps.")]
+    private float maximumPitch = 1f; // Maximum pitch for the audio.
+
+    [Header("Walking & Running Settings")]
+    [SerializeField, Tooltip("Time interval (in seconds) between footsteps when the player is walking normally.")]
+    private float walkInterval = 0.6f; // Time interval between footsteps when walking.
+
+    [SerializeField, Tooltip("Time interval (in seconds) between footsteps when the player is running.")]
+    private float runInterval = 0.3f; // Time interval between footsteps when running.
+
+    [SerializeField, ValidateReference, Tooltip("List of AudioClips that will be randomly selected and played when the player walks or runs.")]
+    private List<AudioClip> walkClips; // List of footstep sounds for walking/running.
+
+    [Header("Crouching Settings")]
+    [SerializeField, Tooltip("Time interval (in seconds) between footsteps when the player is walking while crouched.")]
+    private float crouchWalkInterval = 1.0f; // Interval between footsteps when crouch-walking.
+
+    [SerializeField, Tooltip("Time interval (in seconds) between footsteps when the player is running while crouched.")]
+    private float crouchRunInterval = 0.5f; // Interval between footsteps when crouch-running.
+
+    [SerializeField, ValidateReference, Tooltip("List of AudioClips used for footsteps when the player is crouching (both walking and running).")]
+    private List<AudioClip> crouchClips; // List of footstep sounds for crouching.
+
+    [Header("Landing Sound")]
+    [SerializeField, Tooltip("If enabled, a landing sound will play when the player returns to the ground after falling or jumping.")]
+    private bool playLandingSound = false; // Toggle landing sound playback on/off.
+
+    [SerializeField, ValidateReference, Tooltip("List of AudioClips that can be used for landing sounds. A random clip will be chosen when landing occurs.")]
+    private List<AudioClip> landingClips; // Possible landing sounds.
+
+    #endregion
+
+    #region === Private Fields ===
+
+    private IPlayerMovementState playerState; // Interface representing the player's movement state.
+    private float currentInterval; // Current interval between footstep sounds based on movement state.
+    private float lastFootstepTime; // The time when the last footstep sound was played.
+    private bool wasGroundedLastFrame = true; // Tracks whether the player was grounded last frame to detect changes.
+
+    #endregion
+
+    #region === Properties ===
+
+    /// <summary>
+    /// Reference to the player's movement controller implementing IPlayerMovementState.
+    /// </summary>
+    public MonoBehaviour PlayerController
+    {
+        get => playerController;
+        set => playerController = value;
+    }
+
+    /// <summary>
+    /// Reference to the AudioSource component responsible for sound playback.
+    /// </summary>
+    public AudioSource AudioSource
+    {
+        get => audioSource;
+        set => audioSource = value;
+    }
+
+    /// <summary>
+    /// Optional AudioMixerGroup used for routing this AudioSource's output.
+    /// </summary>
+    public AudioMixerGroup AudioMixerGroup
+    {
+        get => audioMixerGroup;
+        set => audioMixerGroup = value;
+    }
+
+    /// <summary>
+    /// Base playback volume for footstep and landing sounds.
+    /// </summary>
+    public float FootstepVolume
+    {
+        get => footstepVolume;
+        set => footstepVolume = value;
+    }
+
+    /// <summary>
+    /// Minimum pitch applied when randomizing sound playback.
+    /// </summary>
+    public float MinimumPitch
+    {
+        get => minimumPitch;
+        set => minimumPitch = value;
+    }
+
+    /// <summary>
+    /// Maximum pitch applied when randomizing sound playback.
+    /// </summary>
+    public float MaximumPitch
+    {
+        get => maximumPitch;
+        set => maximumPitch = value;
+    }
+
+    /// <summary>
+    /// Interval between footsteps when walking.
+    /// </summary>
+    public float WalkInterval
+    {
+        get => walkInterval;
+        set => walkInterval = value;
+    }
+
+    /// <summary>
+    /// Interval between footsteps when running.
+    /// </summary>
+    public float RunInterval
+    {
+        get => runInterval;
+        set => runInterval = value;
+    }
+
+    /// <summary>
+    /// List of AudioClips for walking and running footsteps.
+    /// </summary>
+    public List<AudioClip> WalkClips
+    {
+        get => walkClips;
+        set => walkClips = value;
+    }
+
+    /// <summary>
+    /// Interval between footsteps when walking while crouched.
+    /// </summary>
+    public float CrouchWalkInterval
+    {
+        get => crouchWalkInterval;
+        set => crouchWalkInterval = value;
+    }
+
+    /// <summary>
+    /// Interval between footsteps when running while crouched.
+    /// </summary>
+    public float CrouchRunInterval
+    {
+        get => crouchRunInterval;
+        set => crouchRunInterval = value;
+    }
+
+    /// <summary>
+    /// List of AudioClips for crouching footsteps.
+    /// </summary>
+    public List<AudioClip> CrouchClips
+    {
+        get => crouchClips;
+        set => crouchClips = value;
+    }
+
+    /// <summary>
+    /// Determines whether landing sounds are played when touching the ground.
+    /// </summary>
+    public bool PlayLandingSound
+    {
+        get => playLandingSound;
+        set => playLandingSound = value;
+    }
+
+    /// <summary>
+    /// List of AudioClips that can be used for landing sounds.
+    /// </summary>
+    public List<AudioClip> LandingClips
+    {
+        get => landingClips;
+        set => landingClips = value;
+    }
+
+    #endregion
+
+    #region === Unity Lifecycle Methods ===
 
     /// <summary>
     /// Sets up references and audio configuration for footstep playback.
@@ -78,6 +253,9 @@ public class FootstepSoundController : MonoBehaviour
         // Create an adapter that uses reflection to access properties from playerController.
         playerState = new PlayerMovementStateAdapter(playerController);
         if (playerState == null) Debug.LogWarning("playerController does not implement IPlayerMovementState.", this);
+
+        // Validate pitch configuration to ensure consistency.
+        if (minimumPitch > maximumPitch) Debug.LogError("Minimum pitch cannot be greater than maximum pitch.", this);
 
         // Configure the AudioSource to not play on awake and set volume.
         audioSource.playOnAwake = false;
@@ -195,10 +373,7 @@ public class FootstepSoundController : MonoBehaviour
     {
         if (!playerState.IsMoving) return MovementState.None;
 
-        if (playerState.IsCrouching)
-        {
-            return playerState.IsRunning ? MovementState.CrouchRunning : MovementState.CrouchWalking;
-        }
+        if (playerState.IsCrouching) return playerState.IsRunning ? MovementState.CrouchRunning : MovementState.CrouchWalking;
 
         return playerState.IsRunning ? MovementState.Running : MovementState.Walking;
     }

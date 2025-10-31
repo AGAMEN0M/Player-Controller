@@ -99,11 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f524a1bea9c00e74db35a498497a6561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputActions: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
-  moveActionPath: Player/Move
-  runActionPath: Player/Run
-  jumpActionPath: Player/Jump
-  crouchActionPath: Player/Crouch
+  moveAction: {fileID: -8900447243662054193, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  runAction: {fileID: 4823704372130048406, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  jumpAction: {fileID: 4366201743391738435, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  crouchAction: {fileID: 1943687926148146052, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
   playerTransform: {fileID: 1711500161454389570}
   playerRigidbody: {fileID: 4298668176493376552}
   standingCollider: {fileID: 1900250441697885482}
@@ -165,13 +164,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 854387fb01bc4b845839b6da991512eb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  inputAsset: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
-  toggleActionPath: UI/Menu
+  m_EditorClassIdentifier: Assembly-CSharp::CameraStateManager
+  toggleAction: {fileID: 4060971122096522078, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
   updateType: 1
   activationObjects: []
   debug: 0
-  onEnable:
+  OnEnable:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5411008224161646954}
@@ -198,7 +196,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  onDisable:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDisable:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5411008224161646954}
@@ -224,6 +234,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &776669944343151393
 GameObject:
@@ -510,9 +532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcaa7dad71858648ac8ae00d8e0cd45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputActions: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
-  lookActionPath: Player/Look
-  lookDirection: {x: 0, y: 0}
+  lookAction: {fileID: -2627678654415331810, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  LookDirection: {x: 0, y: 0}
 --- !u!114 &1321907595276322358
 MonoBehaviour:
   m_ObjectHideFlags: 0

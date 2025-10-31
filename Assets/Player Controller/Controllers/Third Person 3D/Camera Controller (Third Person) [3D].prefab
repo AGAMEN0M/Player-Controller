@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 2035630058142545166}
   - component: {fileID: 7728606623981949635}
   - component: {fileID: 6009666558456977731}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: 'Camera Controller (Third Person) [3D]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,10 +120,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbcaa7dad71858648ac8ae00d8e0cd45, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  inputActions: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
-  lookActionPath: Player/Look
-  lookDirection: {x: 0, y: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::LookInputHandler
+  lookAction: {fileID: -2627678654415331810, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
+  LookDirection: {x: 0, y: 0}
 --- !u!114 &6009666558456977731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,9 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f859ce4ce196b4e93be94a3af796c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputActions: {fileID: -944628639613478452, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
-  zoomActionPath: UI/ScrollWheel
+  zoomAction: {fileID: 5418013973488153795, guid: 4d0dc355ca25326409c608f6d3795cd5, type: 3}
   lookInputHandler: {fileID: 7728606623981949635}
+  playerTransform: {fileID: 0}
   playerPivotTransform: {fileID: 0}
   mainCameraPivotTransform: {fileID: 2035630058142545166}
   collisionCameraPivotTransform: {fileID: 3887618584229903834}
@@ -166,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3887618584229903834}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Secondary Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

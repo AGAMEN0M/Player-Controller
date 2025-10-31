@@ -29,15 +29,60 @@ using TMPro;
 public class SceneDropdownManagerEditor : MonoBehaviour
 {
 #if UNITY_EDITOR
+
+    #region === Serialized Fields ===
+
     [Header("UI References")]
-    [SerializeField] private TMP_Dropdown sceneDropdown; // Reference to the TMP_Dropdown that displays available scenes.
-    [SerializeField] private Button loadSceneButton;     // Button used to trigger the scene loading.
+    [SerializeField, ValidateReference, Tooltip("Reference to the TMP_Dropdown component that lists available scenes.")]
+    private TMP_Dropdown sceneDropdown; // Reference to the TMP_Dropdown that displays available scenes.
+
+    [SerializeField, ValidateReference, Tooltip("Reference to the Button component that triggers the scene loading process.")]
+    private Button loadSceneButton; // Button used to trigger the scene loading.
 
     [Header("Scene Settings")]
-    [Tooltip("Reference to ScriptableObject that contains scene list.")]
-    [SerializeField] private SceneListEditor sceneList;  // ScriptableObject that stores the list of SceneAssets.
+    [SerializeField, ValidateReference, Tooltip("Reference to ScriptableObject that contains scene list.")]
+    private SceneListEditor sceneList; // ScriptableObject that stores the list of SceneAssets.
+
+    #endregion
+
+    #region === Private Fields ===
 
     private readonly List<string> scenePaths = new();    // Internal list of scene paths derived from SceneAssets.
+
+    #endregion
+
+    #region === Public Properties ===
+
+    /// <summary>
+    /// Gets or sets the TMP_Dropdown used to display scene options.
+    /// </summary>
+    public TMP_Dropdown SceneDropdown
+    {
+        get => sceneDropdown;
+        set => sceneDropdown = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the button used to trigger the scene loading.
+    /// </summary>
+    public Button LoadSceneButton
+    {
+        get => loadSceneButton;
+        set => loadSceneButton = value;
+    }
+
+    /// <summary>
+    /// Gets or sets the SceneList ScriptableObject reference.
+    /// </summary>
+    public SceneListEditor SceneList
+    {
+        get => sceneList;
+        set => sceneList = value;
+    }
+
+    #endregion
+
+    #region === Unity Callbacks ===
 
     /// <summary>
     /// Called on scene load. Initializes the dropdown and registers button callback.
@@ -54,6 +99,10 @@ public class SceneDropdownManagerEditor : MonoBehaviour
         SetupDropdown(); // Populate dropdown options from SceneList.
         loadSceneButton.onClick.AddListener(OnLoadSceneButtonClicked); // Register button event.
     }
+
+    #endregion
+
+    #region === Private Methods ===
 
     /// <summary>
     /// Sets up dropdown options from SceneList ScriptableObject.
@@ -74,7 +123,7 @@ public class SceneDropdownManagerEditor : MonoBehaviour
         int index = 0;
 
         // Loop through each SceneAsset stored in the ScriptableObject.
-        foreach (SceneAsset sceneAsset in sceneList.scenes)
+        foreach (var sceneAsset in sceneList.scenes)
         {
             if (sceneAsset == null) continue;
 
@@ -88,17 +137,14 @@ public class SceneDropdownManagerEditor : MonoBehaviour
             scenePaths.Add(path);   // Add path to internal scenePaths list.
 
             // Check if this scene matches the currently open scene.
-            if (sceneName == currentSceneName)
-            {
-                defaultIndex = index;
-            }
+            if (sceneName == currentSceneName) defaultIndex = index;
 
             index++;
         }
 
-        sceneDropdown.AddOptions(options);       // Apply options to dropdown.
-        sceneDropdown.value = defaultIndex;      // Select the current scene by default.
-        sceneDropdown.RefreshShownValue();       // Ensure UI shows updated selection.
+        sceneDropdown.AddOptions(options);  // Apply options to dropdown.
+        sceneDropdown.value = defaultIndex; // Select the current scene by default.
+        sceneDropdown.RefreshShownValue();  // Ensure UI shows updated selection.
     }
 
     /// <summary>
@@ -129,5 +175,8 @@ public class SceneDropdownManagerEditor : MonoBehaviour
             EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
         }
     }
+
+    #endregion
+
 #endif
 }
