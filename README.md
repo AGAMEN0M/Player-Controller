@@ -3,7 +3,7 @@ A tool that helps you implement Player in your game with a modular system — fu
 
 # Download
 
-[Player Controller - Package v0.0.2](https://drive.google.com/file/d/1dJHRN4yokabxo_pBHz2U3jX6CI9itDkI/view?usp=drive_link)
+[Player Controller - Package v0.0.2](https://drive.google.com/file/d/1NoY1bL9qjM02IBuQDuvQ7UuzwblMsh1r/view?usp=drive_link)
  / 
 [Documentation](https://drive.google.com/file/d/1uPOn4e7FSVCFoCvDvEXYYQPxpAHYdaTp/view?usp=drive_link)
 
@@ -18,4 +18,4 @@ If you have suggestions for improvements and bug fixes, please share them with m
 # Old Versions
 [Old Versions - Package](https://drive.google.com/drive/folders/1-U7Ne_76zx3YME-d9Nb4Mwlt5BeclDUs?usp=drive_link)
 
-Current version in Git v9
+Current version in Git v10

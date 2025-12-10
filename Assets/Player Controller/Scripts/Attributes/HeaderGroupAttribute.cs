@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ---------------------------------------------------------------------------
  * Description: Provides a collapsible header grouping system for Unity inspectors.
  *              Can be used automatically through [UseHeaderGroupInspector]
@@ -25,12 +25,12 @@
 */
 
 using UnityEngine;
+using System;
 
 #if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
-using System;
 #endif
 
 #region === Attribute Definition ===
