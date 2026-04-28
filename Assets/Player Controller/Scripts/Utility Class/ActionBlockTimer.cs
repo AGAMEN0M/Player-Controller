@@ -19,10 +19,11 @@
 */
 
 using UnityEngine;
+using System;
 
 namespace PlayerController.InputEvents
 {
-    [System.Serializable]
+    [Serializable]
     public class ActionBlockTimer
     {
         #region === Properties ===

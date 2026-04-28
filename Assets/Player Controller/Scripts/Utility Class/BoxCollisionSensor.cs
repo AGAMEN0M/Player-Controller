@@ -32,54 +32,70 @@ namespace PlayerController.PhysicsRuntime
         private readonly Func<LayerMask> collisionLayerMaskProvider; // Specifies which layers should be considered for collision detection.
         private readonly Func<QueryTriggerInteraction> triggerInteractionProvider; // Specifies whether trigger colliders should be included.
 
-        /// <summary>Provides the world-space center position of the box.</summary>
+        /// <summary>
+        /// Provides the world-space center position of the box.
+        /// </summary>
         public Func<Vector3> boxCenterProvider;
 
-        /// <summary>Provides the box size (width, height, depth).</summary>
+        /// <summary>
+        /// Provides the box size (width, height, depth).
+        /// </summary>
         public Func<Vector3> boxSizeProvider;
 
-        /// <summary>Provides the rotation of the box in world space.</summary>
+        /// <summary>
+        /// Provides the rotation of the box in world space.
+        /// </summary>
         public Func<Quaternion> boxRotationProvider;
 
-        /// <summary>Target object for drawing gizmos (e.g., used with editor selection).</summary>
+        /// <summary>
+        /// Target object for drawing gizmos (e.g., used with editor selection).
+        /// </summary>
         public Func<GameObject> gizmoTargetObjectProvider;
 
-        /// <summary>Defines how and when the gizmos should be drawn (always, selected, none).</summary>
+        /// <summary>
+        /// Defines how and when the gizmos should be drawn (always, selected, none).
+        /// </summary>
         public Func<GizmoDisplayMode> gizmoDrawingModeProvider;
 
-        /// <summary>Provides the color to use when drawing gizmos.</summary>
+        /// <summary>
+        /// Provides the color to use when drawing gizmos.
+        /// </summary>
         public Func<Color> gizmosColorProvider;
 
         #endregion
 
         #region === Enums ===
 
-        /// <summary> Defines how collision results are filtered after detection. </summary>
+        /// <summary>
+        /// Defines how collision results are filtered after detection.
+        /// </summary>
         public enum DetectionFilter
         {
-            /// <summary> No filtering is applied. All colliders are considered valid detections. </summary>
+            /// <summary>No filtering is applied. All colliders are considered valid detections.</summary>
             None,
 
-            /// <summary> Colliders that are children of the specified reference transform are excluded. </summary>
+            /// <summary>Colliders that are children of the specified reference transform are excluded.</summary>
             IsNotChildOf,
 
-            /// <summary> Colliders whose tags are included in the ignored tags list are excluded. </summary>
+            /// <summary>Colliders whose tags are included in the ignored tags list are excluded.</summary>
             IgnoreByTags,
 
-            /// <summary> Combines both filters: excludes children of the reference transform and ignored tags. </summary>
+            /// <summary>Combines both filters: excludes children of the reference transform and ignored tags.</summary>
             All
         }
 
-        /// <summary> Specifies when gizmos should be drawn in the editor. </summary>
+        /// <summary>
+        /// Specifies when gizmos should be drawn in the editor.
+        /// </summary>
         public enum GizmoDisplayMode
         {
-            /// <summary> Gizmos are never drawn. </summary>
+            /// <summary>Gizmos are never drawn.</summary>
             None,
 
-            /// <summary> Gizmos are always drawn, regardless of selection state. </summary>
+            /// <summary>Gizmos are always drawn, regardless of selection state.</summary>
             Always,
 
-            /// <summary> Gizmos are drawn only when the target object is selected. </summary>
+            /// <summary>Gizmos are drawn only when the target object is selected.</summary>
             SelectedOnly
         }
 
@@ -89,7 +105,9 @@ namespace PlayerController.PhysicsRuntime
 
         private readonly Collider[] hitResults = new Collider[16]; // Reusable array for OverlapBox collision hits.
 
-        /// <summary>Indicates whether a collision was detected during the last check.</summary>
+        /// <summary>
+        /// Indicates whether a collision was detected during the last check.
+        /// </summary>
         public bool collisionDetected = false;
 
         #endregion
@@ -172,7 +190,9 @@ namespace PlayerController.PhysicsRuntime
 
         #region === Core Logic ===
 
-        // Performs collision detection using OverlapBox and updates the state accordingly.
+        /// <summary>
+        /// Performs collision detection using OverlapBox and updates the state accordingly.
+        /// </summary>
         private void CheckForCollisions()
         {
             // Skip if detection is disabled.
@@ -209,7 +229,11 @@ namespace PlayerController.PhysicsRuntime
             }
         }
 
-        // Applies custom filtering logic to decide whether a collider should be considered.
+        /// <summary>
+        /// Applies custom filtering logic to decide whether a collider should be considered.
+        /// </summary>
+        /// <param name="collider">The collider to evaluate against the current detection filters.</param>
+        /// <returns>True if the collider passes the filter and should be considered; otherwise, false.</returns>
         private bool PassesDetectionFilter(Collider collider)
         {
             var filter = filterModeProvider?.Invoke() ?? DetectionFilter.All;

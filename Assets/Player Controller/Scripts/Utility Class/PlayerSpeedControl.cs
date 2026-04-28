@@ -24,23 +24,23 @@ namespace PlayerController.Abilities
         #region === Delegates ===
 
         // Delegates returning configuration values or state information.
-        private readonly Func<float> normalSpeed;            // Returns the player's normal movement speed.
-        private readonly Func<float> fastSpeed;              // Returns the player's fast (running) speed.
-        private readonly Func<float> maxStamina;             // Returns the maximum stamina the player can have.
-        private readonly Func<float> minimumAmountVigor;     // Returns the minimum stamina required to run.
-        private readonly Func<float> staminaDepletionRate;   // Returns the rate at which stamina depletes when running.
-        private readonly Func<float> staminaRecoveryRate;    // Returns the rate at which stamina regenerates when not running.
-        private readonly Func<bool> isMove;                  // Returns whether the player is currently moving.
+        private readonly Func<float> normalSpeed;          // Returns the player's normal movement speed.
+        private readonly Func<float> fastSpeed;            // Returns the player's fast (running) speed.
+        private readonly Func<float> maxStamina;           // Returns the maximum stamina the player can have.
+        private readonly Func<float> minimumAmountVigor;   // Returns the minimum stamina required to run.
+        private readonly Func<float> staminaDepletionRate; // Returns the rate at which stamina depletes when running.
+        private readonly Func<float> staminaRecoveryRate;  // Returns the rate at which stamina regenerates when not running.
+        private readonly Func<bool> isMove;                // Returns whether the player is currently moving.
 
         #endregion
 
         #region === Private Fields ===
 
         private readonly bool useStamina; // Indicates whether the stamina system is enabled.
-        private float currentStamina; // Current stamina value of the player.
-        private bool subscribedToUpdate; // Tracks subscription to the fixed update event.
-        private bool isFast;             // Whether the player is currently running.
-        private bool haveEnoughStamina;  // Whether the player currently has enough stamina to run.
+        private float currentStamina;     // Current stamina value of the player.
+        private bool subscribedToUpdate;  // Tracks subscription to the fixed update event.
+        private bool isFast;              // Whether the player is currently running.
+        private bool haveEnoughStamina;   // Whether the player currently has enough stamina to run.
 
         #endregion
 

@@ -28,15 +28,15 @@ namespace PlayerController.PhysicsRuntime
         private readonly Func<int> maxJumps;              // Function that returns the maximum number of jumps allowed.
         private readonly Func<float> coyoteTime;          // Function that returns the allowed coyote time (in seconds).
 
-        private int jumpCount;              // Number of jumps used since the last contact with the ground.
-        private float lastGroundedTime;     // Time (fixedTime) of the last time the character touched the ground.
-        private bool wasGroundedLastFrame;  // Grounded state in the previous frame to detect transitions.
-        private float jumpCooldownTime;     // Time until which we ignore grounded after jumping (to avoid erroneous collisions).
+        private int jumpCount;             // Number of jumps used since the last contact with the ground.
+        private float lastGroundedTime;    // Time (fixedTime) of the last time the character touched the ground.
+        private bool wasGroundedLastFrame; // Grounded state in the previous frame to detect transitions.
+        private float jumpCooldownTime;    // Time until which we ignore grounded after jumping (to avoid erroneous collisions).
 
         private const float groundedIgnoreDurationAfterJump = 0.1f; // Cooldown duration for ignoring grounded after jumping.
 
-        private bool coyoteJumpUsed;        // Indicates whether the coyote's jump has already been consumed.
-        private bool isInCoyoteWindow;      // Indicates whether we are still within the coyote time window.
+        private bool coyoteJumpUsed;   // Indicates whether the coyote's jump has already been consumed.
+        private bool isInCoyoteWindow; // Indicates whether we are still within the coyote time window.
 
         #endregion
 

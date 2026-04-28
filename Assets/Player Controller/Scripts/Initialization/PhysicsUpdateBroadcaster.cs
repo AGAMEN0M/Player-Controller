@@ -31,16 +31,24 @@ namespace PlayerController.PhysicsRuntime
     {
         #region === Fields ===
 
-        /// <summary> Singleton instance of this broadcaster. </summary>
+        /// <summary>
+        /// Singleton instance of this broadcaster.
+        /// </summary>
         public static PhysicsUpdateBroadcaster Instance { get; private set; }
 
-        /// <summary> Invoked every Update frame. </summary>
+        /// <summary>
+        /// Invoked every Update frame.
+        /// </summary>
         public static event Action OnUpdate;
 
-        /// <summary> Invoked every FixedUpdate frame. </summary>
+        /// <summary>
+        /// Invoked every FixedUpdate frame.
+        /// </summary>
         public static event Action OnFixedUpdate;
 
-        /// <summary> Invoked every LateUpdate frame. </summary>
+        /// <summary>
+        /// Invoked every LateUpdate frame.
+        /// </summary>
         public static event Action OnLateUpdate;
 
         // List of all registered sensors for gizmo rendering.

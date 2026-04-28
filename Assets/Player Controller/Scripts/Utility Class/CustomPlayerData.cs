@@ -21,19 +21,29 @@ namespace PlayerController.CustomData
     {
         #region === Inner Classes ===
 
-        /// <summary>Represents a serializable key-value pair with type metadata.</summary>
+        /// <summary>
+        /// Represents a serializable key-value pair with type metadata.
+        /// </summary>
         [Serializable]
         private class Entry
         {
+            [Tooltip("Unique identifier for the stored data entry. Used as the dictionary key during serialization and deserialization.")]
             public string key;
+
+            [Tooltip("Serialized value stored as a string. May contain raw text, JSON (for Unity types), or enum names.")]
             public string value;
+
+            [Tooltip("Assembly-qualified type name of the original value. Used to reconstruct the correct data type when loading.")]
             public string type;
         }
 
-        /// <summary>Container class for a list of <see cref="Entry"/> objects for serialization.</summary>
+        /// <summary>
+        /// Container class for a list of <see cref="Entry"/> objects for serialization.
+        /// </summary>
         [Serializable]
         private class EntryList
         {
+            [Tooltip("Collection of serialized key-value entries that represent the full dataset.")]
             public List<Entry> entries = new();
         }
 
