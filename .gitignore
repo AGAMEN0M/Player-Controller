@@ -73,3 +73,4 @@ crashlytics-build.properties
 
 # Custom Assets
 /Assets/Editor
+/Packages/com.unity.asset-store-tools
