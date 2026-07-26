@@ -8,13 +8,16 @@ It provides a flexible architecture for movement, jumping, crouching, running, s
 
 # 📦 Download
 
+* 🛒 **Asset Store**
+[Unity Asset Store]()
+
 * 📦 **Latest Package**
-[Player Controller - Package v0.0.3](https://drive.google.com/file/d/1pk8MbubbPfioTfLwfj3uiRwMWjm2poVZ/view?usp=drive_link)
+[Player Controller - Package v0.0.3](https://github.com/AGAMEN0M/Player-Controller/releases/download/v0.0.3/Player.Controller.-.by.Lucas_AGAMENOM.unitypackage)
 / 
-[Documentation](https://drive.google.com/file/d/1WpNnsskTa70kLsQJDTQbInJfeuudzN9h/view?usp=drive_link)
+[Documentation](https://github.com/user-attachments/files/30385604/Player.Controller.Documentation.pdf)
 
 * 🕓 **Old Versions Archive**
-[Old Versions - Package](https://drive.google.com/drive/folders/1-U7Ne_76zx3YME-d9Nb4Mwlt5BeclDUs?usp=drive_link)
+[Old Versions - Package](https://github.com/AGAMEN0M/Player-Controller/releases)
 
 ---
 
